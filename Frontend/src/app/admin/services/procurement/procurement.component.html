@@ -1,0 +1,64 @@
+
+<app-adminsidenav>
+    <app-adminnav></app-adminnav>
+    <mat-card id="contenu">
+    <div class="m-4">
+     
+    <div class="center-screen">
+    
+        <div class="card card-body" style="background-color:  white; width: 50%; ">
+    
+                <mat-form-field>
+                  <mat-select [formControl]="controleCategorie" placeholder="Categories" (selectionChange)="catego()" #singleSelect>
+                    <mat-option>
+                      <ngx-mat-select-search [formControl]="FiltreCategorie"
+                                             placeholderLabel ="Recherche"
+                                             noEntriesFoundLabel = "Catégorie n'existe pas"
+                                             ngxMatSelectSearchClear>                                           >
+                                            </ngx-mat-select-search>
+                    </mat-option>
+                
+                    <mat-option *ngFor="let categorie of CategoriesFiltrer | async" [value]="categorie">
+                      {{categorie}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+         
+    
+        </div>  
+    </div>
+    
+    
+        <div class="mt-5" *ngIf="categorie == 'GEG' " >
+            <app-gegindex></app-gegindex>   
+        </div>
+        <div class="mt-5" *ngIf="categorie == 'CTA' " >
+          <app-ctaindex></app-ctaindex>   
+        </div>
+        <div class="mt-5" *ngIf="categorie == 'Ventilo Convecteur' " >
+          <app-vcindex></app-vcindex>   
+        </div>
+        <div class="mt-5" *ngIf="categorie == 'Armoire de précision' " >
+          <app-apindex></app-apindex>   
+        </div>
+        <div class="mt-5" *ngIf="categorie == 'Groupe frigorifique' " >
+          <app-gfindex></app-gfindex>   
+        </div>
+        <div class="mt-5" *ngIf="categorie == 'Chaudière' " >
+          <app-chdindex></app-chdindex>   
+        </div>
+        <div class="mt-5" *ngIf="categorie == 'Roof Top' " >
+          <app-rtindex></app-rtindex>   
+        </div>
+        <div class="mt-5" *ngIf="categorie == 'Pompe' " >
+          <app-pompeindex></app-pompeindex>   
+        </div>
+        <div class="mt-5" *ngIf="categorie == 'Evaporateur' " >
+          <app-evapindex></app-evapindex>   
+        </div>
+
+
+
+    </div>
+    </mat-card>
+    </app-adminsidenav>

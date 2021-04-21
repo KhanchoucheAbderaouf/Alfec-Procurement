@@ -1,0 +1,476 @@
+
+
+<h1 mat-dialog-title>Produit {{data.result.codep}} <button  mat-button type="button" mat-dialog-close id="fermer"><mat-icon>close</mat-icon></button> </h1>
+
+<mat-dialog-content id="container" *ngIf="!modifier">
+  <mat-divider></mat-divider>
+
+  <mat-list>
+    <h2>Informations Générales</h2>
+    <mat-list-item>
+      <p class="title"> Type Produit : </p> &nbsp; <p class="value">{{data.result.type}}</p>
+    </mat-list-item>
+    <mat-list-item>
+      <p class="title"> La marque : </p> &nbsp; <p class class="value"> {{data.result.marque}}</p>
+    </mat-list-item>
+    <mat-list-item>
+      <p class="title"> Le fournisseur : </p> &nbsp; <p class="value"> {{data.result.fournisseur.nomf}}  </p>   &nbsp; &nbsp; &nbsp; 
+        <button mat-icon-button class="example-icon mb-3" aria-label="Example icon-button with menu icon" type="button" (click)="openDialog2()">
+          <mat-icon >visibility</mat-icon>
+        </button>
+    </mat-list-item>
+    <mat-list-item *ngIf="AdminUser === 'procurement'">
+      <p class="title"> Le Prix : </p> &nbsp; <p class class="value"> {{data.result.totalprice | number:'3.1-5'}} DA</p>
+    </mat-list-item>
+
+    <mat-list-item *ngIf="AdminUser === 'admin'">
+      <p class="title"> Le Type du Prix : </p> &nbsp; <p class class="value" style="text-transform: uppercase;"> {{data.result.typeproductprice}} </p>
+    </mat-list-item>
+
+    <mat-list-item  *ngIf="AdminUser === 'admin'">
+      <p class="title"> Le Prix : 
+        <button type="button" (click)="ThePrice()" mat-icon-button class="example-icon"
+        aria-label="Example icon-button with menu icon">
+        <mat-icon *ngIf="!prix">expand_more</mat-icon>
+        <mat-icon *ngIf="prix">expand_less</mat-icon>
+      </button></p> &nbsp; 
+    </mat-list-item>
+      
+    <mat-list *ngIf="prix && AdminUser === 'admin'" style="position: relative; margin-left : 20%;border-radius:2%;border:solid 0.5px #285393">
+        <mat-list-item>
+        <p class="sub-title"> Prix en Euro : </p> &nbsp; <p class class="value"> {{data.result.europrice | number:'3.1-5' }} €</p>
+        </mat-list-item>
+        <mat-list-item>
+          <p class="sub-title"> Prix en Dollar : </p> &nbsp; <p class class="value"> {{data.result.dollarprice | number:'3.1-5' }} $</p>
+        </mat-list-item>
+        <mat-list-item>
+          <p class="sub-title"> Prix en Dinar : </p> &nbsp; <p class class="value"> {{data.result.dinarprice | number:'3.1-5'}} DA</p>
+        </mat-list-item>
+        <mat-list-item>
+          <p class="sub-title"> Pourcentage Douane : </p> &nbsp; <p class class="value"> {{data.result.douane }}%</p>        
+        </mat-list-item>
+        <mat-list-item>
+          <p class="sub-title"> Frais Douane en Dinar : </p> &nbsp; <p class class="value"> {{data.result.douaneDinar | number:'3.1-5' }} DA</p>        
+        </mat-list-item>
+        <mat-list-item>
+          <p class="sub-title"> Pourcentage Frais Divers : </p> &nbsp; <p class class="value"> {{data.result.fraisdivers }}%</p>        
+        </mat-list-item>
+        <mat-list-item>
+          <p class="sub-title"> Frais Divers en Dinar : </p> &nbsp; <p class class="value"> {{data.result.fraisdiversDinar | number:'3.1-5' }} DA</p>        
+        </mat-list-item>
+        <mat-list-item>
+          <p class="sub-title"> Prix Total : </p> &nbsp; <p class class="value"> {{data.result.totalprice | number:'3.1-5' }} DA</p>        
+        </mat-list-item>
+    </mat-list>
+  </mat-list>
+
+  <mat-divider></mat-divider>
+
+  <mat-list>
+    <h2>Informations Essentielles </h2>
+    <mat-list-item>
+      <p class="title"> Type Ventilo Convecteur : </p> &nbsp; <p class="value"> {{data.result.parametres.typevc}} </p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Caractéristique Ventilo Convecteur : </p> &nbsp; <p class="value"> {{data.result.parametres.caracteristiquevc}} </p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Puissance Frigorifique : </p> &nbsp; <p class="value"> {{data.result.parametres.pfvc}} KW</p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Puissance Calorifique : </p> &nbsp; <p class="value"> {{data.result.parametres.pcvc}} KW </p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title">Régime d'Eau Glacée : Entrée / Sortie : </p> &nbsp; <p class="value">
+          {{data.result.parametres.regimeeauglaceeentree}} C°/ {{data.result.parametres.regimeeauglaceesortie}} C°</p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title">Régime d'Eau Chaude : Entrée / Sortie : </p> &nbsp; <p class="value">
+          {{data.result.parametres.regimeeauchaudeentree}} C°/ {{data.result.parametres.regimeeauchaudesortie}} C°</p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Température de Reprise en Hiver: </p> &nbsp; <p class="value"> {{data.result.parametres.treprisehiver}} C° </p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Température de Reprise en Eté: </p> &nbsp; <p class="value"> {{data.result.parametres.trepriseete}} C° </p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> TH de Reprise : </p> &nbsp; <p class="value"> {{data.result.parametres.threprise}} C° </p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Température de Soufflage en Hiver: </p> &nbsp; <p class="value"> {{data.result.parametres.tsoufflagehiver}} C° </p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Température de Soufflage en Eté: </p> &nbsp; <p class="value"> {{data.result.parametres.tsoufflageete}} C° </p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Température de Soufflage : </p> &nbsp; <p class="value"> {{data.result.parametres.thsoufflage}} C° </p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Vitesse de Séléction  : </p> &nbsp; <p class="value"> {{data.result.parametres.vitesseselection}}</p>
+    </mat-list-item>
+    <mat-list-item *ngIf="data.result.parametres.couleurcarrosserie">
+        <p class="title"> Couleur Carrosserie : </p> &nbsp; <p class="value"> {{data.result.parametres.couleurcarrosserie}}</p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Niveau sonore exigé: </p> &nbsp; <p class="value"> {{data.result.parametres.niveausonore}} </p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Pression Disponible : </p> &nbsp; <p class="value"> {{data.result.parametres.pressiondisponible}} Pa</p>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-divider></mat-divider>
+
+  <mat-list>
+    <h2>Accessoires</h2>
+    <mat-list-item>
+        <p class="title"> Vanne : </p> &nbsp; <p class="value"> {{data.result.parametres.vanne}}</p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Servomoteurs : </p> &nbsp; <p class="value"> {{data.result.parametres.servomoteurs}}</p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Commande : </p> &nbsp; <p class="value"> {{data.result.parametres.commande}}</p>
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Pompe de relavage : </p> &nbsp; <p class="value"> {{data.result.parametres.pomperelavage}}</p>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-divider></mat-divider>
+
+  <mat-list>
+    <h2>Autres</h2>
+    <mat-list-item *ngIf="data.result.parametres.classenergitique">
+        <p class="title"> Classe Energitique : </p> &nbsp; <p class="value"> {{data.result.parametres.classenergitique}}
+        </p>
+    </mat-list-item>
+    <mat-list-item>
+      <p class="title"> Date de Création : </p> &nbsp; <p class="value">{{data.result.date_creation | date:'medium'}} </p>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-divider></mat-divider>
+
+</mat-dialog-content>
+
+
+
+<!--
+  The Modification form
+-->
+<form [formGroup]="formGroup" (ngSubmit)="valider()">
+<mat-dialog-content *ngIf="modifier">
+  <h2>Informations Générales</h2>
+  <mat-list>
+    <mat-list-item>
+      <div class="row mt-2">
+        <mat-form-field class="full-width-input m-2">
+        <input matInput type="text" placeholder="Code Produit : " formControlName="codep" required>
+        <mat-error>
+          Veuillez choisir un code produit valide
+        </mat-error>
+        </mat-form-field>
+       </div>
+    </mat-list-item>
+    <mat-list-item>
+      <div class="row mt-2">
+        <mat-form-field class="full-width-input m-2">
+        <input matInput type="text" placeholder="Type Produit : " formControlName="type" required>
+        <mat-error>
+          Veuillez choisir un type produit valide
+        </mat-error>
+        </mat-form-field>
+       </div>
+    </mat-list-item>
+    <mat-list-item class="mt-2">
+     <div formGroupName="fournisseur" class="col">
+        <mat-form-field appearance="fill" style="width:auto;height:auto;color:#283593">
+          <mat-label>Le Fournisseur</mat-label>
+          <mat-select formControlName="id" (selectionChange)="fournisseurchoisis()" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let fourni of fournisseurs" [value]="fourni.id">
+              {{fourni.nomf}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="!formGroup.value.fournisseur.id">Veuillez choisir un fournisseur</mat-error>
+        </mat-form-field>
+        </div>
+      <div  class="col">
+      <mat-form-field appearance="fill" class="col" style="width:auto;height:auto;color:#283593" >
+          <mat-label>La Marque</mat-label>
+          <mat-select formControlName="marque" (selectionChange)="marquechoisis()" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let mark of marques" [value]="mark">
+              {{mark}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+      </div>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-divider></mat-divider>
+  <div formGroupName="parametres">
+  <h2>Informations Essentielles</h2>
+  <mat-list>
+    <mat-list-item>
+        <div class="row mt-2">
+            <mat-label style="color: #182628;" class="h6"> Type VC : *</mat-label>&nbsp;&nbsp;&nbsp;
+              <mat-radio-group formControlName="typevc" required>
+                <mat-radio-button value="Cassette">Cassette</mat-radio-button>&nbsp;
+                <mat-radio-button value="Horizontale non carrosse">Horizontale non carrossé</mat-radio-button>&nbsp;
+                <mat-radio-button value="Horizontal carrosse">Horizontal carrossé</mat-radio-button>&nbsp;
+                <mat-radio-button value="Allége carrose">Allége carrosé</mat-radio-button>
+              </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+            <mat-error *ngIf="!formGroup.value.parametres.typevc">Ce champ est obligatoire</mat-error>
+      </div>
+    </mat-list-item>
+    <mat-list-item>
+        <div class="row mt-2">
+            <mat-label style="color: #182628;" class="h6"> Caractéristiques VC : *</mat-label>&nbsp;&nbsp;&nbsp;
+              <mat-radio-group formControlName="caracteristiquevc" required>
+                <mat-radio-button value="2 Tubes">2 Tubes</mat-radio-button>&nbsp;
+                <mat-radio-button value="4 Tubes">4Tubes</mat-radio-button>&nbsp;
+                <mat-radio-button value="Elect">Elect</mat-radio-button>&nbsp;
+                <mat-radio-button value="Elect + 2 tubes">Elect + 2 tubes</mat-radio-button>
+              </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+            <mat-error *ngIf="!formGroup.value.parametres.caracteristiquevc">Ce champ est obligatoire</mat-error>
+          </div>
+    </mat-list-item>
+    <mat-list-item>
+        <div class="row mt-2">
+            <mat-form-field class="full-width-input col-6">
+              <input matInput type="number" placeholder="Puissance Frigorifique [KW] : " formControlName="pfvc" required>
+              <mat-error>
+                Veuillez choisir la Puissance Frigorifique
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input col-6">
+              <input matInput type="number" placeholder="Puissance Calorifique [KW] : " formControlName="pcvc"
+                required>
+              <mat-error>
+                Veuillez choisir la Puissance Calorifique
+              </mat-error>
+            </mat-form-field>
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <div class="row mt-2">
+            <mat-form-field class="full-width-input col-6">
+              <input matInput type="number" placeholder="Régime Eau Glacée (Entrée) [C°] : " formControlName="regimeeauglaceeentree" required>
+              <mat-error>
+                Veuillez choisir le Régime d'Eau Glacée de l'Entrée
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input col-6">
+              <input matInput type="number" placeholder="Régime Eau Glacée (Sortie) [C°] : " formControlName="regimeeauglaceesortie"
+                required>
+              <mat-error>
+                Veuillez choisir le Régime d'Eau Glacée de la Sortie
+              </mat-error>
+            </mat-form-field>
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <div class="row mt-2">
+            <mat-form-field class="full-width-input col-6">
+              <input matInput type="number" placeholder="Régime Eau Chaude (Entrée) [C°] : " formControlName="regimeeauchaudeentree" required>
+              <mat-error>
+                Veuillez choisir le Régime d'Eau Chaude de l'Entrée
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input col-6">
+              <input matInput type="number" placeholder="Régime Eau Chaude (Sortie) [C°] : " formControlName="regimeeauchaudesortie"
+                required>
+              <mat-error>
+                Veuillez choisir le Régime d'Eau Chaude de la Sortie
+              </mat-error>
+            </mat-form-field>
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <div class="row mt-2">
+            <mat-form-field class="full-width-input m-2">
+              <input matInput type="number" placeholder="Température de Reprise en Hiver [C°] : " 
+                                            formControlName="treprisehiver" required>
+              <mat-error> Veuillez choisir la Température de Reprise en Hiver</mat-error>
+            </mat-form-field>
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <div class="row mt-2">
+            <mat-form-field class="full-width-input m-2">
+              <input matInput type="number" placeholder="Température de Reprise en Eté [C°] : " 
+                                            formControlName="trepriseete" required>
+              <mat-error> Veuillez choisir la Température de Reprise en Eté</mat-error>
+            </mat-form-field>
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <div class="row mt-2">
+            <mat-form-field class="full-width-input m-2">
+              <input matInput type="number" placeholder="TH de Reprise [C°] : " 
+                                            formControlName="threprise" required>
+              <mat-error> Veuillez choisir le TH de Reprise </mat-error>
+            </mat-form-field>
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <div class="row mt-2">
+            <mat-form-field class="full-width-input m-2">
+              <input matInput type="number" placeholder="Température de Soufflage en Hiver [C°] : " 
+                                            formControlName="tsoufflagehiver" required>
+              <mat-error> Veuillez choisir la Température de Soufflage en Hiver</mat-error>
+            </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="row mt-2">
+            <mat-form-field class="full-width-input m-2">
+              <input matInput type="number" placeholder="Température de Soufflage en Eté [C°] : " 
+                                            formControlName="tsoufflageete" required>
+              <mat-error> Veuillez choisir la Température de Soufflage en Eté</mat-error>
+            </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="row mt-2">
+            <mat-form-field class="full-width-input m-2">
+              <input matInput type="number" placeholder="TH de Soufflage [C°] : " 
+                                            formControlName="thsoufflage" required>
+              <mat-error> Veuillez choisir le TH de Soufflage </mat-error>
+            </mat-form-field>
+          </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="row mt-2">
+            <mat-label style="color: #182628;" class="h6"> Vitesse de Séléction  : *</mat-label>&nbsp;&nbsp;&nbsp;
+              <mat-radio-group formControlName="vitesseselection" required>
+                <mat-radio-button value="Petite">Petite</mat-radio-button>&nbsp;
+                <mat-radio-button value="Moyenne">Moyenne</mat-radio-button>&nbsp;
+                <mat-radio-button value="Grande">Grande</mat-radio-button>
+              </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+              <mat-error *ngIf="!formGroup.value.parametres.vitesseselection">Ce champ est obligatoire</mat-error>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="row mt-2">
+            <mat-label style="color: #182628;" class="h6"> Couleur Carrosserie  : *</mat-label>&nbsp;&nbsp;&nbsp;
+              <mat-radio-group formControlName="couleurcarrosserie" required>
+                <mat-radio-button value="Standard">Standard</mat-radio-button>&nbsp;
+                <mat-radio-button value="RAL">RAL</mat-radio-button>
+              </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+              <mat-error *ngIf="!formGroup.value.parametres.couleurcarrosserie">Ce champ est obligatoire</mat-error>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="row mt-2">
+            <mat-form-field class="full-width-input m-2">
+              <input matInput type="number" placeholder="Niveau sonore exigé : " formControlName="niveausonore" required>
+              <mat-error> Veuillez choisir le Niveau Sonore Exigé </mat-error>
+            </mat-form-field>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="row mt-2">
+            <mat-form-field class="full-width-input m-2">
+              <input matInput type="number" placeholder="Pression disponible [Pa] : " formControlName="pressiondisponible" required>
+              <mat-error> Veuillez choisir la Pression disponible </mat-error>
+            </mat-form-field>
+        </div>
+      </mat-list-item>
+  </mat-list>
+
+  <mat-divider></mat-divider>
+
+  <h2>Accessoires</h2>
+  <mat-list>
+    <mat-list-item>
+        <div class="row mt-2">
+            <mat-label style="color: #182628;" class="h6"> Vanne : *</mat-label>&nbsp;&nbsp;&nbsp;
+              <mat-radio-group formControlName="vanne" required>
+                <mat-radio-button value="V2V">V2V</mat-radio-button>&nbsp;
+                <mat-radio-button value="V4V">V4V</mat-radio-button>&nbsp;
+              </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+              <mat-error *ngIf="!formGroup.value.parametres.vanne">Ce champ est obligatoire</mat-error>
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <div class="row mt-2">
+            <mat-label style="color: #182628;" class="h6"> Servomoteurs  : *</mat-label>&nbsp;&nbsp;&nbsp;
+              <mat-radio-group formControlName="servomoteurs" required>
+                <mat-radio-button value="Avec">Avec</mat-radio-button>&nbsp;
+                <mat-radio-button value="Sans">Sans</mat-radio-button>&nbsp;
+              </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+              <mat-error *ngIf="!formGroup.value.parametres.servomoteurs">Ce champ est obligatoire</mat-error>
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <div class="row mt-2">
+            <mat-label style="color: #182628;" class="h6"> Commande : *</mat-label>&nbsp;&nbsp;&nbsp;
+              <mat-radio-group formControlName="commande" required>
+                <mat-radio-button value="Panel filaire">Panel filaire</mat-radio-button>&nbsp;
+                <mat-radio-button value="Telecommande infrarouge">Télécommande infrarouge</mat-radio-button>&nbsp;
+                <mat-radio-button value="Sans commande">Sans commande</mat-radio-button>
+              </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+            <mat-error *ngIf="!formGroup.value.parametres.commande">Ce champ est obligatoire</mat-error>
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <div class="row mt-2">
+            <mat-label style="color: #182628;" class="h6"> Pompe de relavage : *</mat-label>&nbsp;&nbsp;&nbsp;
+              <mat-radio-group formControlName="pomperelavage" required>
+                <mat-radio-button value="Avec">Avec</mat-radio-button>&nbsp;
+                <mat-radio-button value="Sans">Sans</mat-radio-button>
+              </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+            <mat-error *ngIf="!formGroup.value.parametres.pomperelavage">Ce champ est obligatoire</mat-error>
+        </div>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-divider></mat-divider>
+
+  <h2>Autres</h2>
+  <mat-list>
+    <mat-list-item>
+        <div class="row mt-2">
+          <mat-label style="color: #283593;"> Classe Energitique : </mat-label> &nbsp; &nbsp;
+          <mat-radio-group formControlName="classenergitique">
+            <mat-radio-button  value="A++.A+ et A">A++.A+ et A</mat-radio-button>&nbsp;
+            <mat-radio-button  value="B">B </mat-radio-button>&nbsp;
+            <mat-radio-button  value="C">C</mat-radio-button>&nbsp;
+            <mat-radio-button value="D à G">D à G</mat-radio-button> 
+          </mat-radio-group>
+        </div>
+      </mat-list-item>
+  </mat-list>
+  <mat-divider></mat-divider>
+  
+</div>
+
+</mat-dialog-content>
+
+
+
+
+
+
+<mat-dialog-actions align="end">
+  <div *ngIf="!modifier && AdminUser === 'procurement'">
+  <!-- <button mat-raised-button type="button" id="supprimer" (click)="supprimer()">Supprimer</button> -->
+  <button mat-button type="button" id="modifier" (click)="modifiertrue()">Modifier</button>
+  <button type=button mat-button id="supprimer"   (click)="openDialog()">Supprimer</button>
+
+  </div>
+  <div *ngIf="modifier && AdminUser === 'procurement'">
+  <button mat-button type="submit" [mat-dialog-close]="sendmodifier" id="valider" cdkFocusInitial> Valider</button>
+  <button mat-button type="button" id="annuler"  (click)="annulermodification()">Annuler</button>
+
+  </div>
+  <div *ngIf=" AdminUser === 'admin'">
+    <button mat-button type="button" id="ok" [mat-dialog-close]="true" cdfFocusInitial> OK </button>
+  </div>
+</mat-dialog-actions>
+</form>

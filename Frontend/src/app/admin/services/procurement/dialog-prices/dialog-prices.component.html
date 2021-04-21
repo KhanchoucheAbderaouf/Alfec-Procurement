@@ -1,0 +1,50 @@
+<div *ngIf="produit"> 
+    <form [formGroup]="formGroup" (ngSubmit)="valider()">
+  
+    <h2 mat-dialog-title>Prix Pour le produit {{ produit.codep }} <button  mat-button type="button" mat-dialog-close id="fermer"><mat-icon>close</mat-icon></button> </h2>
+    <mat-dialog-content class="mat-typography">
+        <div class="example-container">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Le Type du Prix</mat-label>
+                <mat-select formControlName="typeproductprice" (selectionChange)="TypePrixChoosed()" required>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let typeprix of typeprices" [value]="typeprix">
+                    {{typeprix}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+            <mat-form-field *ngIf="euro">
+              <mat-label>Prix en Euro</mat-label>
+              <input type="number" matInput #input placeholder="Euro" formControlName="europrice">
+             <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>-->
+            </mat-form-field>
+
+            <mat-form-field *ngIf="dollar">
+                <mat-label>Prix en Dollar</mat-label>
+                <input type="number" matInput #input placeholder="Euro" formControlName="dollarprice">
+               <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>-->
+              </mat-form-field>
+          
+            <mat-form-field>
+                <mat-label>Frais Douane %</mat-label>
+                <input type="number" matInput #input placeholder="Douane" formControlName="douane"> 
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Frais Divers %</mat-label>
+                <input type="number" matInput #input placeholder="Divers" formControlName="fraisdivers">
+            </mat-form-field>
+
+        </div>
+          
+    
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button id="valider" type="submit" mat-button [mat-dialog-close]="sendmodifier"> Valider</button>
+      <button id="annuler" type="button" mat-button mat-dialog-close>Annuler</button>
+    </mat-dialog-actions>
+</form>
+</div>

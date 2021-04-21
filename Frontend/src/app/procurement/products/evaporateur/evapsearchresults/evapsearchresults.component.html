@@ -1,0 +1,66 @@
+ 
+    
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="datasource" matSort >
+                <!-- ID Column -->
+                <ng-container matColumnDef="CodeEVAP">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Code Produit </th>
+                <td mat-cell *matCellDef="let row"> {{row.codep}} </td>
+                </ng-container>
+    
+                <!-- Progress Column -->
+                <ng-container matColumnDef="FournisseurEVAP">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Fournisseur </th>
+                <td mat-cell *matCellDef="let row"> {{row.fournisseur.nomf}} </td>
+                </ng-container>
+    
+                <!-- Name Column -->
+                <ng-container matColumnDef="MarqueEVAP">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Marque </th>
+                <td mat-cell *matCellDef="let row"> {{row.marque}} </td>
+                </ng-container>
+    
+                <!-- Color Column -->
+                <ng-container matColumnDef="TypeEVAP">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Type Evaporateur </th>
+                <td mat-cell *matCellDef="let row"> {{row.parametres.typeevap}}</td>
+                </ng-container>
+
+                 <!-- Color Column -->
+                <ng-container matColumnDef="PuissanceFEVAP" >
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Puissance Froide [KW]</th>
+                <td mat-cell *matCellDef="let row" style="padding-left:5%;"> {{row.parametres.puissancef}}</td>
+                </ng-container>
+
+                <!-- Color Column -->
+                <ng-container matColumnDef="ChambreEVAP">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Chambre </th>
+                <td mat-cell *matCellDef="let row"> {{row.parametres.utilisationchambre}}</td>
+                </ng-container>
+ 
+    
+                <!-- Color Column -->
+                <ng-container matColumnDef="PrixEVAP">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Prix DA</th>
+                <td mat-cell *matCellDef="let row"  > {{row.totalprice | number:'3.1-5'}}</td>
+                </ng-container>
+    
+                    
+                 <!-- Color Column -->
+                <ng-container matColumnDef="DetailsEVAP">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Détails </th>
+                <td mat-cell *matCellDef="let row" > <button mat-button (click)="openDialog(row)" color="primary" >Détails</button> </td>
+                </ng-container>
+     
+    
+                  
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+ 
+    
+            </table>
+        </div>
+ 
+    
+    
+        

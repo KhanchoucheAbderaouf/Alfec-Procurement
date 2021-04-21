@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Ancien Taux Change {{ data.change }}</h2>
+<mat-dialog-content class="mat-typography">
+
+    <div class="example-container">
+        <mat-form-field>
+          <mat-label>Taux de change</mat-label>
+          <input type="number" matInput #input placeholder="Euro" [(ngModel)]="change">
+         <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>-->
+        </mat-form-field>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button id="valider" mat-button [mat-dialog-close]="change" type="submit" cdfFocusInitial>Confirmer</button>
+  <button id="annuler" mat-button [mat-dialog-close]="false"> Annuler </button>
+</mat-dialog-actions>

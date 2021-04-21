@@ -1,0 +1,41 @@
+#fermer {
+    float : right;
+    color : #eb3b5a;
+    font-size : 20px;
+}
+h2{
+    color :  #285393 ;
+    font-size : 24px;
+    margin-bottom: 0;
+}
+ 
+.mat-button{
+    padding-left : 20px;
+    padding-right : 20px;
+}
+
+
+.mat-dialog-actions{
+    width:100%;
+    display:inline-block;
+}
+ 
+.example-container{
+    margin-top : 20px
+} 
+.example-container .mat-form-field {
+    margin-left: 10px;
+  }
+input {
+    padding : 5px
+}
+#valider {
+   
+    color : #285393;
+    font-size : 18px;
+}
+#annuler {
+    
+    color :  #eb3b5a;
+    font-size : 18px;
+}

@@ -1,0 +1,104 @@
+<app-adminsidenav>
+    <app-adminnav></app-adminnav>
+
+    <mat-card id="contenu">      
+        
+        <form [formGroup]="formGroup" (ngSubmit)="create()">
+
+        <div class="m-4"> 
+
+            <h5> Informations Personnelles</h5>
+            <div class="row mt-2">
+                <mat-form-field class="full-width-input col-6">
+                  <input matInput type="text" placeholder="Nom : " formControlName="nom" required>
+                  <mat-error>
+                    Veuillez choisir un Nom
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width-input col-6">
+                  <input matInput type="text" placeholder="Prenom : "  formControlName="prenom" required>
+                  <mat-error>
+                    Veuillez choisir un Prenom
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row mt-2">
+                <mat-form-field class="full-width-input col-6">
+                  <input matInput type="email" placeholder="Email : " formControlName="email" required>
+                  <mat-error>
+                    Veuillez choisir un Email
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width-input col-6">
+                  <input matInput type="text" placeholder="Téléphone : " formControlName="telephone" required>
+                  <mat-error>
+                    Veuillez choisir un Numéro de Téléphone
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row mt-2">
+                <mat-form-field class="full-width-input col-6">
+                  <input matInput type="text" placeholder="Poste : " formControlName="poste" required>
+                  <mat-error>
+                    Veuillez choisir un Poste
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width-input col-6">
+                    <mat-label>Le Role</mat-label>
+                    <mat-select formControlName="idrole"  required>
+                      <mat-option>--</mat-option>
+                      <mat-option *ngFor="let role of roles" [value]="role.idrole">
+                        {{role.intitule}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error >Veuillez choisir un role</mat-error>
+                </mat-form-field>
+              </div>
+
+            <mat-divider ></mat-divider>
+
+            <h5 style="margin-top: 10px"> Informations du Compte</h5>
+            <div class="row mt-2">
+                <mat-form-field class="full-width-input col-4">
+                  <input matInput type="text" placeholder="Nom d'utilisateur : " formControlName="username" required>
+                  <mat-error>
+                    Veuillez choisir un Nom d'utilisateur
+                  </mat-error>
+                </mat-form-field>
+                 
+                    <mat-form-field class="full-width-input col-4">
+                        <input matInput type="password"  placeholder="Mot de passe : " formControlName="password" required>
+                        <mat-error>
+                          Veuillez remplir le Mot de passe
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field class="full-width-input col-4">
+                        <input matInput formControlName="confirmpassword" type="password" placeholder="Confirmer Mot de passe : " required>
+                        <mat-error >
+                            Veuillez remplir le champ de confirmation
+                            </mat-error> 
+                      </mat-form-field>  
+                      <diV id="errorpassword" >
+                        <mat-error *ngIf="formGroup.value.password !== formGroup.value.confirmpassword">
+                            Veuillez Confirmer le Mot de passe correctement
+                            </mat-error>
+                      </diV>
+                    
+                 
+                  
+                    
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <div id="buttonsdiv">
+                <button mat-raised-button type="submit"  id="valider"> Ajouter</button>
+                <button mat-raised-button type="button" id="annuler" (click)="reset()"> annuler</button>
+            </div>
+            
+        </div>
+        
+    </form>
+
+    </mat-card>
+</app-adminsidenav>

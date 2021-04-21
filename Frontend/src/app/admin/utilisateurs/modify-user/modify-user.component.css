@@ -1,0 +1,33 @@
+#contenu{
+    margin : 15px 15px;
+  }
+.annuler{
+    color : #eb3b5a;
+    font-size : 18px;   
+  }
+.valider{
+      color : #283593;
+      font-size : 18px;
+  }
+
+#buttonsdiv{
+    text-align: right;
+    margin-top:30px;
+}
+#errorpassword{
+    width:100%;
+    margin-top: 10px;
+    text-align: right;
+}
+h1{
+    font-size : 34px;
+    color :  #283593;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    text-align : center
+}
+#fermer {
+    float : right;
+    color : #eb3b5a;
+    font-size : 20px;
+}

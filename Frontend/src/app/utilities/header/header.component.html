@@ -1,0 +1,22 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+      <span id="titre">ALFEC Procurement</span>
+      <section>
+        <div class="example-button-row">
+          <a mat-button color="white" routerLink="/procurement/produits/index">Produits</a>
+          <a mat-button color="white" routerLink="/procurement/produits/create">Ajouter Produit</a>
+          <a mat-button color="white" routerLink="/procurement/fournisseurs/index">Fournisseurs</a>
+          <a mat-button color="white" routerLink="/procurement/fournisseurs/create">Ajouter Fournisseurs</a>
+
+        </div>
+      </section>
+     
+      <span class="example-spacer"></span>
+      <button mat-button class="example-icon" aria-label="Example icon-button with menu icon" routerLink="/procurement/produits/create" type="button" >
+        Recherche<mat-icon>search</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="logout()" type="submit" >
+        <mat-icon>power_settings_new</mat-icon>
+      </button>
+    </mat-toolbar-row>
+</mat-toolbar>

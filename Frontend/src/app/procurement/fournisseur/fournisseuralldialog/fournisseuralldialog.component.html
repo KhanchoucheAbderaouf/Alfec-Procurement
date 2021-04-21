@@ -1,0 +1,367 @@
+<h1 mat-dialog-title>Fournisseur {{data.result.numfournisseur}} <button  mat-button type="button" mat-dialog-close id="fermer"><mat-icon>close</mat-icon></button>  </h1>
+
+<mat-dialog-content id="container" *ngIf="!modifier">
+  <mat-divider></mat-divider>
+
+  <mat-list>
+    <mat-list-item>
+      <p class="title"> Nom Fournisseur : </p> &nbsp; <p class="value">{{data.result.nomf}}</p>
+    </mat-list-item>
+    <mat-list-item>
+      <p class="title"> Adresse Fournisseur : </p> &nbsp; <p class class="value"> {{data.result.adresse}}</p>
+    </mat-list-item>
+    <mat-list-item>
+      <p class="title"> Email Fournisseur : </p> &nbsp; <p class="value"> {{data.result.email}}  </p>   &nbsp; &nbsp; &nbsp;       
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Téléphone Portable : </p> &nbsp; <p class="value"> 
+          {{ formattingThePhoneNumbers(data.result.numtel)}} 
+        </p>   &nbsp; &nbsp; &nbsp;         
+    </mat-list-item>
+    <mat-list-item>
+      <p class="title"> Numéro Fix : </p> &nbsp; <p class="value"> {{formattingThePhoneNumbers(data.result.numfix)}}  </p>   &nbsp; &nbsp; &nbsp;         
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Numéro Fax : </p> &nbsp; <p class="value"> {{formattingThePhoneNumbers(data.result.numfax)}}  </p>   &nbsp; &nbsp; &nbsp;         
+    </mat-list-item>
+
+
+      <mat-list-item>
+          <p class="title"> contact : 
+            <button type="button" (click)="contact()" mat-icon-button class="example-icon"
+            aria-label="Example icon-button with menu icon">
+            <mat-icon *ngIf="!activecontact">expand_more</mat-icon>
+            <mat-icon *ngIf="activecontact">expand_less</mat-icon>
+          </button></p> &nbsp; 
+        </mat-list-item>
+          
+        <mat-list *ngIf="activecontact" style="position: relative; margin-left : 20%;border-radius:2%;border:solid 0.5px #285393">
+            <mat-list-item>
+            <p class="sub-title"> Nom du Contact : </p> &nbsp; <p class class="value"> {{data.result.contact.nomcontact}}</p>
+              </mat-list-item>
+            <mat-list-item>
+              <p class="sub-title"> Numéro du Contact : </p> &nbsp; <p class class="value"> {{formattingThePhoneNumbers(data.result.contact.numcontact)}}</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p class="sub-title"> Email du Contact : </p> &nbsp; <p class class="value"> {{data.result.contact.emailcontact }}</p>        
+            </mat-list-item>
+        </mat-list>
+      
+
+
+    <mat-list-item>
+        <p class="title"> Activité : </p> &nbsp; <p class="value"> {{data.result.activite}}  </p>   &nbsp; &nbsp; &nbsp;         
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Code FAM : </p> &nbsp; <p class="value"> {{data.result.codefam}}  </p>   &nbsp; &nbsp; &nbsp;         
+    </mat-list-item>
+  
+    <mat-list-item>
+        <p class="title"> Condition Réglement : </p> &nbsp; <p class="value"> {{data.result.conditionreglement }}  </p>   &nbsp; &nbsp; &nbsp;         
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Paiement : </p> &nbsp; <p class="value"> {{data.result.paiement}}  </p>   &nbsp; &nbsp; &nbsp;         
+    </mat-list-item>
+    
+    <mat-list-item>
+        <p class="title"> Delai Livraison : </p> &nbsp; <p class="value"> {{data.result.delailivraison}}  </p>   &nbsp; &nbsp; &nbsp;         
+    </mat-list-item>
+    <mat-list-item>
+        <p class="title"> Marques : </p> &nbsp; <p class="specialmarque" *ngFor="let mark of data.result.marques"> {{mark}}  </p>   &nbsp; &nbsp; &nbsp;         
+    </mat-list-item>
+  </mat-list>
+  
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    
+   
+     
+    <div *ngIf="!modifier && AdminUser === 'procurement'">
+
+    <button mat-button type="button" id="modifier" (click)="modifiertrue()">Modifier</button>
+    <button type=button mat-button id="supprimer"   (click)="openDialog()">Supprimer</button>
+    <!-- <button mat-raised-button type="button" id="supprimer" (click)="supprimer()">Supprimer</button> -->
+    </div>
+    <div *ngIf=" AdminUser === 'admin'">
+      <button mat-button type="button" id="ok" [mat-dialog-close]="true" cdfFocusInitial> OK </button>
+    </div>
+  </mat-dialog-actions>
+
+
+<mat-horizontal-stepper #stepper  class="m-2" id="beforedetails" *ngIf="modifier">
+    <mat-step [stepControl]="firstFormGroup" errorMessage="Code & Nom Fournisseur Obligatoire">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Code & Nom </ng-template>
+        <div class="row  contents">
+          <mat-form-field class="full-width-input col-6" >
+            <mat-label>Code du Fournisseur</mat-label>
+            <input matInput type="text" placeholder="Numéro Fournisseur" formControlName="numfournisseur" required>
+            <mat-error>
+              Veuillez choisir  
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width-input col-6" >
+            <mat-label>Nom du Fournisseur</mat-label>
+            <input matInput type="text" placeholder="Nom Fournisseur" formControlName="nomf"
+              required>
+            <mat-error>
+              Veuillez choisir  
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="buttonsdiv">
+          <button style="float:right"  class="annuler" mat-button type="button" (click)="annulermodification()">Annuler</button>
+          <button  type="button" class="suivant" style="float:left" mat-button matStepperNext>Suivant</button>
+        </div>
+      </form>
+    </mat-step>
+  
+    <mat-step [stepControl]="secondFormGroup" errorMessage="Informations du fournisseur Obligatoire">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel> Fournisseur</ng-template>
+        <div class="row contents">
+          <mat-form-field class="full-width-input col-6" >
+            <mat-label>Email Fournisseur</mat-label>
+            <input matInput type="email" placeholder="Email" formControlName="email"
+              required>
+            <mat-error>
+              Veuillez choisir  
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width-input col-6" >
+            <mat-label>Adresse</mat-label>
+            <input matInput type="text" placeholder="Adresse" formControlName="adresse"
+              required>
+            <mat-error>
+              Veuillez choisir  
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width-input col-4" >
+            <input matInput
+            type="text" ng2TelInput 
+            (countryChange)="onCountryChangenumTel($event)"
+            pattern="[+()0-9]{8,20}" placeholder="Numéro de Téléphone" formControlName="numtel" required/>
+            <mat-error>
+              Veuillez choisir  
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width-input col-4" >
+            <input matInput
+            type="text" ng2TelInput 
+            (countryChange)="onCountryChangenumFix($event)"
+            pattern="[+()0-9]{8,20}"  placeholder="Numéro du Fix" formControlName="numfix" required/>
+            <mat-error>
+              Veuillez choisir le numéro de téléphone fix valide du Fournisseur
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width-input col-4" >
+            <input matInput
+            type="text" ng2TelInput 
+            (countryChange)="onCountryChangenumFax($event)"
+            pattern="[+()0-9]{8,20}" placeholder="Numéro du fax" formControlName="numfax" required/>
+            <mat-error>
+              Veuillez choisir  
+            </mat-error>
+          </mat-form-field>
+          
+        </div>
+        <div class="buttonsdiv">
+          
+          <button style="float:right"  class="annuler" mat-button type="button" (click)="annulermodification()">Annuler</button>
+          <button class="retour"  style="float:left" mat-button matStepperPrevious>Retour</button>
+          <button class="suivant" style="float:left" mat-button matStepperNext>Suivant</button>
+
+        </div>
+      </form>
+    </mat-step>
+  
+    <mat-step [stepControl]="thirdFormGroup" errorMessage="Informations du Contact Obligatoire">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel> Contact</ng-template>
+        <div class="row contents" >
+          <mat-form-field class="full-width-input col-6"  >
+            <mat-label>Nom du Contact</mat-label>
+            <input matInput type="text" placeholder="Nom Contact" formControlName="nomcontact"
+              required>
+            <mat-error>
+              Veuillez choisir  
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width-input col-6" >
+            <input matInput
+            type="text" ng2TelInput 
+            (countryChange)="onCountryChangenumContact($event)"
+            pattern="[+()0-9]{8,20}" placeholder="Numéro de Contact" formControlName="numcontact" required/>
+            <mat-error>
+              Veuillez choisir  
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width-input col-6" >
+            <mat-label>Email du Contact</mat-label>
+            <input matInput type="email" placeholder="Email Contact" formControlName="emailcontact"
+              required>
+            <mat-error>
+              Veuillez choisir  
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="buttonsdiv">
+           
+              <button style="float:right"  class="annuler" mat-button type="button" (click)="annulermodification()">Annuler</button>
+          <button class="retour" style="float:left" mat-button matStepperPrevious>Retour</button>
+          <button class="suivant"  style="float:left" mat-button matStepperNext>Suivant</button>
+
+        </div>
+      </form>
+    </mat-step>
+  
+    <mat-step [stepControl]="fourthFormGroup" errorMessage="Activité & CodeFAM Obligatoire">
+      <form [formGroup]="fourthFormGroup">
+        <ng-template matStepLabel>Activité & CodeFAM</ng-template>
+        <div class="row contents">
+          <mat-form-field class="full-width-input col-6">
+            <mat-label>Activité</mat-label>
+            <input matInput type="text" placeholder="Activité" formControlName="activite" required>
+            <mat-error>
+              Veuillez choisir  
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width-input col-6">
+            <mat-label>Code FAM</mat-label>
+            <input matInput type="text" placeholder="Code FAM" formControlName="codefam"
+              required>
+            <mat-error>
+              Veuillez choisir  
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="buttonsdiv">
+          
+              <button style="float:right"  class="annuler" mat-button type="button" (click)="annulermodification()">Annuler</button>
+          <button class="retour" style="float:left" mat-button matStepperPrevious>Retour</button>
+          <button class="suivant" style="float:left" mat-button matStepperNext>Suivant</button>
+
+        </div>
+      </form>
+    </mat-step>
+  
+    <mat-step [stepControl]="fifthFormGroup" errorMessage="Informations Suplémentaires Obligatoire">
+      <form [formGroup]="fifthFormGroup">
+        <ng-template matStepLabel>Autres</ng-template>
+        <div class="row contents">
+          <mat-form-field class="full-width-input col-6" >
+            <mat-label>Conditions Réglement</mat-label>
+            <input matInput type="text" placeholder="Conditions Réglement" formControlName="conditionreglement"
+              required>
+            <mat-error>
+              Veuillez choisir  
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field  *ngIf="!knowPaiement" class="full-width-input col-6" >
+            <mat-label>Paiement</mat-label>
+            <input  matInput type="text" placeholder="Paiement" formControlName="paiement"
+              required>
+              <button mat-button matSuffix mat-icon-button aria-label="AnnulerPaiement" (click)="annulenewpaiement()">
+                <mat-icon>close</mat-icon>
+              </button>
+            <mat-error>
+              Veuillez choisir le type du Paiement
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field *ngIf="knowPaiement" class="full-width-input col-6" >
+            <mat-label>Type de Paiement</mat-label>
+            <mat-select formControlName="paiement" (selectionChange)="activateNewPaiement()" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let paiement of paiements" [value]="paiement">
+                {{paiement}}
+              </mat-option>
+              <mat-option value="Autre">Autre</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!fifthFormGroup.value.paiement">Veuillez choisir le Type de Paiement</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field  *ngIf="!knowGarantie" class="full-width-input col-6" >
+            <mat-label>Garantie</mat-label>
+            <input  matInput type="text" placeholder="Garantie" formControlName="garantie"
+              required>
+              <button mat-button matSuffix mat-icon-button aria-label="AnnulerGarantie" (click)="annulenewgarantie()">
+                <mat-icon>close</mat-icon>
+              </button>
+            <mat-error>
+              Veuillez choisir la Garantie
+            </mat-error>
+          </mat-form-field> 
+  
+          <mat-form-field *ngIf="knowGarantie" class="full-width-input col-6">
+            <mat-label>Garantie</mat-label>
+            <mat-select formControlName="garantie" (selectionChange)="activateNewGarantie()" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let garantie of garanties" [value]="garantie">
+                {{garantie}}
+              </mat-option>
+              <mat-option value="Autre">Autre</mat-option>
+            </mat-select>
+          <mat-error *ngIf="!fifthFormGroup.value.garantie">Veuillez choisir la Garantie</mat-error>
+          </mat-form-field>
+          
+          <div class="row col-6" [formGroup]="specialFormGroup">
+            <mat-form-field class="full-width-input col-3">
+              <input matInput type="number" formControlName="number" required>
+              <mat-error>
+                Obligatoire
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input col-9" >
+              <mat-label>Délai Livraison</mat-label>
+              <mat-select formControlName="typedelai" required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let type of typedelais" [value]="type">
+                  {{type}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="!specialFormGroup.value.typdelai">Veuillez choisir le type de Délai</mat-error>
+            </mat-form-field>
+          </div>
+
+          </div>
+        <div class="buttonsdiv">
+          <button style="float:right"  class="annuler" mat-button type="button" (click)="annulermodification()">Annuler</button>   
+          <button class="retour" style="float:left" mat-button matStepperPrevious>Retour</button>
+          <button class="suivant" style="float:left" mat-button matStepperNext>Suivant</button>
+        </div>
+      </form>
+    </mat-step>
+  
+    <mat-step  [stepControl]="sixthFormGroup" errorMessage="Marques Obligatoire">
+      <form [formGroup]="sixthFormGroup" (ngSubmit)="valider()">
+      <ng-template matStepLabel>Marques</ng-template>
+                   <div class="row contents" >
+                      <mat-form-field class="example-chip-list" class="full-width-input col-8"  appearance="fill">
+                        <mat-label>Marques</mat-label>
+                        <mat-chip-list #chipList>
+                          <mat-chip *ngFor="let mark of marques" [selectable]="selectable"
+                                   [removable]="removable" (removed)="remove(mark)">
+                            {{mark}}
+                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                          </mat-chip>
+                          <input placeholder="Nouvelle Marque"
+                                 [matChipInputFor]="chipList"
+                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                 [matChipInputAddOnBlur]="addOnBlur"
+                                 (matChipInputTokenEnd)="add($event)"
+                                 >
+                        </mat-chip-list>
+                      </mat-form-field>
+                    </div>
+      
+      <div class="buttonsdiv">
+        <button style="float:left" mat-button type="button" matStepperPrevious class="retour">Retour</button>
+        <button style="float:right"  class="annuler" mat-button type="button" (click)="annulermodification()">Annuler</button>
+        <button style="float:right" mat-button type="submit" [mat-dialog-close]="sendmodifier" id="valider" cdkFocusInitial>Sauvegarder</button>
+      </div>
+    </form>
+    </mat-step>
+    
+  </mat-horizontal-stepper>
+  

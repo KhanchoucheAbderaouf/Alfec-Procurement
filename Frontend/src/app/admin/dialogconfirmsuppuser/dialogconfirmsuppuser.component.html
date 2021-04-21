@@ -1,0 +1,16 @@
+<h2 mat-dialog-title *ngIf="data.result.nom && data.result.prenom">Suppression de l'utilisateur {{data.result.nom}} {{data.result.prenom}} </h2>
+<h2 mat-dialog-title *ngIf="data.result.idzone">Suppression de la Zone {{data.result.nomz}}</h2>
+<h2 mat-dialog-title *ngIf="data.result.idmarche">Suppression du Marché {{data.result.nomm}} </h2>
+<h2 mat-dialog-title *ngIf="data.result.zone && data.result.marche">Suppression du bénéfice Zone {{data.result.zone.nomz}} Marché {{data.result.marche.nomm}} </h2>
+
+<mat-dialog-content class="mat-typography">
+<h3 *ngIf="data.result.nom && data.result.prenom"> Voulez vous vraiment supprimer cet Utilisateur ? </h3>
+<h3 *ngIf="data.result.idzone"> Voulez vous vraiment supprimer cette Zone ? </h3>
+<h3 *ngIf="data.result.idmarche"> Voulez vous vraiment supprimer ce Marché ? </h3>
+<h3 *ngIf="data.result.zone && data.result.marche"> Voulez vous vraiment supprimer ce Bénéfice ? </h3>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button id="oui" mat-button type="submit" [mat-dialog-close]="data.result" cdkFocusInitial>Oui</button>
+  <button id="non" mat-button type="button" [mat-dialog-close]="false">Non</button>
+</mat-dialog-actions>

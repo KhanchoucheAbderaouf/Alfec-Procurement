@@ -1,0 +1,78 @@
+#container{
+    display: block;
+    margin: 0 auto;
+}
+.mat-list{
+    margin-bottom : 2%;
+    margin-top : 2%;
+}
+h1{
+    font-size : 34px;
+    color :  #283593;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    text-align : center
+}
+h2{
+    color :  #2980B9 ;
+    font-size : 24px;
+    margin-bottom: 1%;
+}
+.mat-divider{
+    height : 5px;
+    font-weight: bold;
+}
+.mat-list-item{
+    margin-top: 5px;
+}
+.mat-select{
+    padding : 0px
+}
+.title{
+    font-size: 18px;
+    font-weight: 500;
+}
+.value {
+    font-size: 16px;
+    font-weight: normal
+}
+.mat-button{
+    padding-left : 20px;
+    padding-right : 20px;
+}
+
+
+.mat-dialog-actions{
+    width:100%;
+    display:inline-block;
+}
+
+#fermer {
+    float : right;
+    color : #eb3b5a;
+    font-size : 20px;
+}
+#supprimer{
+    color : #eb3b5a;
+    font-size : 18px
+}
+#modifier{
+    color : #26de81;
+    font-size : 18px
+}
+#annuler{
+    color : #eb3b5a;
+    font-size : 18px
+}
+#valider{
+    color : #283593;
+    font-size : 18px
+}
+#ok{
+    color : #283593;
+    font-size : 18px
+}
+.sub-title{
+    font-size: 16px;
+    font-weight: 500;
+}

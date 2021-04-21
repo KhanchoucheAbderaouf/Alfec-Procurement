@@ -1,0 +1,16 @@
+mat-form-field {
+    display: block;
+    width: 40%;
+  }
+#annuler{
+    background-color : #eb3b5a;
+    color : white;
+    font-size : 18px;   
+  }
+#valider{
+    background-color : #283593;
+    color : white;
+    font-size : 18px;
+    margin-right: 10px;
+
+  }

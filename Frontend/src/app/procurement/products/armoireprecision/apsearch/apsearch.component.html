@@ -1,0 +1,455 @@
+<form [formGroup]="formGroup" (ngSubmit)="AdvancedSearch()">
+    <div class="form-row">
+      <div class="col">
+ 
+          
+  
+          <mat-form-field class="full-width-input">
+            <input matInput type="text" placeholder="Type Produit : " formControlName="type" >
+            
+          </mat-form-field>
+  
+          <!-- ZAPPPING
+                ------------------
+                -->
+
+          <div formGroupName="parametres">
+  
+  
+            <!--
+              Informations Essentielles
+                            -->
+            <div class="card card-body mt-2" style="background-color:  white; width: 100%;">
+  
+              <div class="row">
+                <h3 style="color : #283593"> Informations Essentielles </h3>
+                  <button type="button" (click)="InformationsEssentielles()" mat-icon-button class="example-icon"
+                  aria-label="Example icon-button with menu icon">
+                  <mat-icon *ngIf="!informationsessentielles">expand_more</mat-icon>
+                  <mat-icon *ngIf="informationsessentielles">expand_less</mat-icon>
+                </button>
+              </div>
+  
+  
+              <div *ngIf="informationsessentielles">
+
+                <div class="row mt-2">
+                      <mat-label style="color: #182628;" class="h6"> Type AP : </mat-label>&nbsp;&nbsp;&nbsp;
+                        <mat-radio-group formControlName="typeap" >
+                          <mat-radio-button value="Horizontale">Horizontale</mat-radio-button>&nbsp;
+                          <mat-radio-button value="Verticale">Verticale</mat-radio-button> 
+                        </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+                </div>
+
+                <div class="row mt-2">
+                  <mat-label style="color: #182628;" class="h6"> Soufflage : </mat-label>&nbsp;&nbsp;&nbsp;
+                    <mat-radio-group formControlName="soufflage" >
+                      <mat-radio-button value="a distance">à Distance</mat-radio-button>&nbsp;
+                      <mat-radio-button value="en vrac">en Vrac</mat-radio-button>&nbsp;  
+                    </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+                </div>
+
+                <div class="row mt-2" *ngIf="formGroup.value.parametres.soufflage === 'a distance'">
+                    <mat-label style="color: #182628;" class="h6"> Type de Soufflage : </mat-label>&nbsp;&nbsp;&nbsp;
+                      <mat-radio-group formControlName="typesoufflage" >
+                        <mat-radio-button value="par le haut">Par le haut</mat-radio-button>&nbsp;
+                        <mat-radio-button value="par le bas">Par le bas</mat-radio-button>&nbsp;  
+                      </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+                </div>
+
+                <div class="row mt-2" *ngIf="formGroup.value.parametres.soufflage === 'en vrac'">
+                    <mat-label style="color: #182628;" class="h6"> Type de Soufflage : </mat-label>&nbsp;&nbsp;&nbsp;
+                      <mat-radio-group formControlName="typesoufflage" >
+                        <mat-radio-button value="Plenum frontal">Plénum frontal</mat-radio-button>&nbsp;
+                        <mat-radio-button value="Plenum en bas">Plénum en bas </mat-radio-button>&nbsp;  
+                      </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+                </div>
+
+                <div class="row mt-2">
+                    <mat-label style="color: #182628;" class="h6"> Reprise : </mat-label>&nbsp;&nbsp;&nbsp;
+                      <mat-radio-group formControlName="reprise" >
+                        <mat-radio-button value="a distance">à Distance</mat-radio-button>&nbsp;
+                        <mat-radio-button value="en vrac">en Vrac</mat-radio-button>&nbsp;  
+                      </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+                </div>
+
+                <div class="row mt-2" *ngIf="formGroup.value.parametres.reprise === 'a distance'">
+                    <mat-label style="color: #182628;" class="h6"> Type de Reprise : *</mat-label>&nbsp;&nbsp;&nbsp;
+                      <mat-radio-group formControlName="typereprise" >
+                        <mat-radio-button value="par le haut">Par le haut</mat-radio-button>&nbsp;
+                        <mat-radio-button value="par le bas">Par le bas</mat-radio-button>&nbsp;  
+                      </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+                </div>
+
+                <div class="row mt-2" *ngIf="formGroup.value.parametres.reprise === 'en vrac'">
+                    <mat-label style="color: #182628;" class="h6"> Type de Reprise : </mat-label>&nbsp;&nbsp;&nbsp;
+                      <mat-radio-group formControlName="typereprise">
+                        <mat-radio-button value="par le haut">Par le haut</mat-radio-button>&nbsp;
+                        <mat-radio-button value="par le bas">Par le bas</mat-radio-button>&nbsp;  
+                        <mat-radio-button value="en facade">en façade</mat-radio-button>&nbsp;  
+                      </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+                </div>
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input col-6">
+                      <input matInput type="text" oninput="this.value = this.value.toUpperCase()" placeholder="Prefiltration : " formControlName="prefiltration" >
+                     
+                    </mat-form-field>
+                    <mat-form-field class="full-width-input col-6">
+                      <input matInput type="number" placeholder="Nombre de Préfiltration : " formControlName="nombreprefiltration"
+                        >
+                     
+                    </mat-form-field>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input col-6">
+                      <input matInput type="text" oninput="this.value = this.value.toUpperCase()" placeholder="Filtration : " formControlName="filtration" >
+                   
+                    </mat-form-field>
+                    <mat-form-field class="full-width-input col-6">
+                      <input matInput type="number" placeholder="Nombre de Filtration : " formControlName="nombrefiltration"
+                        >
+                     
+                    </mat-form-field>
+                </div>
+                
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input m-2">
+                      <input matInput type="number" placeholder="Perte de Charge [Pa] : " formControlName="pertecharge" >
+                    </mat-form-field>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input m-2">
+                      <input matInput type="number" placeholder="Dimension [mm] : " formControlName="dimension" >
+                    </mat-form-field>
+                </div>
+
+              </div>
+  
+            </div>
+  
+            <!-- Circuit Frigorifique
+              -->
+  
+            <div class="card card-body mt-2" style="background-color:  white; width: 100%;">
+              <div class="row">
+                <h3 style="color : #283593">Circuit Frigorifique</h3>
+                 
+                <button type="button" (click)="CircuitFrigo()" mat-icon-button class="example-icon"
+                  aria-label="Example icon-button with menu icon">
+                  <mat-icon *ngIf="!circuitfrigo">expand_more</mat-icon>
+                  <mat-icon *ngIf="circuitfrigo">expand_less</mat-icon>
+                </button>
+              </div>
+  
+              <div *ngIf="circuitfrigo">
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input m-2">
+                      <input matInput type="text" placeholder="Type Compresseur : " formControlName="typecompresseur" >
+                    </mat-form-field>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input m-2">
+                      <input matInput type="number" placeholder="Nombre Compresseur : " formControlName="nombrecompresseur" >
+                    </mat-form-field>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input m-2">
+                      <input matInput type="number" placeholder="Fluide Frigorifique : " formControlName="fluidefrigorifique" >
+                    </mat-form-field>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input m-2">
+                      <input matInput type="number" placeholder="Puissance Frigorifique [KW] : " formControlName="puissancefrigorifique" >
+                    </mat-form-field>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input m-2">
+                      <input matInput type="number" placeholder="Température Entrée d'Air [C°] : " formControlName="temperatureentreeair" >
+                    </mat-form-field>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input m-2">
+                      <input matInput type="number" placeholder="Température Sortie d'Air  [C°] : " formControlName="temperaturesortieair" >
+                    </mat-form-field>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input m-2">
+                      <input matInput type="number" placeholder="Température de Condensation  [C°] : " formControlName="temperaturecondensation" >
+                    </mat-form-field>
+                </div>
+
+              </div>
+  
+            </div>
+
+
+            <!-- Ventilateur
+              -->
+  
+              <div class="card card-body mt-2" style="background-color:  white; width: 100%;">
+                <div class="row">
+                  <h3 style="color : #283593">Ventilateur</h3>
+                   
+                  <button type="button" (click)="Ventilateur()" mat-icon-button class="example-icon"
+                    aria-label="Example icon-button with menu icon">
+                    <mat-icon *ngIf="!ventilateur">expand_more</mat-icon>
+                    <mat-icon *ngIf="ventilateur">expand_less</mat-icon>
+                  </button>
+                </div>
+    
+                <div *ngIf="ventilateur">
+
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Nombre de Ventilateur : " formControlName="nombreventilateur" >
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Débit d'Air  [m3/h] : " formControlName="debitair" >
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Pression Disponible [Pa] : " formControlName="pressiondisponible" >
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Vitesse de Rotation : " formControlName="vitesserotation" >
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Niveau Sonore  [DB(A)] : " formControlName="niveausonore" >
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Distance Niveau Sonore : " formControlName="distanceniveausonore" >
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Niveau Puissance Sonore [DB(A)] : " formControlName="niveaupuissancesonore" >
+                        </mat-form-field>
+                    </div>
+
+                </div>
+    
+            </div>
+
+            <!-- Humidifiacteur 
+              -->
+  
+              <div class="card card-body mt-2" style="background-color:  white; width: 100%;">
+                <div class="row">
+                  <h3 style="color : #283593">Humidifiacteur</h3>
+                   
+                  <button type="button" (click)="Humidifiacteur()" mat-icon-button class="example-icon"
+                    aria-label="Example icon-button with menu icon">
+                    <mat-icon *ngIf="!humidifiacteur">expand_more</mat-icon>
+                    <mat-icon *ngIf="humidifiacteur">expand_less</mat-icon>
+                  </button>
+                </div>
+    
+                <div *ngIf="humidifiacteur">
+   
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Nombre Humidificateur : " formControlName="nombrehumidificateur" >
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Puissance Absorbée : " formControlName="puissanceabsorbeehumidificateur" >
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Production Max de Vapeur : " formControlName="productionmaxvapeur" >
+                        </mat-form-field>
+                    </div>
+                </div>
+    
+            </div>
+             
+
+            <!-- Electrique 
+              -->
+  
+              <div class="card card-body mt-2" style="background-color:  white; width: 100%;">
+                <div class="row">
+                  <h3 style="color : #283593">Circuit Electrique</h3>
+                   
+                  <button type="button" (click)="Electrique()" mat-icon-button class="example-icon"
+                    aria-label="Example icon-button with menu icon">
+                    <mat-icon *ngIf="!electrique">expand_more</mat-icon>
+                    <mat-icon *ngIf="electrique">expand_less</mat-icon>
+                  </button>
+                </div>
+    
+                <div *ngIf="electrique">
+
+                    <div class="row mt-2">
+                        <mat-label style="color: #182628;" class="h6 col-3 mt-4"> Tension Nominale : </mat-label>
+                        <mat-form-field class="full-width-input col-3">
+                          <input matInput type="number" placeholder="Voltage : " formControlName="tensionnominalevoltage" >
+                          
+                        </mat-form-field>
+                        <mat-form-field class="full-width-input col-3">
+                          <input matInput type="number" placeholder="Phases : " formControlName="tensionnominalephases" >
+                         
+                        </mat-form-field>
+                        <mat-form-field class="full-width-input col-3">
+                          <input matInput type="number" placeholder="Hertz : " formControlName="tensionnominalehertz" >
+                         
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Puissance Absorbée Max [KW] : " formControlName="puissanceelectriqueabsorbee" >
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Courant Nominal [A] : " formControlName="courantnominal" >
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row mt-2">
+                        <mat-label style="color: #182628;" class="h6">Dialogue GTC : </mat-label>&nbsp;&nbsp;&nbsp;
+                          <mat-radio-group formControlName="dialoguegtc">
+                            <mat-radio-button value="avec"> Avec </mat-radio-button>&nbsp;
+                            <mat-radio-button value="sans"> Sans </mat-radio-button>
+                          </mat-radio-group>&nbsp;&nbsp;&nbsp;
+                    </div>
+                    
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Niveau de Puissance Acoustique [LwA] : " formControlName="puissanceacoustique" >
+                        </mat-form-field>
+                    </div>
+
+                </div>
+    
+            </div>
+
+            
+            <!-- Autres
+              -->
+  
+            <div class="card card-body mt-2" style="background-color:  white; width: 100%;">
+              <div class="row">
+                <h3 style="color : #283593"> Autres </h3>
+                
+                <button type="button" (click)="AutresSection()" mat-icon-button class="example-icon"
+                aria-label="Example icon-button with menu icon">
+                <mat-icon *ngIf="!autressection">expand_more</mat-icon>
+                <mat-icon *ngIf="autressection">expand_less</mat-icon>
+                </button>
+              </div>
+  
+              <div *ngIf="autressection">
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input m-2">
+                      <input matInput type="number" placeholder="Batterie de Réchauffage : Puissance absorbée totale [kW] : " formControlName="puissanceabsorbeebatterie" >
+                    </mat-form-field>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input m-2">
+                      <input matInput type="number" placeholder="Température extérieure [C°]: " formControlName="temperatureexterieure" >
+                    </mat-form-field>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input m-2">
+                      <input matInput type="number" placeholder="Raccordement frigorifique Entrée [mm]  : " formControlName="raccordementfrigoentree" >
+                    </mat-form-field>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input m-2">
+                      <input matInput type="number" placeholder="Raccordement frigorifique Sortie [mm] : " formControlName="raccordementfrigosortie" >
+                    </mat-form-field>
+                </div>
+
+
+                <div class="row mt-2">
+                    <mat-label style="color: #182628;" class="h6"> Classe Energitique : </mat-label>&nbsp;&nbsp;&nbsp;
+                      <mat-radio-group formControlName="classenergitique">
+                        <mat-radio-button value="A++.A+ et A">A++.A+ et A</mat-radio-button>&nbsp;
+                        <mat-radio-button value="B">B </mat-radio-button>&nbsp;
+                        <mat-radio-button value="C">C</mat-radio-button>&nbsp;
+                        <mat-radio-button value="D à G">D à G</mat-radio-button>
+                      </mat-radio-group>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-label style="color: #182628;" class="col-4 h6">Plot anti vibration : *</mat-label>
+                    <div class="col-8">
+                      <mat-radio-group formControlName="plotantivibration">
+                        <mat-radio-button value="Inclus">Inclus</mat-radio-button>&nbsp;
+                        <mat-radio-button value="Non Inclus"> Non Inclus </mat-radio-button>
+                      </mat-radio-group>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-label style="color: #182628;" class="col-4 h6">Certification : *</mat-label>
+                    <div class="col-8">
+                      <mat-radio-group formControlName="certification">
+                        <mat-radio-button value="ISO" (change)="radiocertifiso()">ISO</mat-radio-button>&nbsp;
+                        <mat-radio-button [checked]="certifautreradio" (change)="radiocertifautre()">Autre
+                        </mat-radio-button>
+                      </mat-radio-group>
+                     
+    
+                      <mat-form-field *ngIf="certifautreradio" class="full-width-input m-2 col w-auto">
+                        <input matInput type="text" placeholder="Certification : " formControlName="certification" >
+                       
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+              </div>
+            </div>
+    
+            <!-- the end  -->
+  
+            <div style="margin-top: 5%; margin-left: auto;">
+              <button id="valider" mat-button  type="submit"> Valider </button>
+              <button id="annuler" mat-button   (click)="annulerCatego()" type="button"> Annuler </button>
+            </div>
+  
+          </div>
+ 
+  
+      </div>
+  
+    </div>
+  </form>
+  <!--    <p>myForm value: {{ formGroup.value | json }}</p>
+        <p>myForm status: {{ formGroup.status | json }}</p> -->

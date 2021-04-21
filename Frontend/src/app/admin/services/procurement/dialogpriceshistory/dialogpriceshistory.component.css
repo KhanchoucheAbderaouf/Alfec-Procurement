@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
+}
+th .mat-header-cell {
+    text-align: center;
+    max-width: 300px;
+}
+#container{
+    display: list-item;
+}
+h1{
+    font-size : 34px;
+    color :  #283593;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    text-align : center
+}
+#fermer {
+    float : right;
+    color : #eb3b5a;
+    font-size : 20px;
+}

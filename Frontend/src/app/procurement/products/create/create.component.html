@@ -1,0 +1,92 @@
+<app-nav>
+
+<div class="m-4">
+ <!--   <button class="btn  mb-2 text-white" style="background-color: #283593;"
+                type="button" data-toggle="collapse" data-target="#beforedetails" aria-expanded="false" aria-controls="collapseExample">
+        Ajouter un produit
+    </button>-->
+    <div id="beforedetails" >
+        <div class="center-screen">
+        <div class="card card-body" style="background-color:  white; width: 50%;">
+          <form [formGroup]="formProduit">
+
+              <mat-form-field>
+                <mat-select [formControl]="controleCategorie" placeholder="Categories" (selectionChange)="catego()" #singleSelect>
+                  <mat-option>
+                    <ngx-mat-select-search [formControl]="FiltreCategorie"
+                                           placeholderLabel ="Recherche"
+                                           noEntriesFoundLabel = "Catégorie n'existe pas"
+                                           ngxMatSelectSearchClear>                                           >
+                                          </ngx-mat-select-search>
+                  </mat-option>
+              
+                  <mat-option *ngFor="let categorie of CategoriesFiltrer | async" [value]="categorie">
+                    {{categorie}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <!--
+                <mat-form-field appearance="fill">
+                  <mat-label>La Catégorie</mat-label>
+                  <mat-select formControlName="categorie" (selectionChange)="catego()" #search>
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let detail of details" [value]="detail">
+                      {{detail}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="!formProduit.value.categorie">Veuillez choisir la catégorie du produit</mat-error>
+                </mat-form-field>-->
+         <!--     <label style="color : #283593" class="h4" > Produit : </label>
+              <select  style="width:auto" class="form-control" placeholder="categorie"  formControlName="categorie" (change)="catego()">
+                <option value=""></option>
+                  <option  *ngFor="let detail of details" value="{{detail}}"> {{ detail }}</option>
+              </select>-->
+          </form>
+  <!--    <p>myForm value: {{ formGroup.value | json }}</p>
+          <p>myForm status: {{ formGroup.status | json }}</p> -->
+        </div>
+        </div>
+  
+        <div class="center-screen mt-4 mb-4">
+        <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor.toLocaleLowerCase() == 'GEG'.toLocaleLowerCase() " >
+        <app-geg (annulerEvent)="annulerCatego($event)"> </app-geg>
+        </div>
+
+        <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor.toLocaleLowerCase() == 'CTA'.toLocaleLowerCase() " >
+          <app-ctacreate (annulerEvent)="annulerCatego($event)">  </app-ctacreate>
+        </div>
+
+        <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor.toLocaleLowerCase() == 'Ventilo Convecteur'.toLocaleLowerCase() " >
+          <app-vccreate (annulerEvent)="annulerCatego($event)">  </app-vccreate>
+        </div>
+
+        <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor.toLocaleLowerCase() == 'Armoire de précision'.toLocaleLowerCase() " >
+          <app-apcreate (annulerEvent)="annulerCatego($event)">  </app-apcreate>
+        </div>
+
+        <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor.toLocaleLowerCase() == 'Groupe frigorifique'.toLocaleLowerCase() " >
+          <app-gfcreate (annulerEvent)="annulerCatego($event)">  </app-gfcreate>
+        </div>
+
+        <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor.toLocaleLowerCase() == 'Chaudière'.toLocaleLowerCase() " >
+          <app-chdcreate (annulerEvent)="annulerCatego($event)">  </app-chdcreate>
+        </div>
+
+        <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor.toLocaleLowerCase() == 'Roof Top'.toLocaleLowerCase() " >
+          <app-rtcreate (annulerEvent)="annulerCatego($event)">  </app-rtcreate>
+        </div>
+
+        <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor.toLocaleLowerCase() == 'Pompe'.toLocaleLowerCase() " >
+          <app-pompecreate (annulerEvent)="annulerCatego($event)">  </app-pompecreate>
+        </div>
+
+        <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor.toLocaleLowerCase() == 'Evaporateur'.toLocaleLowerCase() " >
+          <app-evapcreate (annulerEvent)="annulerCatego($event)">  </app-evapcreate>
+        </div>
+        
+      </div>
+    </div>
+<br>
+</div>
+
+</app-nav>

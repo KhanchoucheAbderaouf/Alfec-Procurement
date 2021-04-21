@@ -1,0 +1,60 @@
+
+    
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="datasource" matSort >
+                <!-- ID Column -->
+                <ng-container matColumnDef="CodePOMPE">
+                <th mat-header-cell *matHeaderCellDef > Code Produit </th>
+                <td mat-cell *matCellDef="let row"> {{row.codep}} </td>
+                </ng-container>
+    
+                <!-- Progress Column -->
+                <ng-container matColumnDef="FournisseurPOMPE">
+                <th mat-header-cell *matHeaderCellDef > Fournisseur </th>
+                <td mat-cell *matCellDef="let row"> {{row.fournisseur.nomf}} </td>
+                </ng-container>
+    
+                <!-- Name Column -->
+                <ng-container matColumnDef="MarquePOMPE">
+                <th mat-header-cell *matHeaderCellDef > Marque </th>
+                <td mat-cell *matCellDef="let row"> {{row.marque}} </td>
+                </ng-container>
+    
+                <!-- Color Column -->
+                <ng-container matColumnDef="TypePOMPE">
+                <th mat-header-cell *matHeaderCellDef > Type Pompe </th>
+                <td mat-cell *matCellDef="let row"> {{row.parametres.typepompe}}</td>
+                </ng-container>
+
+                 <!-- Color Column -->
+                <ng-container matColumnDef="CaracteristiquePOMPE" >
+                <th mat-header-cell *matHeaderCellDef > Caracteristique POMPE</th>
+                <td mat-cell *matCellDef="let row"> {{row.parametres.caracteristiquepompe}}</td>
+                </ng-container>
+
+    
+                <!-- Color Column -->
+                <ng-container matColumnDef="PrixPOMPE">
+                <th mat-header-cell *matHeaderCellDef > Prix DA</th>
+                <td mat-cell *matCellDef="let row"  > {{row.totalprice | number:'3.1-5'}}</td>
+                </ng-container>
+    
+                    
+                 <!-- Color Column -->
+                <ng-container matColumnDef="DetailsPOMPE">
+                <th mat-header-cell *matHeaderCellDef > Détails </th>
+                <td mat-cell *matCellDef="let row" > <button mat-button (click)="openDialog(row)" color="primary" >Détails</button> </td>
+                </ng-container>
+    
+                
+                  
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+            
+    
+            </table>
+        </div>
+   
+    
+        

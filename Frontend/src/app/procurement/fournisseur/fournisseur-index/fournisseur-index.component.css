@@ -1,0 +1,54 @@
+.row{
+    margin : 0 auto;
+    margin-bottom : 10px;
+}
+.beforedetails{
+    margin : 0 auto; 
+  
+}
+.mat-card-content{
+    border : 0.5px solid #285393;
+    border-radius : 10px;
+    padding : 2%
+}
+table {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
+}
+th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
+}
+
+.annuler{
+    color : #eb3b5a;
+    font-size : 18px
+
+}
+.valider{
+    color : #283593;
+    font-size : 18px
+}
+.suivant{
+    color : #283593;
+    font-size : 18px
+}
+.retour{
+    color : #283593;
+    font-size : 18px
+}
+#HiMarks{
+    display : inline-block;
+    margin-right : 1rem;
+}
+::ng-deep .iti__flag-container ul{
+    width : 300px;
+    padding : 5%;
+    margin : 2%;
+    position: absolute;
+}
+::ng-deep .mat-horizontal-content-container{
+    height : 300px;
+}

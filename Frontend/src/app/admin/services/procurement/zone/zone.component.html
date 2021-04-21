@@ -1,0 +1,278 @@
+<app-adminsidenav>
+    <app-adminnav></app-adminnav>
+
+    <mat-card id="contenu">      
+        
+        <div class="m-4"> 
+            <mat-tab-group>
+
+                <!--  Tab 1 -->
+                <mat-tab label="Zones"> 
+
+                    <div id="thebuttons">
+                        <button class="valider" matTooltip="Ajouter Zone et son Taux de Remise" matTooltipShowDelay="1000" type="button" mat-raised-button color="primary" (click)="ActivateZone()" >Ajouter Zone</button>
+                        <button class="valider" matTooltip="Attribuer une Wilaya a une Zone" matTooltipShowDelay="1000" type="button" mat-raised-button color="primary" (click)="ActivateWilayaZone()">Wilaya à Zone </button>
+                        <button class="valider" matTooltip="Ajouter un Nouveau Marché" matTooltipShowDelay="1000" type="button" mat-raised-button color="primary" (click)="ActivateMarches()"> Marchés</button>                       
+                    </div>
+
+                    <div id="AddZone" *ngIf="Zone">
+
+                        <form [formGroup]="formZone" (ngSubmit)="createZone()">
+                            <div class="row m-2">
+                            <mat-form-field class="full-width-input m-2">
+                            <input matInput type="text" placeholder="Nom Zone :" formControlName="nomz" required>
+                            <mat-error>
+                              Veuillez choisir le Nom de la Zone
+                            </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field class="full-width-input m-2">
+                            <input matInput type="number" placeholder="Remise : " formControlName="remise" required>
+                            <mat-error>
+                              Veuillez choisir la Remise de la Zone
+                            </mat-error>
+                            </mat-form-field>    
+                            <div class="m-2">
+                                <button *ngIf="!ModifierMode" class="m-2" type="submit" mat-raised-button color="primary" > Valider</button>
+                                <button *ngIf="ModifierMode" class="m-2" type="submit" (click)="ModifierZoneRemise()" mat-raised-button color="primary" > Modifier</button>
+                                <button class="m-2" type="button" mat-raised-button color="warn" (click)="annulerZone()">Annuler</button>
+                            </div>
+                          </div>
+                          </form>                
+                    </div>
+
+                    <div id="WilayaZone" *ngIf="WilayaZone">
+
+                        <form [formGroup]="formWilayaZone" (ngSubmit)="AddingWilayaToZone()">
+                        
+                        <div class="row m-2">  
+                            <mat-form-field   class="m-2">    
+                                <mat-label>Les Wilayas</mat-label>
+                                <mat-select formControlName="idwilaya" required>
+                                <mat-option>--</mat-option>
+                                <mat-option *ngFor="let wilaya of W" [value]="wilaya.idwilaya">
+                                    {{wilaya.nomw}}
+                                </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field   class="m-2">
+                            <mat-label>Les Zones</mat-label>
+                            <mat-select formControlName="idzone" required>
+                              <mat-option>--</mat-option>
+                              <mat-option *ngFor="let zone of response" [value]="zone.idzone">
+                                {{zone.nomz}}
+                              </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div class="m-2">
+                            <button mat-button class="m-2" type="submit" mat-raised-button color="primary"> Valider</button>
+                            <button mat-button class="m-2" type="button" mat-raised-button color="warn" (click)="annulerWilayaZone()">Annuler</button>
+                        </div>
+                        </div>
+                        </form>
+                    </div>
+
+                    <div id="Marches" *ngIf="Marches">
+                        <div class="row m-2">
+                        <mat-chip-list
+                            class="example-chip"
+                            cdkDropList 
+                            cdkDropListOrientation="horizontal"
+                            (cdkDropListDropped)="drop($event)">
+                            <mat-chip
+                                class="example-box"
+                                cdkDrag
+                                [selectable]="selectable"
+                                [removable]="removable"
+                                (removed)="remove(marche)"
+                                *ngFor="let marche of M">
+                                {{marche.nomm}}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                            </mat-chip-list> 
+                            <div class="example-button-container">
+                                <button mat-mini-fab color="primary"  (click)="ActivateAddMarche()">
+                                  <mat-icon>add_circle_outline</mat-icon>
+                                </button>
+                            </div>
+                            <form *ngIf="ActivatedAddMarche" [formGroup]="formMarche" (ngSubmit)="addMarches()" class="ml-4">
+                                <div class="row">
+    
+                                    <mat-form-field class="full-width-input">
+                                        <input matInput type="text" placeholder="Nom du Marché : " formControlName="nomm" required>
+                                        <mat-error>
+                                          Veuillez choisir un nom de marché
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <div class="m-2">
+                                        <button mat-button class="m-2" type="submit" mat-raised-button color="primary"> Valider</button>
+                                        <button mat-button class="m-2" type="button" mat-raised-button color="warn" (click)="annulerMarche()">Annuler</button>
+                                    </div>
+                                </div>
+                            </form>    
+                        </div>
+                        
+                            
+                        
+
+                    </div>
+                    
+
+                    <div class="m-4" id="container" >
+                        <mat-form-field   mat-form-field style="float:right" >
+                        <mat-label style="color : #283593"> Recherche </mat-label>
+                        <input matInput (keyup)="applyFilter($event)"  placeholder="" #input> 
+                        </mat-form-field>
+                    
+                        <div class="mat-elevation-z8">
+                            <table mat-table [dataSource]="dataSource" matSort >
+                                <!-- ID Column -->
+                                <ng-container matColumnDef="NomZ">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom Zone</th>
+                                <td mat-cell *matCellDef="let row"  > {{row.nomz}}</td>
+                                </ng-container>
+                    
+                                <!-- Progress Column -->
+                                <ng-container matColumnDef="Remise">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Remise </th>
+                                <td mat-cell *matCellDef="let row"  > {{row.remise}} % </td>
+                                </ng-container>
+                    
+                                <!-- Name Column -->
+                                <ng-container matColumnDef="Wilayas">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Wilayas </th>
+                                <td mat-cell *matCellDef="let row" > 
+                                    <div id="ZoneWilayas" *ngFor="let wilaya of row.wilayas"> {{wilaya.nomw}}   </div>
+                                </td>
+                                </ng-container>
+
+                                <!-- Color Column -->
+                                <ng-container matColumnDef="Actions">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+                                    <td mat-cell *matCellDef="let row" > 
+                                        <button mat-button matTooltip="Modifier la Remise de la Zone" matTooltipShowDelay="1000"  (click)="modifierZone(row)" style="color:#26de81" ><mat-icon>edit</mat-icon></button> 
+                                        <button mat-button matTooltip="Supprimer la Zone" matTooltipShowDelay="1000" (click)="openDialogDelete(row)" style="color:#eb3b5a" > <mat-icon>delete</mat-icon></button>
+                                    </td>
+                                </ng-container>
+ 
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    
+                                <!-- Row shown when there is no matching data. -->
+                                <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell" colspan="5">La valeur "{{input.value}}" n'existe pas</td>
+                                </tr>
+                    
+                            </table>
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                        </div>
+                    </div>
+
+                </mat-tab>
+
+
+
+
+                <mat-tab label="Bénéfices">
+
+                    <div id="thebuttons">
+                        <button class="valider" matTooltip="Ajouter Bénéfice entre la Zone et le Marché"  matTooltipShowDelay="1000" type="button" mat-raised-button color="primary" (click)="ActivateBenefice()" >Ajouter Benefice</button>
+                    </div>
+                    <div id="AddZone" *ngIf="Benefice">
+
+                        <form [formGroup]="formBenefice" (ngSubmit)="createBenefice()">
+                            <div class="row m-2">
+
+                                <mat-form-field   class="m-2">    
+                                    <mat-label>Les Zones</mat-label>
+                                    <mat-select formControlName="idzone" required>
+                                    <mat-option>--</mat-option>
+                                    <mat-option *ngFor="let zone of response" [value]="zone.idzone">
+                                        {{zone.nomz}}
+                                    </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field   class="m-2">    
+                                    <mat-label>Les Marchés</mat-label>
+                                    <mat-select formControlName="idmarche" required>
+                                    <mat-option>--</mat-option>
+                                    <mat-option *ngFor="let Marche of M" [value]="Marche.idmarche">
+                                        {{Marche.nomm}}
+                                    </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                
+
+                            <mat-form-field class="full-width-input m-2">
+                            <input matInput type="number" placeholder="Benefice : " formControlName="benefice" required>
+                            <mat-error>
+                              Veuillez choisir le benefice
+                            </mat-error>
+                            </mat-form-field>    
+                            <div class="m-2">
+                                <button *ngIf="!ModifierModeBenefice" class="m-2" type="submit" mat-raised-button color="primary" > Valider</button>
+                                <button *ngIf="ModifierModeBenefice" class="m-2" type="button" (click)="ModifierBenefice()" mat-raised-button color="primary" > Modifier</button>
+                                <button class="m-2" type="button" mat-raised-button color="warn" (click)="annulerBenefice()">Annuler</button>
+                            </div>
+                          </div>
+                          </form>                
+                    </div>
+
+                    <div class="m-4" id="container" >
+                        <mat-form-field   mat-form-field style="float:right" >
+                        <mat-label style="color : #283593"> Recherche </mat-label>
+                        <input matInput (keyup)="applyFilter2($event)"  placeholder="" #input> 
+                        </mat-form-field>
+                    
+                        <div class="mat-elevation-z8">
+                            <table mat-table [dataSource]="dataSource2" matSort >
+                                <!-- ID Column -->
+                                <ng-container matColumnDef="Zone">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>  Zone</th>
+                                <td mat-cell *matCellDef="let row"  > {{row.zone.nomz}}</td>
+                                </ng-container>
+                    
+                                <!-- Progress Column -->
+                                <ng-container matColumnDef="Marche">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Marche </th>
+                                <td mat-cell *matCellDef="let row"  > {{row.marche.nomm}}  </td>
+                                </ng-container>
+                    
+                                 <!-- Progress Column -->
+                                 <ng-container matColumnDef="Benefice">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Bénéfice </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.benefice}}  </td>
+                                    </ng-container>
+
+                                <!-- Color Column -->
+                                <ng-container matColumnDef="Actions">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+                                    <td mat-cell *matCellDef="let row" > 
+                                        <button mat-button matTooltip="Modifier le Taux de Bénéfice" matTooltipShowDelay="1000" (click)="modifierBenefice(row)" style="color:#26de81" ><mat-icon>edit</mat-icon></button> 
+                                        <button mat-button matTooltip="Supprimer le Taux de Bénéfice" matTooltipShowDelay="1000" (click)="openDialogDeleteBenefice(row)" style="color:#eb3b5a" > <mat-icon>delete</mat-icon></button>
+                                    </td>
+                                </ng-container>
+ 
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                    
+                                <!-- Row shown when there is no matching data. -->
+                                <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell" colspan="5">La valeur "{{input.value}}" n'existe pas</td>
+                                </tr>
+                    
+                            </table>
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                        </div>
+                    </div>
+                
+                </mat-tab>
+              </mat-tab-group>
+         
+        </div>
+        
+    </mat-card>
+</app-adminsidenav>

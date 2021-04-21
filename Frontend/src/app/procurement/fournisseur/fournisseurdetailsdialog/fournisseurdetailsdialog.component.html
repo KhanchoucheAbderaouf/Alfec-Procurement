@@ -1,0 +1,82 @@
+<div *ngIf="fournisseur">
+  <h1 mat-dialog-title>Fournisseur {{fournisseur.numfournisseur}} <button  mat-button type="button" mat-dialog-close id="fermer"><mat-icon>close</mat-icon></button>  </h1>
+
+  <mat-dialog-content id="container">
+    <mat-divider></mat-divider>
+  
+    <mat-list>
+      <mat-list-item>
+        <p class="title"> Nom Fournisseur : </p> &nbsp; <p class="value">{{fournisseur.nomf}}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p class="title"> Adresse Fournisseur : </p> &nbsp; <p class class="value"> {{fournisseur.adresse}}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p class="title"> Email Fournisseur : </p> &nbsp; <p class="value"> {{fournisseur.email}}  </p>   &nbsp; &nbsp; &nbsp;       
+      </mat-list-item>
+      <mat-list-item>
+          <p class="title"> Téléphone Fournisseur : </p> &nbsp; <p class="value"> {{formattingThePhoneNumbers(fournisseur.numtel)}}  </p>   &nbsp; &nbsp; &nbsp;         
+      </mat-list-item>
+      <mat-list-item>
+        <p class="title"> Numéro Fix Fournisseur : </p> &nbsp; <p class="value"> {{formattingThePhoneNumbers(fournisseur.numfix)}}  </p>   &nbsp; &nbsp; &nbsp;         
+      </mat-list-item>
+      <mat-list-item>
+          <p class="title"> Fax Fournisseur : </p> &nbsp; <p class="value"> {{formattingThePhoneNumbers(fournisseur.numfax)}}  </p>   &nbsp; &nbsp; &nbsp;         
+      </mat-list-item>
+  
+  
+        <mat-list-item>
+            <p class="title"> contact : 
+              <button type="button" (click)="contact()" mat-icon-button class="example-icon"
+              aria-label="Example icon-button with menu icon">
+              <mat-icon *ngIf="!activecontact">expand_more</mat-icon>
+              <mat-icon *ngIf="activecontact">expand_less</mat-icon>
+            </button></p> &nbsp; 
+          </mat-list-item>
+            
+          <mat-list *ngIf="activecontact" style="position: relative; margin-left : 20%;border-radius:2%;border:solid 0.5px #285393">
+              <mat-list-item>
+              <p class="sub-title"> Nom du Contact : </p> &nbsp; <p class class="value"> {{fournisseur.contact.nomcontact}}</p>
+                </mat-list-item>
+              <mat-list-item>
+                <p class="sub-title"> Numéro du Contact : </p> &nbsp; <p class class="value"> {{formattingThePhoneNumbers(fournisseur.contact.numcontact)}}</p>
+              </mat-list-item>
+              <mat-list-item>
+                <p class="sub-title"> Email du Contact : </p> &nbsp; <p class class="value"> {{fournisseur.contact.emailcontact }}</p>        
+              </mat-list-item>
+          </mat-list>
+        
+  
+  
+      <mat-list-item>
+          <p class="title"> Activité : </p> &nbsp; <p class="value"> {{fournisseur.activite}}  </p>   &nbsp; &nbsp; &nbsp;         
+      </mat-list-item>
+      <mat-list-item>
+          <p class="title"> Code FAM : </p> &nbsp; <p class="value"> {{fournisseur.codefam}}  </p>   &nbsp; &nbsp; &nbsp;         
+      </mat-list-item>
+      <mat-list-item>
+          <p class="title"> Condition Réglement : </p> &nbsp; <p class="value"> {{fournisseur.conditionreglement }}  </p>   &nbsp; &nbsp; &nbsp;         
+      </mat-list-item>
+      <mat-list-item>
+          <p class="title"> Paiement : </p> &nbsp; <p class="value"> {{fournisseur.paiement}}  </p>   &nbsp; &nbsp; &nbsp;         
+      </mat-list-item>
+      <mat-list-item>
+        <p class="title"> Garantie : </p> &nbsp; <p class="value"> {{fournisseur.Garantie}}  </p>   &nbsp; &nbsp; &nbsp;         
+      </mat-list-item>
+      <mat-list-item>
+          <p class="title"> Delai Livraison : </p> &nbsp; <p class="value"> {{fournisseur.delailivraison}}  </p>   &nbsp; &nbsp; &nbsp;         
+      </mat-list-item>
+      <mat-list-item>
+          <p class="title"> Marques : </p> &nbsp; <p class="specialmarque" *ngFor="let mark of fournisseur.marques"> {{mark}}  </p>   &nbsp; &nbsp; &nbsp;         
+      </mat-list-item>
+    </mat-list>
+    
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+      <div>
+        <button mat-button type="button" id="ok" [mat-dialog-close]="true" cdfFocusInitial> OK </button>
+      </div>
+    </mat-dialog-actions>
+  
+</div>

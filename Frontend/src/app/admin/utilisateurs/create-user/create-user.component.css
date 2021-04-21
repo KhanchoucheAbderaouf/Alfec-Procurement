@@ -1,0 +1,24 @@
+#contenu{
+    margin : 15px 15px;
+  }
+#annuler{
+    background-color : #eb3b5a;
+    color : white;
+    font-size : 18px;   
+  }
+#valider{
+    background-color : #283593;
+    color : white;
+    font-size : 18px;
+    margin-right: 10px;
+
+  }
+#buttonsdiv{
+    text-align: left;
+    margin-top:30px;
+}
+#errorpassword{
+    width:100%;
+    margin-top: 10px;
+    text-align: right;
+}

@@ -1,0 +1,262 @@
+<form [formGroup]="formGroup" (ngSubmit)="create()">
+    <div class="form-row">
+      <div class="col">
+ 
+          <mat-form-field class="full-width-input">
+            <input matInput type="text" placeholder="Code Produit" formControlName="codep" required>
+            <mat-error>
+              Veuillez choisir un code produit valide
+            </mat-error>
+          </mat-form-field>
+          <mat-error *ngIf="errorMessage && errorMessage.includes('SQL')">
+            Le code que vous avez Enregistrer existe déjà
+          </mat-error>
+          
+          <mat-form-field class="full-width-input">
+            <input matInput type="text" placeholder="Type Produit : " formControlName="type" required>
+            <mat-error>
+              Veuillez choisir un type valide
+            </mat-error>
+          </mat-form-field>
+ 
+
+          <div formGroupName="fournisseur">
+            <mat-form-field appearance="fill">
+              <mat-label>Le Fournisseur</mat-label>
+              <mat-select formControlName="id" (selectionChange)="fournisseurchoisis()" required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let fourni of fournisseurs" [value]="fourni.id">
+                  {{fourni.nomf}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="submitted && !formGroup.value.fournisseur.id">Veuillez choisir un fournisseur</mat-error>
+            </mat-form-field>
+          </div>
+  
+  
+          <mat-form-field appearance="fill" *ngIf="marques">
+            <mat-label>La Marque</mat-label>
+            <mat-select formControlName="marque" (selectionChange)="marquechoisis()" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let mark of marques" [value]="mark">
+                {{mark}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="submitted && !formGroup.value.marque">Veuillez choisir une marque</mat-error>
+          </mat-form-field>
+
+          <!-- ZAPPPING
+                ------------------
+                -->
+
+          <div formGroupName="parametres">
+  
+  
+            <!--
+              Informations Essentielles
+                            -->
+            <div class="card card-body mt-2" style="background-color:  white; width: 100%;">
+  
+              <div class="row">
+                <h3 style="color : #283593"> Informations Essentielles </h3>
+                  <button type="button" (click)="InformationsEssentielles()" mat-icon-button class="example-icon"
+                  aria-label="Example icon-button with menu icon">
+                  <mat-icon *ngIf="!informationsessentielles">expand_more</mat-icon>
+                  <mat-icon *ngIf="informationsessentielles">expand_less</mat-icon>
+                </button>
+              </div>
+  
+  
+              <div *ngIf="informationsessentielles">
+
+                <div class="row mt-2">
+                    <mat-label style="color: #182628;" class="h6"> Caractéristiques Pompe : *</mat-label>&nbsp;&nbsp;&nbsp;
+                      <mat-radio-group formControlName="caracteristiquepompe" required>
+                        <mat-radio-button value="Verticale">Verticale</mat-radio-button>&nbsp;
+                        <mat-radio-button value="Horizontale">Horizontale</mat-radio-button>&nbsp;  
+                      </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+                    <mat-error *ngIf="submitted && !formGroup.value.parametres.caracteristiquepompe">Ce champ est obligatoire</mat-error>
+                  </div>
+
+                  <div class="row mt-2">
+                    <mat-label style="color: #182628;" class="h6"> Type Pompe : *</mat-label>&nbsp;&nbsp;&nbsp;
+                      <mat-radio-group formControlName="typepompe" required>
+                        <mat-radio-button value="Simple">Simple</mat-radio-button>&nbsp;
+                        <mat-radio-button value="Jumelee">Jumelée</mat-radio-button>&nbsp;  
+                      </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+                    <mat-error *ngIf="submitted && !formGroup.value.parametres.typepompe">Ce champ est obligatoire</mat-error>
+                  </div>
+
+               
+
+                <div class="row mt-2">
+                <mat-form-field class="full-width-input m-2">
+                    <input matInput type="number" placeholder="Débit d'Eau [m3/h]: " formControlName="debiteau" required>
+                    <mat-error>
+                      Veuillez choisir le Débit d'Eau
+                    </mat-error>
+                </mat-form-field>
+                </div>
+
+                <div class="row mt-2">
+                <mat-form-field class="full-width-input m-2">
+                    <input matInput type="number" placeholder="Hauteur Manométrique Totale [Hmt] : " formControlName="hauteurtotale" required>
+                    <mat-error>
+                      Veuillez choisir la Hauteur Manométrique Totale
+                    </mat-error>
+                </mat-form-field>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input m-2">
+                      <input matInput type="number" placeholder="Rendement hydraulique : " formControlName="rendementhydraulique" required>
+                      <mat-error> Veuillez choisir le Rendement hydraulique </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input col-6">
+                      <input matInput type="number" placeholder="Température MIN de fluide [C°] : " formControlName="tmin" required>
+                      <mat-error>
+                        Veuillez choisir la Température MIN de fluide 
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width-input col-6">
+                      <input matInput type="number" placeholder="Température MAX de fluide [C°] : " formControlName="tmax"
+                        required>
+                      <mat-error>
+                        Veuillez choisir la Température MAX de fluide 
+                      </mat-error>
+                    </mat-form-field>
+                </div>
+
+              </div>
+            </div>
+ 
+            <!-- Electrique 
+              -->
+  
+              <div class="card card-body mt-2" style="background-color:  white; width: 100%;">
+                <div class="row">
+                  <h3 style="color : #283593">Circuit Electrique</h3>
+                   
+                  <button type="button" (click)="Electrique()" mat-icon-button class="example-icon"
+                    aria-label="Example icon-button with menu icon">
+                    <mat-icon *ngIf="!electrique">expand_more</mat-icon>
+                    <mat-icon *ngIf="electrique">expand_less</mat-icon>
+                  </button>
+                </div>
+    
+                <div *ngIf="electrique">
+
+                    <div class="row mt-2">
+                        <mat-label style="color: #182628;" class="h6 col-3 mt-4"> Tension Nominale : </mat-label>
+                        <mat-form-field class="full-width-input col-3">
+                          <input matInput type="number" placeholder="Voltage : " formControlName="tensionnominalevoltage" required>
+                          <mat-error>
+                            Veuillez choisir le voltage
+                          </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width-input col-3">
+                          <input matInput type="number" placeholder="Phases : " formControlName="tensionnominalephases" required>
+                          <mat-error>
+                            Veuillez choisir Phases
+                          </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width-input col-3">
+                          <input matInput type="number" placeholder="Hertz : " formControlName="tensionnominalehertz" required>
+                          <mat-error>
+                            Veuillez choisir Hertz
+                          </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Puissance Absorbée Max [KW] : " formControlName="puissanceelectriqueabsorbee" required>
+                          <mat-error> Veuillez choisir la Puissance Max Absorbée </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Courant Nominal [A] : " formControlName="courantnominal" required>
+                          <mat-error> Veuillez choisir le Courant Nominal </mat-error>
+                        </mat-form-field>
+                    </div>
+                    
+                    <div class="row mt-2">
+                        <mat-form-field class="full-width-input m-2">
+                          <input matInput type="number" placeholder="Niveau de Puissance Acoustique [LwA] : " formControlName="puissanceacoustique" required>
+                          <mat-error> Veuillez choisir le Niveau de Puissance Acoustique </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+    
+            </div>
+
+            
+            <!-- Autres
+              -->
+  
+            <div class="card card-body mt-2" style="background-color:  white; width: 100%;">
+              <div class="row">
+                <h3 style="color : #283593"> Autres </h3>
+                
+                <button type="button" (click)="AutresSection()" mat-icon-button class="example-icon"
+                aria-label="Example icon-button with menu icon">
+                <mat-icon *ngIf="!autressection">expand_more</mat-icon>
+                <mat-icon *ngIf="autressection">expand_less</mat-icon>
+                </button>
+              </div>
+  
+              <div *ngIf="autressection">
+
+                <div class="row mt-2">
+                    <mat-label style="color: #182628;" class="h6"> Classe Energitique : </mat-label>&nbsp;&nbsp;&nbsp;
+                      <mat-radio-group formControlName="classenergitique">
+                        <mat-radio-button value="A++.A+ et A">A++.A+ et A</mat-radio-button>&nbsp;
+                        <mat-radio-button value="B">B </mat-radio-button>&nbsp;
+                        <mat-radio-button value="C">C</mat-radio-button>&nbsp;
+                        <mat-radio-button value="D à G">D à G</mat-radio-button>
+                      </mat-radio-group>
+                </div>
+
+                <div class="row mt-2">
+                    <mat-label style="color: #182628;" class="h6">Certification : *</mat-label>
+                      <mat-radio-group formControlName="certification">
+                        <mat-radio-button value="ISO" (change)="radiocertifiso()">ISO</mat-radio-button>&nbsp;
+                        <mat-radio-button [checked]="certifautreradio" (change)="radiocertifautre()">Autre
+                        </mat-radio-button>
+                      </mat-radio-group>
+                      <mat-error *ngIf="submitted && !formGroup.value.parametres.certification && !certifautreradio ">Ce champ est
+                        obligatoire</mat-error>
+    
+                      <mat-form-field *ngIf="certifautreradio" class="full-width-input m-2 col w-auto">
+                        <input matInput type="text" placeholder="Certification : " formControlName="certification" required>
+                        <mat-error>
+                          Veuillez préciser la certification
+                        </mat-error>
+                      </mat-form-field>
+                  </div>
+
+              </div>
+            </div>
+    
+            <!-- the end  -->
+  
+            <div style="margin-top: 5%; margin-left: auto;">
+              <button id="valider" mat-button  type="submit"> Valider </button>
+              <button id="annuler" mat-button   (click)="annulerCatego()" type="button"> Annuler </button>
+            </div>
+  
+          </div>
+ 
+  
+      </div>
+  
+    </div>
+  </form>
+  <!--    <p>myForm value: {{ formGroup.value | json }}</p>
+        <p>myForm status: {{ formGroup.status | json }}</p> -->

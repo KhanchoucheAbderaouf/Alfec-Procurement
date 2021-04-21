@@ -1,0 +1,83 @@
+.sidenav-container {
+    height: 100%;
+}
+
+.sidenav {
+  width : auto;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+  color: white;
+  background-color:#283593;
+  font-size : 25px;
+  font-weight: 700;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.mat-sidenav-content .mat-toolbar {
+  background-color : #283593;
+  font-size : 25px;
+  font-weight: 700;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.mat-list-item{
+  margin: 12px 12px 12px 0;
+  padding: 16px;
+  font-size: 20px;
+  font-weight : 500;
+}
+.mat-list-item:hover{
+  background-color: #283593;
+  color : white
+}
+span{
+  color : white
+}
+.mat-icon-button{
+  color:white
+}
+a:active {
+  color: rgb(51, 20, 161);
+}
+
+#low-part{
+  position: absolute;
+  bottom:   0;
+  width : 100%
+}
+#echange{
+  color :  rgb(51, 20, 161);
+  font-weight: bold;
+}
+#echange:hover{
+  color:white;
+  background-color : #26de81;
+  font-weight: bold;
+}
+#disconnect:hover{
+  color:white;
+  background-color :red
+}
+#search{
+  position: absolute;
+  right:   0;
+  color:white;
+  width: 100px;
+  text-align: center;
+  font-size: 22px;
+  font-weight : 700;
+}
+#search:hover{
+  background-color : white;
+  color: #283593
+}
+#contenu{
+  margin : 15px 15px;
+}
