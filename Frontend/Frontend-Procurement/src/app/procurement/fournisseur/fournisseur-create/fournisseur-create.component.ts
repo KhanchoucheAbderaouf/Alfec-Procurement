@@ -25,7 +25,7 @@ export class FournisseurCreateComponent implements OnInit {
   specialFormGroup : FormGroup;
   countrycodeNumTel : string ="(+213)" ;
   countrycodeNumFax : string = "(+213)";
-  countrycodeNumFix : string = "(+213)";
+  //countrycodeNumFix : string = "(+213)";
   countrycodeNumContact : string = "(+213)";
   paiements : string[] = ["Cheque","Virement","Lettre de Credit","Transfert Libre","Remise Documentaire","Espece"]
   garanties : string[] = ["6 mois","12 mois","18 mois","24 mois"]
@@ -43,16 +43,15 @@ export class FournisseurCreateComponent implements OnInit {
       nomf : new FormControl("",[Validators.required]),
     });
     this.secondFormGroup = new FormGroup({
-      numtel  : new FormControl("(+213)",[Validators.required,Validators.pattern("[+()0-9]{8,15}")]), 
-      numfix  : new FormControl("(+213)"),
-      numfax  : new FormControl("(+213)",[Validators.required,Validators.pattern("[+()0-9]{8,15}")]),
+      numtel  : new FormControl("(+213)",[Validators.required]), 
+      //numfix  : new FormControl("(+213)"),
+      numfax  : new FormControl("(+213)"),
       email  : new FormControl("",[Validators.required,Validators.email]),
       adresse  : new FormControl("",[Validators.required]),
-
     });
     this.thirdFormGroup = new FormGroup( {
         nomcontact  : new FormControl("",[Validators.required]),
-        numcontact : new FormControl("(+213)",[Validators.required,Validators.pattern("[+()0-9]{8,15}")]),
+        numcontact : new FormControl("(+213)",[Validators.required]),
         emailcontact : new FormControl("",[Validators.required,Validators.email])
     });
     this.fourthFormGroup = new FormGroup( {
@@ -60,17 +59,17 @@ export class FournisseurCreateComponent implements OnInit {
       activite  : new FormControl("",[Validators.required]),
     });
     this.fifthFormGroup = new FormGroup( {
-      conditionreglement  : new FormControl("",[Validators.required]),
+      conditionreglement  : new FormControl(""),
       paiement  : new FormControl("",[Validators.required]),
-      garantie  : new FormControl("",[Validators.required]),
+      garantie  : new FormControl(""),
       delailivraison : new FormControl("")
     });
     this.sixthFormGroup = new FormGroup({
       marques  : new FormControl([],[Validators.required]),
     })
     this.specialFormGroup = new FormGroup({
-      number : new FormControl("",[Validators.required]),
-      typedelai : new FormControl("",[Validators.required])
+      number : new FormControl(""),
+      typedelai : new FormControl("")
     })
   }
 
@@ -92,7 +91,7 @@ export class FournisseurCreateComponent implements OnInit {
           "numfournisseur":  this.firstFormGroup.value.numfournisseur,
           "nomf":  this.firstFormGroup.value.nomf,
           "numtel": this.formattingPhoneNumber(this.countrycodeNumTel,this.secondFormGroup.value.numtel),
-          "numfix":  this.formattingPhoneNumber(this.countrycodeNumFax,this.secondFormGroup.value.numfix),
+         // "numfix":  this.formattingPhoneNumber(this.countrycodeNumFix,this.secondFormGroup.value.numfix),
           "numfax":  this.formattingPhoneNumber(this.countrycodeNumFax,this.secondFormGroup.value.numfax),
           "email": this.secondFormGroup.value.email,
           "adresse": this.secondFormGroup.value.adresse,
@@ -108,6 +107,12 @@ export class FournisseurCreateComponent implements OnInit {
           "garantie":  this.fifthFormGroup.value.garantie,
           "delailivraison": this.specialFormGroup.value.number + " " + this.specialFormGroup.value.typedelai,
           "marques":  this.sixthFormGroup.value.marques,
+      }
+   /*   if(this.specialZinou.numfix === this.countrycodeNumFix) {
+        this.specialZinou.numfix = ""
+      }*/
+      if(this.specialZinou.numfax === this.countrycodeNumFax){
+        this.specialZinou.numfax = ""
       }
     this.http.post(this.vars.urlAddress + ":8082/procurement/fournisseurs/create", this.specialZinou, { headers, responseType: 'json' as 'json' }).subscribe(result => {
       window.location.reload();
@@ -152,7 +157,7 @@ export class FournisseurCreateComponent implements OnInit {
     this.specialFormGroup.reset()
     this.secondFormGroup.patchValue({
       numtel  : "(+213)", 
-      numfix  : "(+213)", 
+      //numfix  : "(+213)", 
       numfax  : "(+213)",
     })
     this.thirdFormGroup.patchValue({
@@ -187,13 +192,13 @@ export class FournisseurCreateComponent implements OnInit {
     })
     this.countrycodeNumFax = event.dialCode
   }
-  onCountryChangenumFix(event : any){
+  /*onCountryChangenumFix(event : any){
     const currentnumtel = this.secondFormGroup.value.numfix.substring(this.secondFormGroup.value.numfix.indexOf(')') + 1);
     this.secondFormGroup.patchValue({
       numfix :  "(+" + event.dialCode + ")" + currentnumtel
     })
     this.countrycodeNumFix = event.dialCode
-  }
+  }*/
   onCountryChangenumContact(event : any){
     const currentnumtel = this.thirdFormGroup.value.numcontact.substring(this.thirdFormGroup.value.numcontact.indexOf(')') + 1);
     this.thirdFormGroup.patchValue({
@@ -203,17 +208,13 @@ export class FournisseurCreateComponent implements OnInit {
   }
   formattingPhoneNumber(type : string,phone : string){
      if(phone.includes(")")){
-        if(phone.charAt(phone.indexOf(')')  + 1) !== "0") {
+       
         return phone
-        }else {
-         return type + phone.substring(phone.indexOf(')')  + 2);
-        }
+       
      } else {
-      if(phone.charAt(0)  !== "0") {
-        return type + phone.substring(phone.indexOf(')') + 1)
-        }else {
-         return type + phone.substring(1)
-        }
+     
+        return type + phone
+      
       }
   }
   knowGarantie : boolean = true;

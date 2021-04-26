@@ -28,6 +28,7 @@
   }
   .example-button-row .mat-button:hover {  
     color: #5f5fc4;
-    
     }
- 
+a.active{
+      color: #5f5fc4;  
+  }

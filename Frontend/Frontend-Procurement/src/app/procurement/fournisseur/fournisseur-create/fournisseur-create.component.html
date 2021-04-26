@@ -43,32 +43,29 @@
             Veuillez choisir l'adresse du Fournisseur
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="full-width-input col-4" >
+        <mat-form-field class="full-width-input col-6" >
           <input matInput
           type="text" ng2TelInput 
           (countryChange)="onCountryChangenumTel($event)"
           [ng2TelInputOptions]="{initialCountry: 'DZ'}" 
-          pattern="[+()0-9]{8,20}" placeholder="Numéro de Téléphone" formControlName="numtel" required/>
+          placeholder="Numéro de Téléphone" formControlName="numtel" required/>
           <mat-error>
             Veuillez choisir le numéro de téléphone valide du Fournisseur
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="full-width-input col-4" >
+      <!--  <mat-form-field class="full-width-input col-4" >
           <input matInput
           type="text" ng2TelInput 
           (countryChange)="onCountryChangenumFix($event)"
           [ng2TelInputOptions]="{initialCountry: 'DZ'}" 
-          placeholder="Numéro du Fix" formControlName="numfix" required/>
-        </mat-form-field>
-        <mat-form-field class="full-width-input col-4" >
+          placeholder="Numéro du Fix" formControlName="numfix"/>
+        </mat-form-field>-->
+        <mat-form-field class="full-width-input col-6" >
           <input matInput
           type="text" ng2TelInput 
           (countryChange)="onCountryChangenumFax($event)"
           [ng2TelInputOptions]="{initialCountry: 'DZ'}" 
-          pattern="[+()0-9]{8,20}"  placeholder="Numéro Fax" formControlName="numfax" required/>
-          <mat-error>
-            Veuillez choisir le numéro de fax valide du Fournisseur
-          </mat-error>
+          placeholder="Numéro Fax" formControlName="numfax"/>
         </mat-form-field>
       <div  class="buttonsdiv">
         <button class="retour" style="float:left" mat-button matStepperPrevious>Retour</button>
@@ -93,7 +90,7 @@
           type="text" ng2TelInput 
           (countryChange)="onCountryChangenumContact($event)"
           [ng2TelInputOptions]="{initialCountry: 'DZ'}" 
-          pattern="[+()0-9]{8,20}"  placeholder="Numéro Contact" formControlName="numcontact" required/>
+          placeholder="Numéro Contact" formControlName="numcontact" required/>
           <mat-error>
             Veuillez choisir un numéro de contact valide
           </mat-error>
@@ -144,10 +141,8 @@
       <div class="row">
         <mat-form-field class="full-width-input col-6" >
           <input matInput type="text" placeholder="Conditions Réglement" formControlName="conditionreglement"
-            required>
-          <mat-error>
-            Veuillez choisir les Conditions de Réglement
-          </mat-error>
+            >
+          
         </mat-form-field>
         <mat-form-field  *ngIf="!knowPaiement" class="full-width-input col-6" >
           <input  matInput type="text" placeholder="Paiement" formControlName="paiement"
@@ -173,44 +168,39 @@
 
         <mat-form-field  *ngIf="!knowGarantie" class="full-width-input col-6" >
           <input  matInput type="text" placeholder="Garantie" formControlName="garantie"
-            required>
+            >
             <button mat-button matSuffix mat-icon-button aria-label="AnnulerGarantie" (click)="annulenewgarantie()">
               <mat-icon>close</mat-icon>
             </button>
-          <mat-error>
-            Veuillez choisir la Garantie
-          </mat-error>
+       
         </mat-form-field> 
 
         <mat-form-field *ngIf="knowGarantie" class="full-width-input col-6">
           <mat-label>Garantie</mat-label>
-          <mat-select formControlName="garantie" (selectionChange)="activateNewGarantie()" required>
+          <mat-select formControlName="garantie" (selectionChange)="activateNewGarantie()">
             <mat-option>--</mat-option>
             <mat-option *ngFor="let garantie of garanties" [value]="garantie">
               {{garantie}}
             </mat-option>
             <mat-option value="Autre">Autre</mat-option>
           </mat-select>
-        <mat-error *ngIf="!fifthFormGroup.value.garantie">Veuillez choisir la Garantie</mat-error>
         </mat-form-field>
        
 
         <div class="row col-6" [formGroup]="specialFormGroup">
           <mat-form-field class="full-width-input col-3">
-            <input matInput type="number" formControlName="number" required>
-            <mat-error>
-              Obligatoire
-            </mat-error>
+            <input matInput type="number" formControlName="number">
+          
           </mat-form-field>
           <mat-form-field class="full-width-input col-9" >
             <mat-label>Délai Livraison</mat-label>
-            <mat-select formControlName="typedelai" required>
+            <mat-select formControlName="typedelai" >
               <mat-option>--</mat-option>
               <mat-option *ngFor="let type of typedelais" [value]="type">
                 {{type}}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="!specialFormGroup.value.typdelai">Veuillez choisir le type de Délai</mat-error>
+        
           </mat-form-field>
         </div>
       

@@ -19,7 +19,7 @@ export class NavComponent implements OnInit  {
       map(result => result.matches),
       shareReplay()
     );
-
+  active : boolean = true;
   constructor(private vars : GlobalsService,private breakpointObserver: BreakpointObserver,private service: AuthService,private route : Router,private http:HttpClient) {}
   
   ngOnInit(): void {

@@ -25,7 +25,7 @@ export class FournisseuralldialogComponent implements OnInit {
   supprime : boolean = false;
   fournisseurs : any;
   countrycodeNumTel : string = this.data.result.numtel.substring(0,this.data.result.numtel.indexOf(')')+1);
-  countrycodeNumFix : string = this.data.result.numfix.substring(0,this.data.result.numfix.indexOf(')')+1);
+ // countrycodeNumFix : string = this.data.result.numfix.substring(0,this.data.result.numfix.indexOf(')')+1);
   countrycodeNumFax : string = this.data.result.numfax.substring(0,this.data.result.numfax.indexOf(')')+1)
   countrycodeNumContact : string = this.data.result.contact.numcontact.substring(0,this.data.result.contact.numcontact.indexOf(')')+1)
   //marques : any;
@@ -70,11 +70,10 @@ export class FournisseuralldialogComponent implements OnInit {
     });
     this.secondFormGroup = new FormGroup({
       numtel  : new FormControl(this.data.result.numtel,[Validators.required]), 
-      numfix  : new FormControl(this.data.result.numfix,[Validators.required]),
-      numfax  : new FormControl(this.data.result.numfax,[Validators.required]),
+      //numfix  : new FormControl(this.data.result.numfix),
+      numfax  : new FormControl(this.data.result.numfax),
       email  : new FormControl(this.data.result.email,[Validators.required]),
       adresse  : new FormControl(this.data.result.adresse,[Validators.required]),
-
     });
     this.thirdFormGroup = new FormGroup( {
         nomcontact  : new FormControl(this.data.result.contact.nomcontact,[Validators.required]),
@@ -86,10 +85,10 @@ export class FournisseuralldialogComponent implements OnInit {
       activite  : new FormControl(this.data.result.activite,[Validators.required]),
     });
     this.fifthFormGroup = new FormGroup( {
-      conditionreglement  : new FormControl(this.data.result.conditionreglement,[Validators.required]),
+      conditionreglement  : new FormControl(this.data.result.conditionreglement),
       paiement  : new FormControl(this.data.result.paiement,[Validators.required]),
-      garantie  : new FormControl(this.data.result.garantie,[Validators.required]),
-      delailivraison : new FormControl(this.data.result.delailivraison,[Validators.required])
+      garantie  : new FormControl(this.data.result.garantie),
+      delailivraison : new FormControl(this.data.result.delailivraison)
     });
     this.sixthFormGroup = new FormGroup({
       marques  : new FormControl(this.data.result.marques,[Validators.required]),
@@ -128,7 +127,7 @@ export class FournisseuralldialogComponent implements OnInit {
       "numfournisseur":  this.firstFormGroup.value.numfournisseur,
       "nomf":  this.firstFormGroup.value.nomf,
       "numtel":  this.formattingPhoneNumber(this.countrycodeNumTel,this.secondFormGroup.value.numtel),
-      "numfix":  this.formattingPhoneNumber(this.countrycodeNumFix,this.secondFormGroup.value.numfix),
+     // "numfix":  this.formattingPhoneNumber(this.countrycodeNumFix,this.secondFormGroup.value.numfix),
       "numfax":  this.formattingPhoneNumber(this.countrycodeNumFax,this.secondFormGroup.value.numfax),
       "email": this.secondFormGroup.value.email,
       "adresse": this.secondFormGroup.value.adresse,
@@ -223,6 +222,12 @@ export class FournisseuralldialogComponent implements OnInit {
     if(this.firstFormGroup.valid && this.secondFormGroup.valid && this.thirdFormGroup.valid 
       && this.fourthFormGroup.valid && this.fifthFormGroup.valid && this.sixthFormGroup.value.marques.length !== 0){
     this.onSubmit();
+  /*  if(this.specialZinou.numfix === this.countrycodeNumFix) {
+      this.specialZinou.numfix = ""
+    }*/
+    if(this.specialZinou.numfax === this.countrycodeNumFax){
+      this.specialZinou.numfax = ""
+    }
     this.http.put(this.url.urlAddress + ":8082/procurement/fournisseurs/update/"+this.data.result.id, this.specialZinou, { headers, responseType: 'json' as 'json' }).subscribe(result => {
     }, (error) => {
       console.log(error.error.message)
@@ -249,7 +254,7 @@ export class FournisseuralldialogComponent implements OnInit {
         "numfournisseur":  this.firstFormGroup.value.numfournisseur,
         "nomf":  this.firstFormGroup.value.nomf,
         "numtel":  this.secondFormGroup.value.numtel,
-        "numfix":  this.secondFormGroup.value.numfix,
+        //"numfix":  this.secondFormGroup.value.numfix,
         "numfax":  this.secondFormGroup.value.numfax,
         "email": this.secondFormGroup.value.email,
         "adresse": this.secondFormGroup.value.adresse,
@@ -272,7 +277,7 @@ export class FournisseuralldialogComponent implements OnInit {
       });
       this.secondFormGroup.setValue({
         numtel  :  this.data.result.numtel , 
-        numfix  :  this.data.result.numfix ,
+        //numfix  :  this.data.result.numfix ,
         numfax  :  this.data.result.numfax ,
         email  :  this.data.result.email ,
         adresse  :  this.data.result.adresse ,
@@ -330,13 +335,13 @@ export class FournisseuralldialogComponent implements OnInit {
       })
       this.countrycodeNumFax = event.dialCode
     }
-    onCountryChangenumFix(event : any){
+    /*onCountryChangenumFix(event : any){
       const currentnumtel = this.secondFormGroup.value.numfix.substring(this.secondFormGroup.value.numfix.indexOf(')') + 1);
       this.secondFormGroup.patchValue({
         numfix :  "(+" + event.dialCode + ")" + currentnumtel
       })
       this.countrycodeNumFix = event.dialCode
-    }
+    }*/
     onCountryChangenumContact(event : any){
       const currentnumtel = this.thirdFormGroup.value.numcontact.substring(this.thirdFormGroup.value.numcontact.indexOf(')') + 1);
       this.thirdFormGroup.patchValue({
@@ -346,17 +351,13 @@ export class FournisseuralldialogComponent implements OnInit {
     }
     formattingPhoneNumber(type : string,phone : string){
       if(phone.includes(")")){
-         if(phone.charAt(phone.indexOf(')')  + 1) !== "0") {
+       
          return phone
-         }else {
-          return type + phone.substring(phone.indexOf(')')  + 2);
-         }
+    
       } else {
-       if(phone.charAt(0)  !== "0") {
-         return type + phone.substring(phone.indexOf(')') + 1)
-         }else {
-          return type + phone.substring(1)
-         }
+     
+         return type + phone
+
        }
    }
 

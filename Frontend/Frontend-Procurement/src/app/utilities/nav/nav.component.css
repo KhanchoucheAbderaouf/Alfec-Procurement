@@ -37,15 +37,14 @@
   background-color: #283593;
   color : white
 }
+
 span{
   color : white
 }
 .mat-icon-button{
   color:white
 }
-a:active {
-  color: rgb(51, 20, 161);
-}
+ 
 
 
 #disconnect{
@@ -69,6 +68,20 @@ a:active {
   background-color : white;
   color: #283593
 }
+#search.active{
+  background-color : white;
+  color: #283593
+}
 #contenu{
   margin : 15px 15px;
+}
+.nav-horizontale{
+  color : white
+}
+.nav-horizontale:hover{
+  color: #5f5fc4;
+}
+.nav-horizontale.active{
+  color: #5f5fc4;
+
 }

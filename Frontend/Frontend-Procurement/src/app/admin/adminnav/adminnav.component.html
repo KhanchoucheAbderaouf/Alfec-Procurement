@@ -4,14 +4,14 @@
       
       <section>
         <div class="example-button-row" *ngIf="ThePath.includes('/admin/procurement')">
-          <a mat-button color="white" routerLink="/admin/procurement/produits">Produits</a>
-          <a mat-button color="white" routerLink="/admin/procurement/fournisseurs">Fournisseurs</a>
-          <a mat-button color="white" routerLink="/admin/procurement/zones">Zones & Marchés</a>
+          <a routerLinkActive="active" mat-button color="white" routerLink="/admin/procurement/produits">Produits</a>
+          <a routerLinkActive="active" mat-button color="white" routerLink="/admin/procurement/fournisseurs">Fournisseurs</a>
+          <a routerLinkActive="active" mat-button color="white" routerLink="/admin/procurement/zones">Zones & Marchés</a>
         </div>
 
         <div class="example-button-row" *ngIf="ThePath.includes('/admin/users')">
-          <a mat-button color="white" routerLink="/admin/users/index">Utilisateurs</a>
-          <a mat-button color="white" routerLink="/admin/users/create">Ajouter Utilisateur</a>
+          <a routerLinkActive="active" mat-button color="white" routerLink="/admin/users/index">Utilisateurs</a>
+          <a routerLinkActive="active" mat-button color="white" routerLink="/admin/users/create">Ajouter Utilisateur</a>
         </div>
       </section>
  

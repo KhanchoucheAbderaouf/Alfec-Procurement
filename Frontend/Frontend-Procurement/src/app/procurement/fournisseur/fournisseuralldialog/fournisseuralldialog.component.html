@@ -18,9 +18,9 @@
           {{ formattingThePhoneNumbers(data.result.numtel)}} 
         </p>   &nbsp; &nbsp; &nbsp;         
     </mat-list-item>
-    <mat-list-item>
+  <!--  <mat-list-item>
       <p class="title"> Numéro Fix : </p> &nbsp; <p class="value"> {{formattingThePhoneNumbers(data.result.numfix)}}  </p>   &nbsp; &nbsp; &nbsp;         
-    </mat-list-item>
+    </mat-list-item>-->
     <mat-list-item>
         <p class="title"> Numéro Fax : </p> &nbsp; <p class="value"> {{formattingThePhoneNumbers(data.result.numfax)}}  </p>   &nbsp; &nbsp; &nbsp;         
     </mat-list-item>
@@ -137,32 +137,26 @@
               Veuillez choisir  
             </mat-error>
           </mat-form-field>
-          <mat-form-field class="full-width-input col-4" >
+          <mat-form-field class="full-width-input col-6" >
             <input matInput
             type="text" ng2TelInput 
             (countryChange)="onCountryChangenumTel($event)"
-            pattern="[+()0-9]{8,20}" placeholder="Numéro de Téléphone" formControlName="numtel" required/>
+            placeholder="Numéro de Téléphone" formControlName="numtel" required/>
             <mat-error>
               Veuillez choisir  
             </mat-error>
           </mat-form-field>
-          <mat-form-field class="full-width-input col-4" >
+     <!--     <mat-form-field class="full-width-input col-4" >
             <input matInput
             type="text" ng2TelInput 
             (countryChange)="onCountryChangenumFix($event)"
-            pattern="[+()0-9]{8,20}"  placeholder="Numéro du Fix" formControlName="numfix" required/>
-            <mat-error>
-              Veuillez choisir le numéro de téléphone fix valide du Fournisseur
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field class="full-width-input col-4" >
+            placeholder="Numéro du Fix" formControlName="numfix"/>
+          </mat-form-field>-->
+          <mat-form-field class="full-width-input col-6" >
             <input matInput
             type="text" ng2TelInput 
             (countryChange)="onCountryChangenumFax($event)"
-            pattern="[+()0-9]{8,20}" placeholder="Numéro du fax" formControlName="numfax" required/>
-            <mat-error>
-              Veuillez choisir  
-            </mat-error>
+            placeholder="Numéro du fax" formControlName="numfax"/>
           </mat-form-field>
           
         </div>
@@ -192,7 +186,7 @@
             <input matInput
             type="text" ng2TelInput 
             (countryChange)="onCountryChangenumContact($event)"
-            pattern="[+()0-9]{8,20}" placeholder="Numéro de Contact" formControlName="numcontact" required/>
+            placeholder="Numéro de Contact" formControlName="numcontact" required/>
             <mat-error>
               Veuillez choisir  
             </mat-error>
@@ -253,10 +247,8 @@
           <mat-form-field class="full-width-input col-6" >
             <mat-label>Conditions Réglement</mat-label>
             <input matInput type="text" placeholder="Conditions Réglement" formControlName="conditionreglement"
-              required>
-            <mat-error>
-              Veuillez choisir  
-            </mat-error>
+              >
+        
           </mat-form-field>
           <mat-form-field  *ngIf="!knowPaiement" class="full-width-input col-6" >
             <mat-label>Paiement</mat-label>
@@ -284,43 +276,39 @@
           <mat-form-field  *ngIf="!knowGarantie" class="full-width-input col-6" >
             <mat-label>Garantie</mat-label>
             <input  matInput type="text" placeholder="Garantie" formControlName="garantie"
-              required>
+              >
               <button mat-button matSuffix mat-icon-button aria-label="AnnulerGarantie" (click)="annulenewgarantie()">
                 <mat-icon>close</mat-icon>
               </button>
-            <mat-error>
-              Veuillez choisir la Garantie
-            </mat-error>
+           
           </mat-form-field> 
   
           <mat-form-field *ngIf="knowGarantie" class="full-width-input col-6">
             <mat-label>Garantie</mat-label>
-            <mat-select formControlName="garantie" (selectionChange)="activateNewGarantie()" required>
+            <mat-select formControlName="garantie" (selectionChange)="activateNewGarantie()" >
               <mat-option>--</mat-option>
               <mat-option *ngFor="let garantie of garanties" [value]="garantie">
                 {{garantie}}
               </mat-option>
               <mat-option value="Autre">Autre</mat-option>
             </mat-select>
-          <mat-error *ngIf="!fifthFormGroup.value.garantie">Veuillez choisir la Garantie</mat-error>
+        
           </mat-form-field>
           
           <div class="row col-6" [formGroup]="specialFormGroup">
             <mat-form-field class="full-width-input col-3">
-              <input matInput type="number" formControlName="number" required>
-              <mat-error>
-                Obligatoire
-              </mat-error>
+              <input matInput type="number" formControlName="number">
+            
             </mat-form-field>
             <mat-form-field class="full-width-input col-9" >
               <mat-label>Délai Livraison</mat-label>
-              <mat-select formControlName="typedelai" required>
+              <mat-select formControlName="typedelai" >
                 <mat-option>--</mat-option>
                 <mat-option *ngFor="let type of typedelais" [value]="type">
                   {{type}}
                 </mat-option>
               </mat-select>
-              <mat-error *ngIf="!specialFormGroup.value.typdelai">Veuillez choisir le type de Délai</mat-error>
+           
             </mat-form-field>
           </div>
 
