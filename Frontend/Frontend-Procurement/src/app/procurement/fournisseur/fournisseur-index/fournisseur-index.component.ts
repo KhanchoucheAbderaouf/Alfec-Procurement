@@ -33,7 +33,7 @@ export class FournisseurIndexComponent implements OnInit {
     this.titleService.setTitle("Fournisseurs");
   }
  
-  displayedColumns: string[] = ['Code', 'Nom', 'Activite','Adresse', 'Marques' ,'Details'];
+  displayedColumns: string[] = ['Code', 'Nom', 'Activite', 'Marques' ,'Details'];
   dataSource:  MatTableDataSource<[any]>;
   response : any;
   testing : boolean = false;
@@ -88,9 +88,9 @@ export class FournisseurIndexComponent implements OnInit {
       case 'Activite': {
         return data.activite;
         }
-      case 'Adresse': {
+      /*case 'Adresse': {
         return data.adresse;
-        }  
+        }  */
       case 'Marques': {
         return data.marques;
         }
