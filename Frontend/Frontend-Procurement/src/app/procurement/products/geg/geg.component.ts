@@ -194,7 +194,7 @@ export class GegComponent implements OnInit {
       parametres: new FormGroup({
         pf: new FormControl("", [Validators.required,Validators.min(0)]),
         tempexterieurpf: new FormControl("", [Validators.required]),
-        eer: new FormControl("", [Validators.required,Validators.min(0)]),
+        eer: new FormControl("",[Validators.min(0)]),
         cop: new FormControl("",Validators.min(0)),
         pc : new FormControl("",Validators.min(0)),
         tempexterieurpc : new FormControl(""),
@@ -212,19 +212,19 @@ export class GegComponent implements OnInit {
 
        
         ventilateur: new FormControl("", [Validators.required]),
-        debitcondenseur: new FormControl("", [Validators.required,Validators.min(0)]),
-        pressioncondenseur: new FormControl("", [Validators.required,Validators.min(0)]),
-        epoxycondenseur: new FormControl("", [Validators.required]),
+        debitcondenseur: new FormControl("", [Validators.min(0)]),
+        pressioncondenseur: new FormControl("", [Validators.min(0)]),
+        epoxycondenseur: new FormControl(""),
          
 
         echangeurfrigo: new FormControl(""),
         typefluide: new FormControl("", [Validators.required]),
-        pertecharge: new FormControl(""),
+        pertecharge: new FormControl("",Validators.required),
         debitfluide: new FormControl("", [Validators.required,Validators.min(0)]),
         tempfluidesortie: new FormControl("", [Validators.required]),
         tempfluideentree: new FormControl("", [Validators.required]),
-        glycol: new FormControl("", [Validators.required,Validators.min(0),Validators.max(100)]),
-        temperatureevaporateur: new FormControl("", [Validators.required]),
+        glycol: new FormControl("",[Validators.min(0),Validators.max(100)]),
+        //temperatureevaporateur: new FormControl("", [Validators.required]),
 
         pressostatHPBP: new FormControl(""),
         manoHPBP: new FormControl(""),
@@ -237,25 +237,25 @@ export class GegComponent implements OnInit {
             avecpompe: new FormControl(""),
             formepompe: new FormControl(""),
             typepompe: new FormControl(""),
-            debitpompe: new FormControl("",Validators.min(0)),
+            debitpompe: new FormControl(""),
             hmtpompe: new FormControl("")
           }),
           ballontampon: new FormGroup({
             avecballontampon: new FormControl(""),
-            capaciteballontampon: new FormControl("",Validators.min(0))
+            capaciteballontampon: new FormControl("")
           }),
           vaseexpansion: new FormGroup({
             avecvaseexpansion : new FormControl(""),
-            capacitevaseexpansion : new FormControl("",Validators.min(0))
+            capacitevaseexpansion : new FormControl("")
           }),
         }),
 
           tensionnominale: new FormGroup({
-            voltage: new FormControl("", [Validators.required,Validators.min(0)]),
-            phases: new FormControl("", [Validators.required,Validators.min(0)]),
-            hertz: new FormControl("", [Validators.required,Validators.min(0)])
+            voltage: new FormControl("", [Validators.min(0)]),
+            phases: new FormControl("", [Validators.min(0)]),
+            hertz: new FormControl("", [Validators.min(0)])
           }),
-          puissanceabsorbee: new FormControl("", [Validators.required,Validators.min(0)]),
+          puissanceabsorbee: new FormControl("", [Validators.min(0)]),
           facteurpuissance: new FormControl(""),
           circuitelectrique: new FormControl(""),
           intensitenominale: new FormControl("",Validators.min(0)),
@@ -265,7 +265,7 @@ export class GegComponent implements OnInit {
           sondefonctionnement: new FormControl(""),
           dialoguegtc: new FormControl("", [Validators.required]),
           puissanceacoustique: new FormControl(""),
-          pressionacoustique: new FormControl("", [Validators.required]),
+          pressionacoustique: new FormControl(""),
 
 
       }),

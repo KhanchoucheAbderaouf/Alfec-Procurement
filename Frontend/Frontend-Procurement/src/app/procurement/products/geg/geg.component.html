@@ -146,10 +146,8 @@
               <div class="row mt-2">
                 <mat-form-field class="full-width-input m-2">
                   <input matInput type="number" placeholder="Rendement Energitique [KW/KW] : " formControlName="eer"
-                    required>
-                  <mat-error>
-                    Veuillez choisir un rendement energitique valide
-                  </mat-error>
+                    >
+             
                 </mat-form-field>
               </div>
 
@@ -176,10 +174,8 @@
                 <div class="row mt-2">
                   <mat-form-field class="full-width-input m-2">
                     <input matInput type="number" placeholder="Rendement Calorofique [KW/Kw] : " formControlName="cop"
-                      required>
-                    <mat-error>
-                      Veuillez choisir un rendement Calorofique valide
-                    </mat-error>
+                      >
+                   
                   </mat-form-field>
                 </div>
 
@@ -318,28 +314,22 @@
                   <div class="row mt-2">
 
                     <mat-form-field class="full-width-input m-2">
-                      <input matInput type="number" placeholder="Débit [m3/h] : " formControlName="debitcondenseur" required>
-                      <mat-error>
-                        Veuillez choisir le débit du ventilateur
-                      </mat-error>
+                      <input matInput type="number" placeholder="Débit [m3/h] : " formControlName="debitcondenseur" >
+                   
                     </mat-form-field>
 
                     <mat-form-field class="full-width-input m-2">
                       <input matInput type="number" placeholder="Pression [Pa] : " formControlName="pressioncondenseur"
-                        required>
-                      <mat-error>
-                        Veuillez choisir la pression du ventilateur
-                      </mat-error>
+                        >
+                     
                     </mat-form-field>
                   </div>
 
                 <div class="row mt-2">
                   <mat-form-field class="full-width-input m-2">
                     <input matInput type="text" placeholder="Protection Epoxy : " formControlName="epoxycondenseur"
-                      required>
-                    <mat-error>
-                      Veuillez choisir la protection Epoxy
-                    </mat-error>
+                      >
+                    
                   </mat-form-field>
                 </div>
  
@@ -441,23 +431,10 @@
 
               <div class="row mt-2">
                 <mat-form-field class="full-width-input m-2">
-                  <input matInput type="number" placeholder="Glycol % : " formControlName="glycol" required>
-                  <mat-error>
-                    Veuillez choisir le pourcentage du glycol
-                  </mat-error>
+                  <input matInput type="number" placeholder="Glycol % : " formControlName="glycol">
                 </mat-form-field>
               </div>
 
-
-              <div class="row mt-2">
-                <mat-form-field class="full-width-input m-2">
-                  <input matInput type="number" placeholder="Température Evaporateur [C°] : "
-                    formControlName="temperatureevaporateur" required>
-                  <mat-error>
-                    Veuillez choisir la Température d'evaporateur
-                  </mat-error>
-                </mat-form-field>
-              </div>
 
             </div>
 
@@ -589,8 +566,7 @@
                             <mat-radio-button value="horizontale">Horizontale</mat-radio-button>&nbsp;
                             <mat-radio-button value="verticale">Verticale</mat-radio-button>
                           </mat-radio-group>&nbsp;&nbsp;&nbsp;
-                          <mat-error *ngIf="submitted && !formGroup.value.parametres.modulehydraulique.pompe.formepompe">Ce champ est
-                            obligatoire</mat-error>
+                       
                       </div>
 
                       <div class="row mt-2">
@@ -679,10 +655,7 @@
 
                         <mat-form-field class="full-width-input m-2">
                           <input matInput type="number" placeholder="Capacite Vase Expansion [L] :  "
-                            formControlName="capacitevaseexpansion" required>
-                          <mat-error>
-                            Veuillez choisir la capacité Vase Expansion
-                          </mat-error>
+                            formControlName="capacitevaseexpansion">
                         </mat-form-field>
 
                       </div>
@@ -724,25 +697,19 @@
                     <mat-label style="color: #182628;" class="h6 col-3 mt-4"> Tension Nominale : </mat-label>
 
                     <mat-form-field class="full-width-input col-3">
-                      <input matInput type="number" placeholder="Voltage : " formControlName="voltage" required>
-                      <mat-error>
-                        Veuillez choisir le voltage
-                      </mat-error>
+                      <input matInput type="number" placeholder="Voltage : " formControlName="voltage">
+
                     </mat-form-field>
 
                     <mat-form-field class="full-width-input col-3">
-                      <input matInput type="number" placeholder="Phases : " formControlName="phases" required>
-                      <mat-error>
-                        Veuillez choisir Phases
-                      </mat-error>
+                      <input matInput type="number" placeholder="Phases : " formControlName="phases" >
+
                     </mat-form-field>
 
 
                     <mat-form-field class="full-width-input col-3">
-                      <input matInput type="number" placeholder="Hertz : " formControlName="hertz" required>
-                      <mat-error>
-                        Veuillez choisir Hertz
-                      </mat-error>
+                      <input matInput type="number" placeholder="Hertz : " formControlName="hertz" >
+
                     </mat-form-field>
 
 
@@ -753,10 +720,7 @@
                 <div class="row mt-2">
                   <mat-form-field class="full-width-input m-2">
                     <input matInput type="number" placeholder="Puissance Absorbée [Kw] :  "
-                      formControlName="puissanceabsorbee" required>
-                    <mat-error>
-                      Veuillez choisir la Puissance Absorbée
-                    </mat-error>
+                      formControlName="puissanceabsorbee" >
                   </mat-form-field>
 
                 </div>
@@ -862,10 +826,8 @@
 
                   <mat-form-field class="full-width-input m-2">
                     <input matInput type="number" placeholder="Pression Acoustique [LpA] : "
-                      formControlName="pressionacoustique" required>
-                    <mat-error>
-                      Veuillez choisir le niveau de la pression Acoustique
-                    </mat-error>
+                      formControlName="pressionacoustique">
+                    
                   </mat-form-field>
 
                 </div>

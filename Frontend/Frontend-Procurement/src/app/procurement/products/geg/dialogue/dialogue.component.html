@@ -161,10 +161,6 @@
     <mat-list-item>
       <p class="title"> Glycol : </p> &nbsp; <p class="value"> {{data.result.parametres.glycol}}%
     </mat-list-item>
-    <mat-list-item>
-      <p class="title"> Température Evaporateur : </p> &nbsp; <p class="value">
-        {{data.result.parametres.temperatureevaporateur}} C°</p>
-    </mat-list-item>
   </mat-list>
 
   <mat-divider></mat-divider>
@@ -273,15 +269,15 @@
       <p class="title"> Armoire Electrique : </p> &nbsp; <p class="value">
         {{data.result.parametres.armoireelectrique}} </p>
     </mat-list-item>
-    <mat-list-item>
-      <p class="title" *ngIf="data.result.parametres.sondefonctionnement"> Sonde Fonctionnement : </p> &nbsp; <p class="value">
+    <mat-list-item *ngIf="data.result.parametres.sondefonctionnement">
+      <p class="title" > Sonde Fonctionnement : </p> &nbsp; <p class="value">
         {{data.result.parametres.sondefonctionnement}} </p>
     </mat-list-item>
     <mat-list-item>
       <p class="title"> Dialogue GTC : </p> &nbsp; <p class="value"> {{data.result.parametres.dialoguegtc}}
     </mat-list-item>
-    <mat-list-item>
-      <p class="title" *ngIf="data.result.parametres.puissanceacoustique"> Puissance Acoustique : </p> &nbsp; <p class="value">
+    <mat-list-item *ngIf="data.result.parametres.puissanceacoustique">
+      <p class="title" > Puissance Acoustique : </p> &nbsp; <p class="value">
         {{data.result.parametres.puissanceacoustique}} KW</p>
     </mat-list-item>
     <mat-list-item>
@@ -415,10 +411,8 @@
     <mat-list-item>
       <div class="row mt-2">
         <mat-form-field class="full-width-input m-2">
-        <input matInput type="number" placeholder="Rendement Energitique [KW/KW] : " formControlName="eer" required>
-        <mat-error>
-          Veuillez choisir un rendement energitique valide
-        </mat-error>
+        <input matInput type="number" placeholder="Rendement Energitique [KW/KW] : " formControlName="eer">
+      
         </mat-form-field>
        </div>
     </mat-list-item>
@@ -441,10 +435,8 @@
     <mat-list-item *ngIf="formGroup.value.parametres.typegeg == 'reversible' ">
       <div class="row mt-2">
         <mat-form-field class="full-width-input m-2">
-        <input matInput type="number" placeholder="Rendement Calorofique [KW/KW] : " formControlName="cop" required>
-        <mat-error>
-          Veuillez choisir un rendement Calorofique valide
-        </mat-error>
+        <input matInput type="number" placeholder="Rendement Calorofique [KW/KW] : " formControlName="cop">
+        
         </mat-form-field>
        </div>
     </mat-list-item>
@@ -500,7 +492,7 @@
     <mat-list-item>
       <div class="row mt-2">
               <mat-form-field class="full-width-input m-2">
-                <input matInput type="text" placeholder="Refrégérant : " formControlName="refregerant" required>
+                <input matInput type="text" placeholder="Refrégirant : " formControlName="refregerant" required>
                 <mat-error>
                   Veuillez choisir le Refrégérant
                 </mat-error>
@@ -529,27 +521,21 @@
       <div class="row mt-2">
                 
         <mat-form-field class="full-width-input m-2">
-        <input matInput type="number" placeholder="Débit [m3/h] : " formControlName="debitcondenseur" required>
-        <mat-error>
-          Veuillez choisir le débit du ventilateur
-        </mat-error>
+        <input matInput type="number" placeholder="Débit [m3/h] : " formControlName="debitcondenseur">
+       
         </mat-form-field>
 
         <mat-form-field class="full-width-input m-2">
-        <input matInput type="number" placeholder="Pression [Pa] : " formControlName="pressioncondenseur" required>
-        <mat-error>
-          Veuillez choisir la pression du ventilateur
-        </mat-error>
+        <input matInput type="number" placeholder="Pression [Pa] : " formControlName="pressioncondenseur" >
+      
         </mat-form-field>
       </div>
     </mat-list-item>
     <mat-list-item>
       <div class="row mt-2">
         <mat-form-field class="full-width-input m-2">
-          <input matInput type="text" placeholder="Protection Epoxy : " formControlName="epoxycondenseur" required>
-          <mat-error>
-            Veuillez choisir la protection Epoxy
-          </mat-error>
+          <input matInput type="text" placeholder="Protection Epoxy : " formControlName="epoxycondenseur" >
+       
           </mat-form-field>
       </div>
     </mat-list-item>
@@ -624,20 +610,8 @@
     <mat-list-item>
       <div class="row mt-2">
         <mat-form-field class="full-width-input m-2">
-        <input matInput type="number" placeholder="Glycol [%]: " formControlName="glycol" required>
-        <mat-error>
-          Veuillez choisir le pourcentage du glycol
-        </mat-error>
-        </mat-form-field>
-      </div>
-    </mat-list-item>
-    <mat-list-item>
-      <div class="row mt-2">
-        <mat-form-field class="full-width-input m-2">
-        <input matInput type="number" placeholder="Température Evaporateur [C°] : " formControlName="temperatureevaporateur" required>
-        <mat-error>
-          Veuillez choisir la Température d'evaporateur
-        </mat-error>
+        <input matInput type="number" placeholder="Glycol [%]: " formControlName="glycol" >
+        
         </mat-form-field>
       </div>
     </mat-list-item>
@@ -717,7 +691,7 @@
         <mat-radio-button  value="horizontale">Horizontale</mat-radio-button>&nbsp;
         <mat-radio-button value="verticale">Verticale</mat-radio-button> 
         </mat-radio-group>
-        <mat-error *ngIf="!formGroup.value.parametres.modulehydraulique.pompe.formepompe">Ce champ est obligatoire</mat-error>
+       
       </div>
     </mat-list-item>
     <mat-list-item *ngIf="formGroup.value.parametres.modulehydraulique.pompe.avecpompe == 'oui'">
@@ -783,10 +757,8 @@
     <mat-list-item *ngIf="formGroup.value.parametres.modulehydraulique.vaseexpansion.avecvaseexpansion == 'oui'">
       <div class="row mt-2">                
         <mat-form-field class="full-width-input m-2">
-        <input matInput type="number" placeholder="Capacite VAse Expansion [L] :  " formControlName="capacitevaseexpansion" required>
-        <mat-error>
-          Veuillez choisir la capacité Vase Expansion
-        </mat-error>
+        <input matInput type="number" placeholder="Capacite VAse Expansion [L] :  " formControlName="capacitevaseexpansion" >
+
         </mat-form-field>
       </div>
     </mat-list-item>
@@ -803,21 +775,21 @@
         <mat-label style="color: #283593;" class="h6 col-3 mt-2"> Tension Nominale : </mat-label>
 
           <mat-form-field class="full-width-input col-3">
-          <input matInput type="number" placeholder="Voltage : " formControlName="voltage" required>
+          <input matInput type="number" placeholder="Voltage : " formControlName="voltage" >
           <mat-error>
             Veuillez choisir le voltage 
           </mat-error>
           </mat-form-field>
 
           <mat-form-field class="full-width-input col-3">
-          <input matInput type="number" placeholder="Phases : " formControlName="phases" required>
+          <input matInput type="number" placeholder="Phases : " formControlName="phases" >
           <mat-error>
             Veuillez choisir Phases
           </mat-error>
           </mat-form-field>
 
           <mat-form-field class="full-width-input col-3">
-          <input matInput type="number" placeholder="Hertz : " formControlName="hertz" required>
+          <input matInput type="number" placeholder="Hertz : " formControlName="hertz" >
           <mat-error>
             Veuillez choisir Hertz
           </mat-error>
@@ -829,10 +801,8 @@
     <mat-list-item>
       <div class="row mt-2">
         <mat-form-field class="full-width-input m-2">
-        <input matInput type="number" placeholder="Puissance Absorbée [KW] :  " formControlName="puissanceabsorbee" required>
-        <mat-error>
-          Veuillez choisir la Puissance Absorbée
-        </mat-error>
+        <input matInput type="number" placeholder="Puissance Absorbée [KW] :  " formControlName="puissanceabsorbee" >
+
         </mat-form-field>
       </div>
     </mat-list-item>
@@ -917,10 +887,8 @@
     <mat-list-item>
       <div class="row mt-2">
         <mat-form-field class="full-width-input m-2">
-            <input matInput type="number" placeholder="Pression Acoustique [LpA] : " formControlName="pressionacoustique" required>
-            <mat-error>
-              Veuillez choisir le niveau de la pression Acoustique
-            </mat-error>
+            <input matInput type="number" placeholder="Pression Acoustique [LpA] : " formControlName="pressionacoustique">
+          
         </mat-form-field>
       </div>
     </mat-list-item>
