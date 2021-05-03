@@ -1,0 +1,61 @@
+<app-nav>
+    <div class="m-4">
+        <mat-form-field   mat-form-field style="float:right" >
+            <mat-label style="color : #283593"> Recherche </mat-label>
+            <input matInput (keyup)="applyFilter($event)"  placeholder="" #input> 
+            </mat-form-field>
+    
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort >
+                <!-- ID Column -->
+                <ng-container matColumnDef="Code">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Code Produit </th>
+                <td mat-cell *matCellDef="let row"> {{row.codep}} </td>
+                </ng-container>
+    
+                <!-- Progress Column -->
+                <ng-container matColumnDef="Type">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+                <td mat-cell *matCellDef="let row"> {{row.type}} </td>
+                </ng-container>
+    
+                <!-- Name Column -->
+                <ng-container matColumnDef="Fournisseur">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Fournisseur </th>
+                <td mat-cell *matCellDef="let row"> {{row.fournisseur.nomf}} </td>
+                </ng-container>
+    
+                <!-- Color Column -->
+                <ng-container matColumnDef="Marque">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Marque </th>
+                <td mat-cell *matCellDef="let row"> {{row.marque}}</td>
+                </ng-container>
+
+                <!-- Color Column -->
+                <ng-container matColumnDef="Prix">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Prix</th>
+                    <td mat-cell *matCellDef="let row"> {{row.totalprice}}</td>
+                </ng-container>
+  
+                <ng-container matColumnDef="Actions">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+                    <td mat-cell *matCellDef="let row" > 
+                        <button mat-button matTooltip="Restaurer le produit" matTooltipShowDelay="1000" (click)="openDialogRecover(row)" style="color:#283593" ><mat-icon>restore_from_trash</mat-icon></button> 
+                        <button mat-button matTooltip="Supprimer le produit définitivement" matTooltipShowDelay="1000" (click)="openDialogDelete(row)" style="color:#eb3b5a" ><mat-icon>delete_forever</mat-icon></button> 
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="5">La valeur "{{input.value}}" n'existe pas</td>
+                </tr>
+    
+            </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+ 
+    </div>
+ </app-nav>       

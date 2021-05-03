@@ -47,7 +47,6 @@ export class IndexComponent implements OnInit,AfterViewInit {
   }
 
 
-  details = [ "GEG", "CTA","Autre"];
   categorie : string = "";
 
    /** control for the selected category */

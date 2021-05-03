@@ -117,6 +117,8 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { PhonePipe } from './utilities/pipes/phone.pipe';
 import {Ng2TelInputModule} from 'ng2-tel-input';
+import { ProductTrashComponent } from './procurement/trash/product-trash/product-trash.component';
+import { FournisseurTrashComponent } from './procurement/trash/fournisseur-trash/fournisseur-trash.component';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -201,6 +203,8 @@ registerLocaleData(localeFr, 'fr');
     EvapsearchComponent,
     EvapsearchresultsComponent,
     PhonePipe,
+    ProductTrashComponent,
+    FournisseurTrashComponent,
   ],
   imports: [
     BrowserModule,

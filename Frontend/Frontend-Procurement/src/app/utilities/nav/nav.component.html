@@ -12,6 +12,9 @@
       
 
     <mat-nav-list>
+      <a mat-list-item id="trash" class="example-icon" routerLink="/procurement/produits/trash">
+        Corbeille  &nbsp; <mat-icon>delete_outline</mat-icon>
+       </a>
       <a mat-list-item id="disconnect" class="example-icon" aria-label="Example icon-button with menu icon" (click)="logout()" type="submit" >
        Déconnexion  &nbsp; <mat-icon>power_settings_new</mat-icon>
       </a>
@@ -33,6 +36,10 @@
      
       <a class="nav-horizontale" routerLinkActive="active" *ngIf="spantext.toLocaleLowerCase().includes('fournisseur')" mat-list-item routerLink="/procurement/fournisseurs/index">Fournisseurs</a>
       <a class="nav-horizontale" routerLinkActive="active" *ngIf="spantext.toLocaleLowerCase().includes('fournisseur')" mat-list-item routerLink="/procurement/fournisseurs/create">Ajouter Frounisseur</a>
+      
+      <a class="nav-horizontale" routerLinkActive="active" *ngIf="spantext.toLocaleLowerCase().includes('trash')" mat-list-item routerLink="/procurement/produits/trash">Produits</a>
+      <a class="nav-horizontale" routerLinkActive="active" *ngIf="spantext.toLocaleLowerCase().includes('trash')" mat-list-item routerLink="/procurement/fournisseurs/trash">Fournisseur</a>
+     
       <span *ngIf="spantext.toLocaleLowerCase().includes('recherche')"> Recherche Avancée </span>
       <a id="search" routerLinkActive="active" matTooltip="Recherche Avancée" mat-list-item class="example-icon" aria-label="Example icon-button with menu icon" routerLink="/procurement/produits/search" type="button" >
          <mat-icon class="mt-2 font-weight-bold">search</mat-icon>

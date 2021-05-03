@@ -45,7 +45,14 @@ span{
   color:white
 }
  
-
+#trash{
+  position: absolute;
+  bottom:   60px;
+}
+#trash:hover{
+  color:white;
+  background-color :red
+}
 
 #disconnect{
   position: absolute;

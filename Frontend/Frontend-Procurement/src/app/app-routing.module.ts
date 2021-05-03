@@ -15,6 +15,8 @@ import { FournisseurIndexComponent } from './procurement/fournisseur/fournisseur
 import { CreateComponent } from './procurement/products/create/create.component';
 import { IndexComponent } from './procurement/products/index/index.component';
 import { SearchComponent } from './procurement/products/search/search.component';
+import { FournisseurTrashComponent } from './procurement/trash/fournisseur-trash/fournisseur-trash.component';
+import { ProductTrashComponent } from './procurement/trash/product-trash/product-trash.component';
 import { AuthGuardService } from './security/guard/auth-guard.service';
  
 import { DashboardComponent } from './utilities/dashboard/dashboard.component';
@@ -113,6 +115,18 @@ const routes: Routes = [
   {
     path: 'procurement/fournisseurs/create',
     component: FournisseurCreateComponent,
+    canActivate: [AuthGuardService],
+    data: { roles: ["procurement"] }
+  },
+  {
+    path: 'procurement/produits/trash',
+    component: ProductTrashComponent,
+    canActivate: [AuthGuardService],
+    data: { roles: ["procurement"] }
+  },
+  {
+    path: 'procurement/fournisseurs/trash',
+    component: FournisseurTrashComponent,
     canActivate: [AuthGuardService],
     data: { roles: ["procurement"] }
   },

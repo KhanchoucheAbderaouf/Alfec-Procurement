@@ -52,6 +52,19 @@ public class ProductController {
     	return productRepository.findByActive(true);
     }
 	
+	@GetMapping("/trash/index")
+    public List<Product> trashindex(){
+
+    	return productRepository.findByActive(false);
+    }
+	
+	@GetMapping("/trash/recover/{id}")
+    public Product recover(@PathVariable("id") long id){
+		Product product = productRepository.findById(id).get();
+		product.setActive(true);
+    	return productRepository.save(product);
+    }
+	
 	@GetMapping("/time")
 	public ZonedDateTime datenow() {
 		//ZonedDateTime a = ZonedDateTime.now(ZoneId.of("Africa/Algiers"));
@@ -108,10 +121,14 @@ public class ProductController {
     public void delete(@PathVariable("idp") long idp){
     	Product produit =  productRepository.findById(idp).get();
     	produit.setActive(false);
-		
     	productRepository.save(produit);
     }
     
+    @DeleteMapping("/trash/delete/{idp}")
+    public void trashdelete(@PathVariable("idp") long idp){
+    	Product produit =  productRepository.findById(idp).get();
+    	productRepository.delete(produit);
+    }
     
     
     @GetMapping("/index/{nomp}")

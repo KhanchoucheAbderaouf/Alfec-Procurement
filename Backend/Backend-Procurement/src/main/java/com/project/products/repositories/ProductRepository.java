@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.project.products.models.Fournisseur;
 import com.project.products.models.Product;
 
 public interface ProductRepository  extends JpaRepository<Product,Long>{
@@ -19,6 +20,8 @@ public interface ProductRepository  extends JpaRepository<Product,Long>{
 	List<Product> findByNompIgnoreCaseAndActive(String nomp, boolean b);
 
 	List<Product> findByActive(boolean b);
+
+	List<Product> findByFournisseur(Fournisseur fournisseur);
 
 
 

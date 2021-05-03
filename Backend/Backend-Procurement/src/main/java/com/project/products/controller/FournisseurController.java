@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.products.models.Fournisseur;
+import com.project.products.models.Product;
 import com.project.products.repositories.FournisseurRepository;
+import com.project.products.repositories.ProductRepository;
 
 
 
@@ -33,6 +35,8 @@ public class FournisseurController {
 	@Autowired
 	FournisseurRepository fournisseurRepository;
 	
+	@Autowired
+	ProductRepository productRepository;
 	
 	
     @PostMapping("/create")
@@ -53,6 +57,28 @@ public class FournisseurController {
     public List<Fournisseur> index(){
 
     	return fournisseurRepository.findByActive(true);
+    }
+    @GetMapping("/trash/index")
+    public List<Fournisseur> trashindex(){
+
+    	return fournisseurRepository.findByActive(false);
+    }
+    
+    @DeleteMapping("/trash/delete/{id}")
+    public void trashdelete(@PathVariable("id") long id){
+    	Fournisseur fournisseur =  fournisseurRepository.findById(id).get();
+    	List<Product> products = productRepository.findByFournisseur(fournisseur);
+    	for(Product produit : products) {
+    		productRepository.delete(produit);
+    	}
+    	fournisseurRepository.delete(fournisseur);
+    }
+    
+    @GetMapping("/trash/recover/{id}")
+    public Fournisseur recover(@PathVariable("id") long id){
+		Fournisseur fournisseur = fournisseurRepository.findById(id).get();
+		fournisseur.setActive(true);
+    	return fournisseurRepository.save(fournisseur);
     }
     
     @GetMapping("/show/{id}")
