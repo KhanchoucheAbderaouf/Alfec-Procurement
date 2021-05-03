@@ -128,10 +128,8 @@ export class VcdialogComponent implements OnInit {
         regimeeauchaudesortie : new FormControl(this.data.result.parametres.regimeeauchaudesortie),
         treprisehiver : new FormControl(this.data.result.parametres.treprisehiver),
         trepriseete: new FormControl(this.data.result.parametres.trepriseete),
-        threprise: new FormControl(this.data.result.parametres.threprise),
         tsoufflagehiver: new FormControl(this.data.result.parametres.tsoufflagehiver),
         tsoufflageete: new FormControl(this.data.result.parametres.tsoufflageete),
-        thsoufflage: new FormControl(this.data.result.parametres.thsoufflage),
         vitesseselection: new FormControl(this.data.result.parametres.vitesseselection),
         couleurcarrosserie: new FormControl(this.data.result.parametres.couleurcarrosserie),
         niveausonore: new FormControl(this.data.result.parametres.niveausonore),
@@ -142,6 +140,7 @@ export class VcdialogComponent implements OnInit {
         servomoteurs: new FormControl(this.data.result.parametres.servomoteurs),    
         commande: new FormControl(this.data.result.parametres.commande),
         pomperelavage: new FormControl(this.data.result.parametres.pomperelavage),
+        regulation: new FormControl(this.data.result.parametres.regulation),
 
         //Autres
         classenergitique: new FormControl(this.data.result.parametres.classenergitique),

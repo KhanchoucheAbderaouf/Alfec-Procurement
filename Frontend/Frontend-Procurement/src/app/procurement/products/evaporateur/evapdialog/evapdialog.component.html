@@ -77,9 +77,7 @@
     <mat-list-item>
       <p class="title"> Type EVAP : </p> &nbsp; <p class="value"> {{data.result.parametres.typeevap}} </p>
     </mat-list-item>
-    <mat-list-item>
-        <p class="title"> Nombre Evaporateurs : </p> &nbsp; <p class="value"> {{data.result.parametres.nombreevaporateur}} </p>
-    </mat-list-item>
+  
     <mat-list-item>
         <p class="title"> Puissance Frigorifique : </p> &nbsp; <p class="value"> {{data.result.parametres.puissancef}} KW </p>
     </mat-list-item>
@@ -226,14 +224,6 @@
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Nombre d'Evaporateurs : " formControlName="nombreevaporateur" required>
-              <mat-error> Veuillez choisir le Nombre d'Evaporateur </mat-error>
-            </mat-form-field>
-        </div>
-    </mat-list-item>
-    <mat-list-item>
-        <div class="row mt-2">
-            <mat-form-field class="full-width-input m-2">
                 <input matInput type="number" placeholder="Puissance Frigorifique [KW] : " formControlName="puissancef" required>
                 <mat-error>
                   Veuillez choisir la Puissance Frigorifique
@@ -270,16 +260,14 @@
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-            <input matInput type="number" placeholder="Tension d'Alimentation [V] : " formControlName="tensionalimentation" required>
-            <mat-error> Veuillez choisir la Tension d'Alimentation </mat-error>
+            <input matInput type="number" placeholder="Tension d'Alimentation [V] : " formControlName="tensionalimentation" >
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Puissance Absorbée Max [KW] : " formControlName="puissanceelectriqueabsorbee" required>
-              <mat-error> Veuillez choisir la Puissance Max Absorbée </mat-error>
+              <input matInput type="number" placeholder="Puissance Absorbée Max [KW] : " formControlName="puissanceelectriqueabsorbee" >
             </mat-form-field>
         </div>
     </mat-list-item>
@@ -305,8 +293,7 @@
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Niveau de Puissance Acoustique [LwA] : " formControlName="puissanceacoustique" required>
-              <mat-error> Veuillez choisir le Niveau de Puissance Acoustique </mat-error>
+              <input matInput type="number" placeholder="Niveau de Puissance Acoustique [LwA] : " formControlName="puissanceacoustique" >
             </mat-form-field>
         </div>
     </mat-list-item>

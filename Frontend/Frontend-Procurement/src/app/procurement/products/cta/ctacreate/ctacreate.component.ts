@@ -121,25 +121,22 @@ export class CtacreateComponent implements OnInit {
 
       parametres: new FormGroup({
 
-        montage : new FormControl("", [Validators.required]),
+        montage : new FormControl(""),
 
         //section ventilation
         ventilation: new FormControl(""),
         nombreventilateur : new FormControl("",Validators.min(0)),
         debitair: new FormControl("", [Validators.required,Validators.min(0)]),
-        debitsoufflage: new FormControl("", [Validators.required,Validators.min(0)]),
-        debitextraction: new FormControl("", [Validators.required,Validators.min(0)]),
-        debitreprise: new FormControl("", [Validators.required,Validators.min(0)]),
         pressiondisponiblegaine: new FormControl("",[Validators.required,Validators.min(0)]),
-        rendementventilateur : new FormControl("",[Validators.min(0),Validators.max(100)]),
+        rendementventilateur : new FormControl(""),
         puissanceelectriqueabsorbe : new FormControl("",Validators.min(0)),
         intensitenominale: new FormControl("",Validators.min(0)),
         intensitedemarrage: new FormControl("",Validators.min(0)),
-        tensionnominalevoltage: new FormControl("", [Validators.required,Validators.min(0)]),
-        tensionnominalephases: new FormControl("", [Validators.required,Validators.min(0)]),
-        tensionnominalehertz: new FormControl("", [Validators.required,Validators.min(0)]),
+        tensionnominalevoltage: new FormControl(""),
+        tensionnominalephases: new FormControl(""),
+        tensionnominalehertz: new FormControl(""),
         protectionthermique: new FormControl(""),
-        sensairventilation: new FormControl("", [Validators.required]),
+        sensairventilation: new FormControl(""),
 
         //section filtration
         prefiltration: new FormControl("", [Validators.required]),
@@ -148,7 +145,7 @@ export class CtacreateComponent implements OnInit {
         nombrefiltration: new FormControl("", [Validators.required,Validators.min(0)]),    
         pertechargefiltration: new FormControl("", [Validators.required]),
         prisepression: new FormControl(""),
-        sensairfiltration: new FormControl("", [Validators.required]),
+        sensairfiltration: new FormControl(""),
         pasdesaillettes: new FormControl(""),
          
         //section batterie
@@ -160,10 +157,10 @@ export class CtacreateComponent implements OnInit {
         regimeeautempentree: new FormControl(""),
         regimeeautempsortie: new FormControl(""),
         temperatureentreeair: new FormControl(""),
-        humiditeentreeair: new FormControl("",[Validators.min(0),Validators.max(100)]),
+        humiditeentreeair: new FormControl(""),
         temperaturesortieair: new FormControl(""),
-        humiditesortieair: new FormControl("",[Validators.min(0),Validators.max(100)]),
-        debitfluide: new FormControl("",Validators.min(0)),
+        humiditesortieair: new FormControl(""),
+        debitfluide: new FormControl(""),
         pertechargebatterie: new FormControl(""),
         
         //section melange
@@ -171,8 +168,8 @@ export class CtacreateComponent implements OnInit {
         typemelange: new FormControl("", [Validators.required]),
         airregistremelange: new FormControl("", [Validators.required]),
         temperaturemelange: new FormControl(""),
-        carrosseriemelange: new FormControl("", [Validators.required]),
-        epaisseurcarrosseriemelange: new FormControl("", [Validators.required]),
+        carrosseriemelange: new FormControl(""),
+        epaisseurcarrosseriemelange: new FormControl(""),
         peintemelange: new FormControl(""),
         
         //autres

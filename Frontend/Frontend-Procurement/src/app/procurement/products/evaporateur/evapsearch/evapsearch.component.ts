@@ -88,7 +88,6 @@ export class EvapsearchComponent implements OnInit {
         utilisationchambre : new FormControl(""),
         temperaturech: new FormControl(""),
         typeevap : new FormControl(""),
-        nombreevaporateur: new FormControl(""),
         puissancef: new FormControl(""),
         temperatureevaporation: new FormControl(""),
         temperatureexterieure: new FormControl(""),

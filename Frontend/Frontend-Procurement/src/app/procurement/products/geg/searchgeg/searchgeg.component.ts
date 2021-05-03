@@ -106,7 +106,6 @@ export class SearchgegComponent implements OnInit {
         tempfluidesortie: new FormControl(""),
         tempfluideentree: new FormControl(""),
         glycol: new FormControl(""),
-        temperatureevaporateur: new FormControl(""),
 
         pressostatHPBP: new FormControl(""),
         manoHPBP: new FormControl(""),

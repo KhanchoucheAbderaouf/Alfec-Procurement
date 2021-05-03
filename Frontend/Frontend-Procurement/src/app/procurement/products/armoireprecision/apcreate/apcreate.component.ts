@@ -112,34 +112,34 @@ export class ApcreateComponent implements OnInit {
         fluidefrigorifique: new FormControl("", [Validators.required]),
         puissancefrigorifique: new FormControl("", [Validators.required,Validators.min(0)]),
         temperatureentreeair: new FormControl(""),
-        temperaturesortieair: new FormControl("", [Validators.required]),
-        temperaturecondensation: new FormControl("", [Validators.required]),
+        temperaturesortieair: new FormControl(""),
+        temperaturecondensation: new FormControl(""),
 
         //ventilateur
-        nombreventilateur: new FormControl("", [Validators.required,Validators.min(0)]),
+        nombreventilateur: new FormControl(""),
         debitair: new FormControl("", [Validators.required,Validators.min(0)]),    
         pressiondisponible: new FormControl("", [Validators.required,Validators.min(0)]),
         vitesserotation: new FormControl("", [Validators.required]),
-        niveausonore: new FormControl("", [Validators.required]),
-        distanceniveausonore: new FormControl("", [Validators.required]),
+        niveausonore: new FormControl(""),
+        distanceniveausonore: new FormControl(""),
         niveaupuissancesonore: new FormControl(""),
 
         //humidificateur
-        nombrehumidificateur: new FormControl("",Validators.min(0)),
-        puissanceabsorbeehumidificateur: new FormControl("",Validators.min(0)),
+        nombrehumidificateur: new FormControl(""),
+        puissanceabsorbeehumidificateur: new FormControl(""),
         productionmaxvapeur: new FormControl(""),
 
         //electrique
-        tensionnominalevoltage: new FormControl("", [Validators.required,Validators.min(0)]),
-        tensionnominalephases: new FormControl("", [Validators.required,Validators.min(0)]),
-        tensionnominalehertz: new FormControl("", [Validators.required,Validators.min(0)]),
-        puissanceelectriqueabsorbee: new FormControl("", [Validators.required,Validators.min(0)]),
+        tensionnominalevoltage: new FormControl(""),
+        tensionnominalephases: new FormControl(""),
+        tensionnominalehertz: new FormControl(""),
+        puissanceelectriqueabsorbee: new FormControl(""),
         courantnominal: new FormControl("",Validators.min(0)),
         dialoguegtc: new FormControl("", [Validators.required]),
-        puissanceacoustique: new FormControl("", [Validators.required]),
+        puissanceacoustique: new FormControl(""),
 
         //Autres
-        puissanceabsorbeebatterie: new FormControl("", [Validators.required,Validators.min(0)]),
+        puissanceabsorbeebatterie: new FormControl(""),
         temperatureexterieure: new FormControl("", [Validators.required]),
         raccordementfrigoentree: new FormControl("", [Validators.required]),
         raccordementfrigosortie: new FormControl("", [Validators.required]),

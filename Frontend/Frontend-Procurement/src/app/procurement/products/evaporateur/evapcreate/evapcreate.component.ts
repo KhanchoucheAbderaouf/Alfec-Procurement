@@ -97,18 +97,17 @@ export class EvapcreateComponent implements OnInit {
         utilisationchambre : new FormControl("",[Validators.required]),
         temperaturech: new FormControl("", [Validators.required]),
         typeevap : new FormControl("", [Validators.required]),
-        nombreevaporateur: new FormControl("", [Validators.required,Validators.min(0)]),
         puissancef: new FormControl("", [Validators.required,Validators.min(0)]),
         temperatureevaporation: new FormControl("", [Validators.required]),
         temperatureexterieure: new FormControl("", [Validators.required]),
         refregerant: new FormControl("", [Validators.required]),
  
         //electrique
-        tensionalimentation: new FormControl("", [Validators.required,Validators.min(0)]),
-        puissanceelectriqueabsorbee: new FormControl("", [Validators.required,Validators.min(0)]),
+        tensionalimentation: new FormControl(""),
+        puissanceelectriqueabsorbee: new FormControl(""),
         courantnominal: new FormControl("", [Validators.required,Validators.min(0)]),
         dialoguegtc: new FormControl("", [Validators.required]),
-        puissanceacoustique: new FormControl("", [Validators.required,Validators.min(0)]),
+        puissanceacoustique: new FormControl(""),
 
         //Autres
         classenergitique: new FormControl(""),

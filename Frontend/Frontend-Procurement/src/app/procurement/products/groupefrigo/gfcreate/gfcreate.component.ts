@@ -107,20 +107,20 @@ export class GfcreateComponent implements OnInit {
         refregerant: new FormControl("", [Validators.required]),
         
         //ventilateur
-        debitair: new FormControl("", [Validators.required,Validators.min(0)]),    
+        debitair: new FormControl(""),    
         intensitemaximale: new FormControl("", [Validators.required,Validators.min(0)]),
-        niveausonore: new FormControl("", [Validators.required]),
+        niveausonore: new FormControl(""),
         diametreraccordementaspiration: new FormControl(""),
         diametreraccordementliquide: new FormControl(""),
 
         //electrique
-        tensionnominalevoltage: new FormControl("", [Validators.required,Validators.min(0)]),
-        tensionnominalephases: new FormControl("", [Validators.required,Validators.min(0)]),
-        tensionnominalehertz: new FormControl("", [Validators.required,Validators.min(0)]),
-        puissanceelectriqueabsorbee: new FormControl("", [Validators.required,Validators.min(0)]),
+        tensionnominalevoltage: new FormControl(""),
+        tensionnominalephases: new FormControl(""),
+        tensionnominalehertz: new FormControl(""),
+        puissanceelectriqueabsorbee: new FormControl(""),
         courantnominal: new FormControl("", [Validators.required,Validators.min(0)]),
         dialoguegtc: new FormControl("", [Validators.required]),
-        puissanceacoustique: new FormControl("", [Validators.required,Validators.min(0)]),
+        puissanceacoustique: new FormControl(""),
 
         //Autres
         classenergitique: new FormControl(""),

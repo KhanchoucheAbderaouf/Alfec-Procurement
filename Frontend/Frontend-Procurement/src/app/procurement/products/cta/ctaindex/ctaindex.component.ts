@@ -78,14 +78,14 @@ export class CtaindexComponent implements OnInit {
           return data.fournisseur.nomf.toLocaleLowerCase().includes(filter)||
           data.marque.toLocaleLowerCase().includes(filter) ||
           data.codep.toLocaleLowerCase().includes(filter) ||
-          data.parametres.debitsoufflage.toString().includes(filter) ||
+          data.parametres.debitair.toString().includes(filter) ||
           data.typeproductprice.toLocaleLowerCase().includes(filter) ||
           data.parametres.regulation.toLocaleLowerCase().includes(filter);
         } else {
             return data.fournisseur.nomf.toLocaleLowerCase().includes(filter)||
             data.marque.toLocaleLowerCase().includes(filter) ||
             data.codep.toLocaleLowerCase().includes(filter) ||
-            data.parametres.debitsoufflage.toString().includes(filter) ||
+            data.parametres.debitair.toString().includes(filter) ||
             data.parametres.regulation.toLocaleLowerCase().includes(filter);
         } 
       }
@@ -114,7 +114,7 @@ export class CtaindexComponent implements OnInit {
           return data.typeproductprice;
           }
       case 'DebitCTA': {
-            return data.parametres.debitsoufflage;
+            return data.parametres.debitair;
         }
       default: {
         

@@ -96,10 +96,8 @@ export class VcsearchComponent implements OnInit {
         regimeeauchaudesortie : new FormControl(""),
         treprisehiver : new FormControl(""),
         trepriseete: new FormControl(""),
-        threprise: new FormControl(""),
         tsoufflagehiver: new FormControl(""),
         tsoufflageete: new FormControl(""),
-        thsoufflage: new FormControl(""),
         vitesseselection: new FormControl(""),
         couleurcarrosserie: new FormControl(""),
         niveausonore: new FormControl(""),
@@ -110,6 +108,7 @@ export class VcsearchComponent implements OnInit {
         servomoteurs: new FormControl(""),    
         commande: new FormControl(""),
         pomperelavage: new FormControl(""),
+        regulation: new FormControl(""),
 
         //Autres
         classenergitique: new FormControl(""),

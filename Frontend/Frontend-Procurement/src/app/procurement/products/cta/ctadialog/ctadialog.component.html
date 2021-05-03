@@ -89,15 +89,6 @@
         <p class="title"> Débit d'air : </p> &nbsp; <p class="value"> {{data.result.parametres.debitair}} m3/h</p>
     </mat-list-item>
     <mat-list-item>
-      <p class="title"> Débit de soufflage : </p> &nbsp; <p class="value"> {{data.result.parametres.debitsoufflage}} m3/h</p>
-    </mat-list-item>
-    <mat-list-item>
-      <p class="title"> Débit d'extraction : </p> &nbsp; <p class="value"> {{data.result.parametres.debitextraction}} m3/h</p>
-    </mat-list-item>
-    <mat-list-item>
-      <p class="title"> Débit de reprise : </p> &nbsp; <p class="value"> {{data.result.parametres.debitreprise}} m3/h</p>
-    </mat-list-item>
-    <mat-list-item>
         <p class="title"> Pression disponible pour la gaine : </p> &nbsp; <p class="value"> {{data.result.parametres.pressiondisponiblegaine}} Pa</p>
     </mat-list-item>
     <mat-list-item *ngIf="data.result.parametres.rendementventilateur">
@@ -317,11 +308,10 @@
     <mat-list-item>
       <div class="row m-2">
         <mat-label style="color: #182628;" class="h6"> Montage : *</mat-label>&nbsp;&nbsp;&nbsp;
-          <mat-radio-group formControlName="montage" required>
+          <mat-radio-group formControlName="montage">
             <mat-radio-button value="interieur">Intérieur</mat-radio-button>&nbsp;
             <mat-radio-button value="exterieur">Extérieur</mat-radio-button>
           </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-          <mat-error *ngIf="!formGroup.value.parametres.montage">Ce champ est obligatoire</mat-error>
       </div>
     </mat-list-item>
   </mat-list>
@@ -354,39 +344,6 @@
             required>
           <mat-error>
             Veuillez choisir le débit d'air
-          </mat-error>
-        </mat-form-field>
-      </div>
-    </mat-list-item>
-    <mat-list-item>
-      <div class="row mt-2">
-        <mat-form-field class="full-width-input m-2">
-          <input matInput type="number" placeholder="Débit de Soufflage [m3/h] : " formControlName="debitsoufflage"
-            required>
-          <mat-error>
-            Veuillez choisir le débit de Soufflage
-          </mat-error>
-        </mat-form-field>
-      </div>
-    </mat-list-item>
-    <mat-list-item>
-        <div class="row mt-2">
-        <mat-form-field class="full-width-input m-2">
-          <input matInput type="number" placeholder="Débit d'éxtraction [m3/h] : " formControlName="debitextraction"
-            required>
-          <mat-error>
-            Veuillez choisir le débit d'éxtraction
-          </mat-error>
-        </mat-form-field>
-        </div>
-    </mat-list-item>
-    <mat-list-item>
-      <div class="row mt-2">
-        <mat-form-field class="full-width-input m-2">
-          <input matInput type="number" placeholder="Débit de reprise [m3/h] : " formControlName="debitreprise"
-            required>
-          <mat-error>
-            Veuillez choisir le débit de reprise
           </mat-error>
         </mat-form-field>
       </div>
@@ -440,24 +397,18 @@
         <div class="row mt-2">
           <mat-label style="color: #283593;" class="h6 col-3 mt-2"> Tension Nominale : </mat-label>
             <mat-form-field class="full-width-input col-3">
-            <input matInput type="number" placeholder="Voltage : " formControlName="tensionnominalevoltage" required>
-            <mat-error>
-              Veuillez choisir le voltage 
-            </mat-error>
+            <input matInput type="number" placeholder="Voltage : " formControlName="tensionnominalevoltage">
+            
             </mat-form-field>
   
             <mat-form-field class="full-width-input col-3">
-            <input matInput type="number" placeholder="Phases : " formControlName="tensionnominalephases" required>
-            <mat-error>
-              Veuillez choisir Phases
-            </mat-error>
+            <input matInput type="number" placeholder="Phases : " formControlName="tensionnominalephases" >
+            
             </mat-form-field>
   
             <mat-form-field class="full-width-input col-3">
-            <input matInput type="number" placeholder="Hertz : " formControlName="tensionnominalehertz" required>
-            <mat-error>
-              Veuillez choisir Hertz
-            </mat-error>
+            <input matInput type="number" placeholder="Hertz : " formControlName="tensionnominalehertz" >
+            
             </mat-form-field>
           </div>
       </mat-list-item>
@@ -472,11 +423,10 @@
       <mat-list-item>
         <div class="row mt-2">
           <mat-label style="color: #182628;" class="h6"> Accès le sens de l'air  : *</mat-label>&nbsp;&nbsp;&nbsp;
-            <mat-radio-group formControlName="sensairventilation" required>
+            <mat-radio-group formControlName="sensairventilation" >
               <mat-radio-button value="droite">Droite</mat-radio-button>&nbsp;
               <mat-radio-button value="gauche">Gauche</mat-radio-button>
             </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-            <mat-error *ngIf="!formGroup.value.parametres.sensairventilation">Ce champ est obligatoire</mat-error>
       </div>
       </mat-list-item>
   </mat-list>
@@ -542,11 +492,11 @@
     <mat-list-item>
       <div class="row mt-2">
         <mat-label style="color: #182628;" class="h6"> Accès le sens de l'air  : *</mat-label>&nbsp;&nbsp;&nbsp;
-          <mat-radio-group formControlName="sensairfiltration" required>
+          <mat-radio-group formControlName="sensairfiltration">
             <mat-radio-button value="face droite"> Face Droite</mat-radio-button>&nbsp;
             <mat-radio-button value="face gauche"> Face Gauche</mat-radio-button>
           </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-          <mat-error *ngIf="!formGroup.value.parametres.sensairfiltration">Ce champ est obligatoire</mat-error>
+       
     </div>
     </mat-list-item>
     <mat-list-item>
@@ -734,17 +684,14 @@
                 <mat-radio-button value="simple peau">Simple Peau</mat-radio-button>&nbsp;
                 <mat-radio-button value="double peau">Double Peau</mat-radio-button>&nbsp;
               </mat-radio-group>&nbsp;&nbsp;&nbsp;
-              <mat-error *ngIf="!formGroup.value.parametres.carrosseriemelange">Ce champ est obligatoire
-              </mat-error>
+             
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2" *ngIf="formGroup.value.parametres.carrosseriemelange">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Epaisseur Carrosserie [mm] : " formControlName="epaisseurcarrosseriemelange" required>
-              <mat-error>
-                Veuillez choisir l'épaisseur de la Carrosserie du mélange
-              </mat-error>
+              <input matInput type="number" placeholder="Epaisseur Carrosserie [mm] : " formControlName="epaisseurcarrosseriemelange">
+             
             </mat-form-field>
         </div>
     </mat-list-item>

@@ -143,83 +143,61 @@
                 <div class="row mt-2">
                     <mat-form-field class="full-width-input m-2">
                       <input matInput type="number" placeholder="Température de Reprise en Hiver [C°] : " 
-                                                    formControlName="treprisehiver" required>
-                      <mat-error> Veuillez choisir la Température de Reprise en Hiver</mat-error>
+                                                    formControlName="treprisehiver">
                     </mat-form-field>
                 </div>
 
                 <div class="row mt-2">
                   <mat-form-field class="full-width-input m-2">
                     <input matInput type="number" placeholder="Température de Reprise en Eté [C°] : " 
-                                                  formControlName="trepriseete" required>
-                    <mat-error> Veuillez choisir la Température de Reprise en Eté</mat-error>
+                                                  formControlName="trepriseete" >
                   </mat-form-field>
                 </div>
 
 
-                <div class="row mt-2">
-                  <mat-form-field class="full-width-input m-2">
-                    <input matInput type="number" placeholder="TH de Reprise [C°] : " 
-                                                  formControlName="threprise" required>
-                    <mat-error> Veuillez choisir le TH de Reprise </mat-error>
-                  </mat-form-field>
-                </div>
 
                 <div class="row mt-2">
                   <mat-form-field class="full-width-input m-2">
                     <input matInput type="number" placeholder="Température de Soufflage en Hiver [C°] : " 
-                                                  formControlName="tsoufflagehiver" required>
-                    <mat-error> Veuillez choisir la Température de Soufflage en Hiver</mat-error>
+                                                  formControlName="tsoufflagehiver" >
                   </mat-form-field>
                 </div>
 
                 <div class="row mt-2">
                   <mat-form-field class="full-width-input m-2">
                     <input matInput type="number" placeholder="Température de Soufflage en Eté [C°] : " 
-                                                  formControlName="tsoufflageete" required>
-                    <mat-error> Veuillez choisir la Température de Soufflage en Eté</mat-error>
+                                                  formControlName="tsoufflageete" >
                   </mat-form-field>
                 </div>
 
 
-                <div class="row mt-2">
-                  <mat-form-field class="full-width-input m-2">
-                    <input matInput type="number" placeholder="TH de Soufflage [C°] : " 
-                                                  formControlName="thsoufflage" required>
-                    <mat-error> Veuillez choisir le TH de Soufflage </mat-error>
-                  </mat-form-field>
-                </div>
 
                 <div class="row mt-2">
                   <mat-label style="color: #182628;" class="h6"> Vitesse de Séléction  : *</mat-label>&nbsp;&nbsp;&nbsp;
-                    <mat-radio-group formControlName="vitesseselection" required>
+                    <mat-radio-group formControlName="vitesseselection" >
                       <mat-radio-button value="Petite">Petite</mat-radio-button>&nbsp;
                       <mat-radio-button value="Moyenne">Moyenne</mat-radio-button>&nbsp;
                       <mat-radio-button value="Grande">Grande</mat-radio-button>
                     </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-                    <mat-error *ngIf="submitted && !formGroup.value.parametres.vitesseselection">Ce champ est obligatoire</mat-error>
                 </div>
 
                 <div class="row mt-2">
                   <mat-label style="color: #182628;" class="h6"> Couleur Carrosserie  : *</mat-label>&nbsp;&nbsp;&nbsp;
-                    <mat-radio-group formControlName="couleurcarrosserie" required>
+                    <mat-radio-group formControlName="couleurcarrosserie" >
                       <mat-radio-button value="Standard">Standard</mat-radio-button>&nbsp;
                       <mat-radio-button value="RAL">RAL</mat-radio-button>
                     </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-                    <mat-error *ngIf="submitted && !formGroup.value.parametres.couleurcarrosserie">Ce champ est obligatoire</mat-error>
                 </div>
 
                 <div class="row mt-2">
                     <mat-form-field class="full-width-input m-2">
-                      <input matInput type="number" placeholder="Niveau sonore exigé : " formControlName="niveausonore" required>
-                      <mat-error> Veuillez choisir le Niveau Sonore Exigé </mat-error>
+                      <input matInput type="number" placeholder="Niveau sonore exigé : " formControlName="niveausonore" >
                     </mat-form-field>
                 </div>
 
                 <div class="row mt-2">
                   <mat-form-field class="full-width-input m-2">
-                    <input matInput type="number" placeholder="Pression disponible [Pa] : " formControlName="pressiondisponible" required>
-                    <mat-error> Veuillez choisir la Pression disponible </mat-error>
+                    <input matInput type="number" placeholder="Pression disponible [Pa] : " formControlName="pressiondisponible" >
                   </mat-form-field>
                 </div>
 
@@ -232,7 +210,7 @@
   
             <div class="card card-body mt-2" style="background-color:  white; width: 100%;">
               <div class="row">
-                <h3 style="color : #283593">Section Filtration</h3>
+                <h3 style="color : #283593">Accessoires</h3>
                  
                 <button type="button" (click)="Accessoires()" mat-icon-button class="example-icon"
                   aria-label="Example icon-button with menu icon">
@@ -278,6 +256,15 @@
                       <mat-radio-button value="Sans">Sans</mat-radio-button>
                     </mat-radio-group>&nbsp;&nbsp;&nbsp;  
                     <mat-error *ngIf="submitted && !formGroup.value.parametres.pomperelavage">Ce champ est obligatoire</mat-error>
+                </div>
+
+                <div class="row mt-2">
+                  <mat-label style="color: #182628;" class="h6"> Régulation : *</mat-label>&nbsp;&nbsp;&nbsp;
+                    <mat-radio-group formControlName="regulation" required>
+                      <mat-radio-button value="Avec">Avec</mat-radio-button>&nbsp;
+                      <mat-radio-button value="Sans">Sans</mat-radio-button>
+                    </mat-radio-group>&nbsp;&nbsp;&nbsp;  
+                    <mat-error *ngIf="submitted && !formGroup.value.parametres.regulation">Ce champ est obligatoire</mat-error>
                 </div>
                  
   

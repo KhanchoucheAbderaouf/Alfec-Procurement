@@ -127,7 +127,6 @@ export class EvapdialogComponent implements OnInit {
         utilisationchambre : new FormControl(this.data.result.parametres.utilisationchambre),
         temperaturech: new FormControl(this.data.result.parametres.temperaturech),
         typeevap : new FormControl(this.data.result.parametres.typeevap),
-        nombreevaporateur: new FormControl(this.data.result.parametres.nombreevaporateur),
         puissancef: new FormControl(this.data.result.parametres.puissancef),
         temperatureevaporation: new FormControl(this.data.result.parametres.temperatureevaporation),
         temperatureexterieure: new FormControl(this.data.result.parametres.temperatureexterieure),
