@@ -192,11 +192,11 @@ export class GegComponent implements OnInit {
 
 
       parametres: new FormGroup({
-        pf: new FormControl("", [Validators.required,Validators.min(0)]),
+        pf: new FormControl("", [Validators.required]),
         tempexterieurpf: new FormControl("", [Validators.required]),
-        eer: new FormControl("",[Validators.min(0)]),
-        cop: new FormControl("",Validators.min(0)),
-        pc : new FormControl("",Validators.min(0)),
+        eer: new FormControl(""),
+        cop: new FormControl(""),
+        pc : new FormControl(""),
         tempexterieurpc : new FormControl(""),
         typegeg: new FormControl("", [Validators.required]),
         classenergitique: new FormControl(""),
@@ -212,8 +212,8 @@ export class GegComponent implements OnInit {
 
        
         ventilateur: new FormControl("", [Validators.required]),
-        debitcondenseur: new FormControl("", [Validators.min(0)]),
-        pressioncondenseur: new FormControl("", [Validators.min(0)]),
+        debitcondenseur: new FormControl(""),
+        pressioncondenseur: new FormControl(""),
         epoxycondenseur: new FormControl(""),
          
 
@@ -223,7 +223,7 @@ export class GegComponent implements OnInit {
         debitfluide: new FormControl("", [Validators.required,Validators.min(0)]),
         tempfluidesortie: new FormControl("", [Validators.required]),
         tempfluideentree: new FormControl("", [Validators.required]),
-        glycol: new FormControl("",[Validators.min(0),Validators.max(100)]),
+        glycol: new FormControl(""),
         //temperatureevaporateur: new FormControl("", [Validators.required]),
 
         pressostatHPBP: new FormControl(""),
@@ -251,16 +251,16 @@ export class GegComponent implements OnInit {
         }),
 
           tensionnominale: new FormGroup({
-            voltage: new FormControl("", [Validators.min(0)]),
-            phases: new FormControl("", [Validators.min(0)]),
-            hertz: new FormControl("", [Validators.min(0)])
+            voltage: new FormControl(""),
+            phases: new FormControl(""),
+            hertz: new FormControl("")
           }),
-          puissanceabsorbee: new FormControl("", [Validators.min(0)]),
+          puissanceabsorbee: new FormControl(""),
           facteurpuissance: new FormControl(""),
           circuitelectrique: new FormControl(""),
-          intensitenominale: new FormControl("",Validators.min(0)),
-          intensitemaximale: new FormControl("",Validators.min(0)),
-          intensitedemmarage: new FormControl("",Validators.min(0)),
+          intensitenominale: new FormControl(""),
+          intensitemaximale: new FormControl(""),
+          intensitedemmarage: new FormControl(""),
           armoireelectrique: new FormControl("", [Validators.required]),
           sondefonctionnement: new FormControl(""),
           dialoguegtc: new FormControl("", [Validators.required]),

@@ -134,7 +134,7 @@ export class ApcreateComponent implements OnInit {
         tensionnominalephases: new FormControl(""),
         tensionnominalehertz: new FormControl(""),
         puissanceelectriqueabsorbee: new FormControl(""),
-        courantnominal: new FormControl("",Validators.min(0)),
+        courantnominal: new FormControl(""),
         dialoguegtc: new FormControl("", [Validators.required]),
         puissanceacoustique: new FormControl(""),
 
