@@ -66,7 +66,6 @@ export class DialogueComponent implements OnInit {
         this.formGroup.patchValue({parametres : {
           pc : "",
           cop: "",
-          tempexterieurpc : ""
         }}) 
       }
 
@@ -215,11 +214,10 @@ export class DialogueComponent implements OnInit {
 
       parametres: new FormGroup({
         pf: new FormControl(this.data.result.parametres.pf),
-        tempexterieurpf: new FormControl(this.data.result.parametres.tempexterieurpf),
+        tempexterieure: new FormControl(this.data.result.parametres.tempexterieure),
         eer: new FormControl(this.data.result.parametres.eer),
         cop: new FormControl(this.data.result.parametres.cop),
         pc : new FormControl(this.data.result.parametres.pc),
-        tempexterieurpc : new FormControl(this.data.result.parametres.tempexterieurpc),
         typegeg: new FormControl(this.data.result.parametres.typegeg),
         classenergitique: new FormControl(this.data.result.parametres.classenergitique),
         plotantivibration: new FormControl(this.data.result.parametres.plotantivibration),

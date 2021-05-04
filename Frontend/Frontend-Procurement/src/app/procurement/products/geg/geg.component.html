@@ -126,18 +126,20 @@
                     <mat-radio-button   value="air" formControlName="condensation">à air</mat-radio-button>
                     <mat-radio-button value="eau" formControlName="condensation">à eau</mat-radio-button>
                   </mat-radio-group> -->
+                  <div class="row mt-2">
+                    <mat-form-field class="full-width-input m-2">
+                      <input matInput type="number" placeholder="Température Exterieure [C°] : " formControlName="tempexterieure"
+                        required>
+                      <mat-error>
+                        Veuillez choisir une température éxterieure valide
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
               <div class="row mt-2">
-                <mat-form-field class="full-width-input col-6">
+                <mat-form-field class="full-width-input m-2">
                   <input matInput type="number" placeholder="Puissance Froide [KW] : " formControlName="pf" required>
                   <mat-error>
                     Veuillez choisir une puissance froide valide
-                  </mat-error>
-                </mat-form-field>
-                <mat-form-field class="full-width-input col-6">
-                  <input matInput type="number" placeholder="Température Exterieur [C°] : " formControlName="tempexterieurpf"
-                    required>
-                  <mat-error>
-                    Veuillez choisir une température éxterieure valide
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -155,16 +157,12 @@
               <div *ngIf="formGroup.value.parametres.typegeg == 'reversible'">
 
                 <div class="row mt-2">
-                  <mat-form-field class="full-width-input col-6">
+                  <mat-form-field class="full-width-input m-2">
                     <input matInput type="number" placeholder="Puissance Calorifique [KW]: " formControlName="pc"
                        >
                      
                   </mat-form-field>
-                  <mat-form-field class="full-width-input col-6">
-                    <input matInput type="number" placeholder="Température Exterieur [C°] : "
-                      formControlName="tempexterieurpc"  >
-                    
-                  </mat-form-field>
+               
                 </div>
 
                 <div class="row mt-2">

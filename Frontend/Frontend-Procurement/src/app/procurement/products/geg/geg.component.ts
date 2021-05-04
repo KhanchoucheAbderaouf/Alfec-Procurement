@@ -38,7 +38,6 @@ export class GegComponent implements OnInit {
         this.formGroup.patchValue({parametres : {
           pc : "",
           cop: "",
-          tempexterieurpc : ""
         }}) 
       }
 
@@ -193,11 +192,10 @@ export class GegComponent implements OnInit {
 
       parametres: new FormGroup({
         pf: new FormControl("", [Validators.required]),
-        tempexterieurpf: new FormControl("", [Validators.required]),
         eer: new FormControl(""),
         cop: new FormControl(""),
         pc : new FormControl(""),
-        tempexterieurpc : new FormControl(""),
+        tempexterieure : new FormControl("",[Validators.required]),
         typegeg: new FormControl("", [Validators.required]),
         classenergitique: new FormControl(""),
         plotantivibration: new FormControl("", [Validators.required]),

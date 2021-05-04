@@ -74,16 +74,17 @@
     <mat-list-item>
       <p class="title"> Condensation : </p> &nbsp; <p class="value"> {{data.result.parametres.condensation}} </p>
     </mat-list-item>
+    <mat-list-item> 
+      <p class="title"> température Extérieure :  </p> &nbsp; <p class="value"> {{data.result.parametres.tempexterieure}} C°</p>
+    </mat-list-item>
     <mat-list-item>
-      <p class="title"> La puissance froide / température Extérieure : </p> &nbsp; <p class="value">
-        {{data.result.parametres.pf}} KW / {{data.result.parametres.tempexterieurpf}} C°</p>
+      <p class="title"> La puissance froide : </p> &nbsp; <p class="value"> {{data.result.parametres.pf}} KW </p>
     </mat-list-item>
     <mat-list-item>
       <p class="title"> Rendement Energitique :</p> &nbsp; <p class="value"> {{data.result.parametres.eer}} KW/KW
     </mat-list-item>
     <mat-list-item *ngIf="data.result.parametres.typegeg == 'reversible' ">
-      <p class="title">La puissance calorifique / temprérature éxtérieure : </p> &nbsp; <p class="value">
-        {{data.result.parametres.pc}} KW / {{data.result.parametres.tempexterieurpc}} C°</p>
+      <p class="title">La puissance calorifique : </p> &nbsp; <p class="value"> {{data.result.parametres.pc}} KW </p>
     </mat-list-item>
     <mat-list-item *ngIf="data.result.parametres.typegeg == 'reversible' ">
       <p class="title"> Rendement Energitique :</p> &nbsp; <p class="value"> {{data.result.parametres.cop}} KW/KW</p>
@@ -394,16 +395,20 @@
     </mat-list-item>
     <mat-list-item>
       <div class="row mt-2">
-        <mat-form-field class="full-width-input col-6">
+        <mat-form-field class="full-width-input m-2">
+          <input matInput type="number" placeholder="Température Exterieur [C°] : " formControlName="tempexterieure" required>
+          <mat-error>
+            Veuillez choisir une température éxterieure valide
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </mat-list-item>
+    <mat-list-item>
+      <div class="row mt-2">
+        <mat-form-field class="full-width-input m-2">
           <input matInput type="number" placeholder="Puissance Froide [KW] : " formControlName="pf" required>
           <mat-error>
             Veuillez choisir une puissance froide valide
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="full-width-input col-6">
-          <input matInput type="number" placeholder="Température Exterieur [C°] : " formControlName="tempexterieurpf" required>
-          <mat-error>
-            Veuillez choisir une température éxterieure valide
           </mat-error>
         </mat-form-field>
       </div>
@@ -418,16 +423,10 @@
     </mat-list-item>
     <mat-list-item *ngIf="formGroup.value.parametres.typegeg == 'reversible' ">
       <div class="row mt-2">
-        <mat-form-field class="full-width-input col-6">
+        <mat-form-field class="full-width-input m-2">
           <input matInput type="number" placeholder="Puissance Calorifique [KW]: " formControlName="pc" required>
           <mat-error>
             Veuillez choisir une puissance froide valide
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="full-width-input col-6">
-          <input matInput type="number" placeholder="Température Exterieur [C°] : " formControlName="tempexterieurpc" required>
-          <mat-error>
-            Veuillez choisir une température éxterieure valide
           </mat-error>
         </mat-form-field>
       </div>

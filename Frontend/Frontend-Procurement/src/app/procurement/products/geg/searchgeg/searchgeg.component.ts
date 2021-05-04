@@ -77,11 +77,10 @@ export class SearchgegComponent implements OnInit {
   
       parametres: new FormGroup({
         pf: new FormControl(""),
-        tempexterieurpf: new FormControl(""),
+        tempexterieure: new FormControl(""),
         eer: new FormControl(""),
         cop: new FormControl(""),
         pc : new FormControl(""),
-        tempexterieurpc : new FormControl(""),
         typegeg: new FormControl("" ),
         classenergitique: new FormControl(""),
         plotantivibration: new FormControl(""),

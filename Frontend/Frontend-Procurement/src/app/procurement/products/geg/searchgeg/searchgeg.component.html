@@ -68,17 +68,20 @@
                       <mat-radio-button value="eau">à eau </mat-radio-button>
                     </mat-radio-group>&nbsp;&nbsp;&nbsp;  
                 </div>
-                 
+                
                 <div class="row mt-2">
-                  <mat-form-field class="full-width-input col-6">
+                  <mat-form-field class="full-width-input m-2">
+                    <input matInput type="number" placeholder="Température Exterieur : " formControlName="tempexterieure"
+                       > 
+                  </mat-form-field>
+                </div>
+
+                <div class="row mt-2">
+                  <mat-form-field class="full-width-input m-2">
                     <input matInput type="number" placeholder="Puissance Froide [KW] : " formControlName="pf"  >
                      
                   </mat-form-field>
-                  <mat-form-field class="full-width-input col-6">
-                    <input matInput type="number" placeholder="Température Exterieur : " formControlName="tempexterieurpf"
-                       >
-                    
-                  </mat-form-field>
+                  
                 </div>
   
   
@@ -92,17 +95,10 @@
   
   
                 <div *ngIf="formGroup.value.parametres.typegeg == 'reversible'">
-  
                   <div class="row mt-2">
-                    <mat-form-field class="full-width-input col-6">
+                    <mat-form-field class="full-width-input m-2">
                       <input matInput type="number" placeholder="Puissance Calorifique [KW]: " formControlName="pc"
                          >
-                      
-                    </mat-form-field>
-                    <mat-form-field class="full-width-input col-6">
-                      <input matInput type="number" placeholder="Température Exterieur : "
-                        formControlName="tempexterieurpc"  >
-                       
                     </mat-form-field>
                   </div>
   
