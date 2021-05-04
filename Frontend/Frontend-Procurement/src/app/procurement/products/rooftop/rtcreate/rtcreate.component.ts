@@ -103,18 +103,18 @@ export class RtcreateComponent implements OnInit {
         //Infos Essentielles
         typert : new FormControl("", [Validators.required]),
         puissancef: new FormControl("", [Validators.required,Validators.min(0)]),
-        puissancec: new FormControl("",Validators.min(0)),
-        rendement: new FormControl("",[Validators.required]),
+        puissancec: new FormControl(""),
+        rendement: new FormControl(""),
         texterieure: new FormControl("",[Validators.required]),
       
         //Compresseur
-        nombrecircuitfrigo: new FormControl("", [Validators.required,Validators.min(0)]),
+        nombrecircuitfrigo: new FormControl(""),
         nombrecompresseur: new FormControl("", [Validators.required,Validators.min(0)]),
         refregerant: new FormControl("", [Validators.required]),
         temperatureentreeair: new FormControl(""),
-        humiditeentreeair: new FormControl("",[Validators.min(0),Validators.max(100)]),
+        humiditeentreeair: new FormControl(""),
         temperaturesortieair: new FormControl(""),
-        humiditesortieair: new FormControl("",[Validators.min(0),Validators.max(100)]),
+        humiditesortieair: new FormControl(""),
 
         //ventilateur
         debitair: new FormControl("", [Validators.required,Validators.min(0)]),    
@@ -131,13 +131,13 @@ export class RtcreateComponent implements OnInit {
         nombrefiltration: new FormControl("", [Validators.required,Validators.min(0)]),
 
         //electrique
-        tensionnominalevoltage: new FormControl("", [Validators.required,Validators.min(0)]),
-        tensionnominalephases: new FormControl("", [Validators.required,Validators.min(0)]),
-        tensionnominalehertz: new FormControl("", [Validators.required,Validators.min(0)]),
-        puissanceelectriqueabsorbee: new FormControl("", [Validators.required,Validators.min(0)]),
+        tensionnominalevoltage: new FormControl(""),
+        tensionnominalephases: new FormControl(""),
+        tensionnominalehertz: new FormControl(""),
+        puissanceelectriqueabsorbee: new FormControl(""),
         courantnominal: new FormControl("", [Validators.required,Validators.min(0)]),
         dialoguegtc: new FormControl("", [Validators.required]),
-        puissanceacoustique: new FormControl("", [Validators.required,Validators.min(0)]),
+        puissanceacoustique: new FormControl(""),
 
         //Autres
         classenergitique: new FormControl(""),

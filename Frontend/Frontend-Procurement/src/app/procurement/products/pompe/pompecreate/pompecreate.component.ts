@@ -98,18 +98,18 @@ export class PompecreateComponent implements OnInit {
         typepompe : new FormControl("", [Validators.required]),
         debiteau: new FormControl("", [Validators.required,Validators.min(0)]),
         hauteurtotale: new FormControl("", [Validators.required]),
-        rendementhydraulique  : new FormControl("",[Validators.required]),
+        rendementhydraulique  : new FormControl(""),
         tmin: new FormControl("", [Validators.required]),
         tmax: new FormControl("", [Validators.required]),
       
         
         //electrique
-        tensionnominalevoltage: new FormControl("", [Validators.required,Validators.min(0)]),
-        tensionnominalephases: new FormControl("", [Validators.required,Validators.min(0)]),
-        tensionnominalehertz: new FormControl("", [Validators.required,Validators.min(0)]),
-        puissanceelectriqueabsorbee: new FormControl("", [Validators.required,Validators.min(0)]),
+        tensionnominalevoltage: new FormControl(""),
+        tensionnominalephases: new FormControl(""),
+        tensionnominalehertz: new FormControl(""),
+        puissanceelectriqueabsorbee: new FormControl(""),
         courantnominal: new FormControl("", [Validators.required,Validators.min(0)]),
-        puissanceacoustique: new FormControl("", [Validators.required,Validators.min(0)]),
+        puissanceacoustique: new FormControl(""),
 
         //Autres
         classenergitique: new FormControl(""),

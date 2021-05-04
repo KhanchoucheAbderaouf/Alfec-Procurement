@@ -97,7 +97,7 @@ export class ChdcreateComponent implements OnInit {
         typechd : new FormControl("", [Validators.required]),
         fonctionnementchd: new FormControl("", [Validators.required]),
         puissancecalorifiquechd: new FormControl("", [Validators.required,Validators.min(0)]),
-        temperature: new FormControl("", [Validators.required]),
+        temperature: new FormControl(""),
         pressionfonctionnementchd: new FormControl("",[Validators.required]),
         regimefonctionement: new FormControl("", [Validators.required]),
         pressionmax: new FormControl("", [Validators.required]),
@@ -108,13 +108,13 @@ export class ChdcreateComponent implements OnInit {
         pressionfonctionnementbruleur: new FormControl("", [Validators.required]),
 
         //electrique
-        tensionnominalevoltage: new FormControl("", [Validators.required,Validators.min(0)]),
-        tensionnominalephases: new FormControl("", [Validators.required,Validators.min(0)]),
-        tensionnominalehertz: new FormControl("", [Validators.required,Validators.min(0)]),
-        puissanceelectriqueabsorbee: new FormControl("", [Validators.required,Validators.min(0)]),
+        tensionnominalevoltage: new FormControl(""),
+        tensionnominalephases: new FormControl(""),
+        tensionnominalehertz: new FormControl(""),
+        puissanceelectriqueabsorbee: new FormControl(""),
         courantnominal: new FormControl("", [Validators.required,Validators.min(0)]),
         dialoguegtc: new FormControl("", [Validators.required]),
-        puissanceacoustique: new FormControl("", [Validators.required]),
+        puissanceacoustique: new FormControl(""),
 
         //Autres
         classenergitique: new FormControl(""),
