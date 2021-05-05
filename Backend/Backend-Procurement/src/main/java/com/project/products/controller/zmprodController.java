@@ -66,7 +66,6 @@ public class zmprodController {
 				a.setRemise(zonem.getZone().getRemise());	
 				//System.out.println(a.getProduit().getNomp() + " " + a.getZoneMarche().getZone().getNomz() + " " + a.getZoneMarche().getMarche().getNomm());
 				zmp.add(a);
-
 			}
 			
 		}	

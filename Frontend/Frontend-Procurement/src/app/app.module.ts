@@ -119,6 +119,8 @@ import { PhonePipe } from './utilities/pipes/phone.pipe';
 import {Ng2TelInputModule} from 'ng2-tel-input';
 import { ProductTrashComponent } from './procurement/trash/product-trash/product-trash.component';
 import { FournisseurTrashComponent } from './procurement/trash/fournisseur-trash/fournisseur-trash.component';
+import { EstimationNavComponent } from './estimation/estimation-nav/estimation-nav.component';
+import { EstimationPricesComponent } from './estimation/prices/estimation-prices/estimation-prices.component';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -205,6 +207,8 @@ registerLocaleData(localeFr, 'fr');
     PhonePipe,
     ProductTrashComponent,
     FournisseurTrashComponent,
+    EstimationNavComponent,
+    EstimationPricesComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { ZoneComponent } from './admin/services/procurement/zone/zone.component'
 import { CreateUserComponent } from './admin/utilisateurs/create-user/create-user.component';
 import { UtilisateursComponent } from './admin/utilisateurs/utilisateurs.component';
 import { LoginComponent } from './auth/login/login.component';
+import { EstimationPricesComponent } from './estimation/prices/estimation-prices/estimation-prices.component';
 import { FournisseurCreateComponent } from './procurement/fournisseur/fournisseur-create/fournisseur-create.component';
 import { FournisseurIndexComponent } from './procurement/fournisseur/fournisseur-index/fournisseur-index.component';
  
@@ -27,12 +28,10 @@ const routes: Routes = [
   {
     path: '',
     component: SpinnerComponent,
-    canActivate: [AuthGuardService]
   },
   {
     path: 'login',
     component: LoginComponent
-    
   },
   {
     path: 'admin/dashboard',
@@ -46,12 +45,12 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     data: { roles: ["admin"] }
   },
-  {
+  /*{
     path: 'admin/procurement/zones',
     component: ZoneComponent,
     canActivate: [AuthGuardService],
     data: { roles: ["admin"] }
-  },
+  },*/
   {
     path: 'admin/users/index',
     component: UtilisateursComponent,
@@ -71,8 +70,8 @@ const routes: Routes = [
     data: { roles: ["admin"] }
   },
   {
-    path: 'admin/estimation',
-    component: EstimationComponent,
+    path: 'admin/estimation/zones',
+    component: ZoneComponent,
     canActivate: [AuthGuardService],
     data: { roles: ["admin"] }
   },
@@ -130,6 +129,12 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     data: { roles: ["procurement"] }
   },
+  {
+    path: 'estimation/prix/index',
+    component: EstimationPricesComponent,
+    canActivate: [AuthGuardService],
+    data: { roles: ["estimation"] }
+  }
 ];
 
 @NgModule({

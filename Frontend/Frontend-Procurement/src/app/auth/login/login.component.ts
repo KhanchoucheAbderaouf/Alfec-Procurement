@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       } else if (JSON.parse(localStorage.getItem("currentUser") || "{}").role === "procurement"){
         this.route.navigate(['/procurement/produits/index']);
       } else if(JSON.parse(localStorage.getItem("currentUser") || "{}").role === "estimation"){
-      this.route.navigate(['/']);
+      this.route.navigate(['/estimation/prix/index']);
       }
     }
     this.initForm();
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
           }else if(result.role == "procurement"){
             this.route.navigate(['/procurement/produits/index']);
           } else if (result.role == "estimation"){
-            this.route.navigate(['/']);
+            this.route.navigate(['/estimation/prix/index']);
           }
         }, (error) => {                 
           this.loginInvalid = true;
