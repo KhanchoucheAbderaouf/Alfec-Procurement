@@ -14,6 +14,8 @@ export class EstimationPricesComponent implements OnInit {
   ngOnInit(): void {
     this.vars.spanValue = "Prix"
     this.titleService.setTitle("Prix")
+    console.log(this.vars.EstimationProducts)
+
   }
 
 }

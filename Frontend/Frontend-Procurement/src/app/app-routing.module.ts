@@ -10,6 +10,7 @@ import { CreateUserComponent } from './admin/utilisateurs/create-user/create-use
 import { UtilisateursComponent } from './admin/utilisateurs/utilisateurs.component';
 import { LoginComponent } from './auth/login/login.component';
 import { EstimationPricesComponent } from './estimation/prices/estimation-prices/estimation-prices.component';
+import { EstimationsearchComponent } from './estimation/search/estimationsearch/estimationsearch.component';
 import { FournisseurCreateComponent } from './procurement/fournisseur/fournisseur-create/fournisseur-create.component';
 import { FournisseurIndexComponent } from './procurement/fournisseur/fournisseur-index/fournisseur-index.component';
  
@@ -132,6 +133,12 @@ const routes: Routes = [
   {
     path: 'estimation/prix/index',
     component: EstimationPricesComponent,
+    canActivate: [AuthGuardService],
+    data: { roles: ["estimation"] }
+  },
+  {
+    path: 'estimation/search',
+    component: EstimationsearchComponent,
     canActivate: [AuthGuardService],
     data: { roles: ["estimation"] }
   }

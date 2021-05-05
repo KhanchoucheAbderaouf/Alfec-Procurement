@@ -51,6 +51,12 @@
                 <th mat-header-cell *matHeaderCellDef > Détails </th>
                 <td mat-cell *matCellDef="let row" > <button mat-button (click)="openDialog(row)" color="primary" >Détails</button> </td>
                 </ng-container>
+
+                 <!-- Color Column -->
+                <ng-container *ngIf="EstimationUser === 'estimation'" matColumnDef="Add">
+                    <th mat-header-cell *matHeaderCellDef id="detail"> Ajouter </th>
+                    <td mat-cell *matCellDef="let element" id="detail" >  <button mat-button (click)="AddToProducts(element)" color="primary" >Ajouter</button> </td>
+                </ng-container>
  
                   
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -62,4 +68,7 @@
   
     
     
-        
+        <div class="alert alert-danger alert-dismissible fade show fixed-bottom" style="width:50%;margin-left:25%" *ngIf="Message">
+            {{Message}}
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>

@@ -956,7 +956,7 @@
   <button mat-button type="button" id="annuler"  (click)="annulermodification()">Annuler</button>
 
   </div>
-  <div *ngIf=" AdminUser === 'admin'">
+  <div *ngIf=" AdminUser === 'admin' || AdminUser === 'estimation' ">
     <button mat-button type="button" id="ok" [mat-dialog-close]="true" cdfFocusInitial> OK </button>
   </div>
 </mat-dialog-actions>

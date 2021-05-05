@@ -7,6 +7,6 @@ export class GlobalsService {
   urlAddress: string = 'http://' + window.location.hostname
   spanValue: string;
   searchResults : any[] = [];
-
+  EstimationProducts : any[] = []
   constructor() { }
 }

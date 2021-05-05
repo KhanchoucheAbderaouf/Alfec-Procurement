@@ -15,7 +15,11 @@ export class EvapsearchresultsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  displayedColumns = ['CodeEVAP', 'FournisseurEVAP', 'MarqueEVAP','TypeEVAP','PuissanceFEVAP','ChambreEVAP','PrixEVAP','DetailsEVAP']
+  EstimationUser : any = JSON.parse(localStorage.getItem("currentUser") || "{}").role;
+
+  displayedColumns = this.EstimationUser === "estimation" ?
+  ['CodeEVAP', 'FournisseurEVAP', 'MarqueEVAP','TypeEVAP','PuissanceFEVAP','ChambreEVAP','PrixEVAP','DetailsEVAP',"Add"]:
+  ['CodeEVAP', 'FournisseurEVAP', 'MarqueEVAP','TypeEVAP','PuissanceFEVAP','ChambreEVAP','PrixEVAP','DetailsEVAP']
   datasource = this.vars.searchResults;
 
   openDialog(data:any) {
@@ -44,6 +48,18 @@ export class EvapsearchresultsComponent implements OnInit {
          }, 5000)
         }      
     });
+  }
+
+  Message : any = ""
+  AddToProducts(row : any){
+    if(!this.vars.EstimationProducts.includes(row.codep)){
+      this.vars.EstimationProducts.push(row.codep)
+    }else{
+      this.Message = "Le produit est déja ajouter"
+      setTimeout(() => {
+        this.Message = ""
+         }, 5000)
+      }  
   }
 
 }

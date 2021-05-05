@@ -15,8 +15,11 @@ export class ChdsearchresultsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  EstimationUser : any = JSON.parse(localStorage.getItem("currentUser") || "{}").role;
 
-  displayedColumns = ['CodeCHD', 'FournisseurCHD', 'MarqueCHD','TypeCHD','FonctionnementCHD','PuissanceFCHD','PrixCHD','DetailsCHD']
+  displayedColumns = this.EstimationUser === "estimation" ? 
+  ['CodeCHD', 'FournisseurCHD', 'MarqueCHD','TypeCHD','FonctionnementCHD','PuissanceFCHD','PrixCHD','DetailsCHD',"Add"] :
+   ['CodeCHD', 'FournisseurCHD', 'MarqueCHD','TypeCHD','FonctionnementCHD','PuissanceFCHD','PrixCHD','DetailsCHD']
   datasource = this.vars.searchResults;
 
   openDialog(data:any) {
@@ -47,5 +50,17 @@ export class ChdsearchresultsComponent implements OnInit {
     });
   }
 
+
+  Message : any = ""
+  AddToProducts(row : any){
+    if(!this.vars.EstimationProducts.includes(row.codep)){
+      this.vars.EstimationProducts.push(row.codep)
+    }else{
+      this.Message = "Le produit est déja ajouter"
+      setTimeout(() => {
+        this.Message = ""
+         }, 5000)
+      }  
+  }
 } 
 

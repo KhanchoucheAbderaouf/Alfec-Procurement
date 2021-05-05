@@ -15,7 +15,11 @@ export class PompesearchresultsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  displayedColumns = ['CodePOMPE', 'FournisseurPOMPE', 'MarquePOMPE','TypePOMPE','CaracteristiquePOMPE','PrixPOMPE','DetailsPOMPE']
+  EstimationUser : any = JSON.parse(localStorage.getItem("currentUser") || "{}").role;
+
+  displayedColumns = this.EstimationUser === "estimation" ? 
+  ['CodePOMPE', 'FournisseurPOMPE', 'MarquePOMPE','TypePOMPE','CaracteristiquePOMPE','PrixPOMPE','DetailsPOMPE','Add'] :
+  ['CodePOMPE', 'FournisseurPOMPE', 'MarquePOMPE','TypePOMPE','CaracteristiquePOMPE','PrixPOMPE','DetailsPOMPE']
   datasource = this.vars.searchResults;
 
   openDialog(data:any) {
@@ -44,6 +48,18 @@ export class PompesearchresultsComponent implements OnInit {
          }, 5000)
         }      
     });
+  }
+
+  Message : any = ""
+  AddToProducts(row : any){
+    if(!this.vars.EstimationProducts.includes(row.codep)){
+      this.vars.EstimationProducts.push(row.codep)
+    }else{
+      this.Message = "Le produit est déja ajouter"
+      setTimeout(() => {
+        this.Message = ""
+         }, 5000)
+      }  
   }
 
 }

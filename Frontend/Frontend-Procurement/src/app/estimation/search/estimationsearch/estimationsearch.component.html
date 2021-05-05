@@ -1,0 +1,129 @@
+<app-estimation-nav>
+
+    <div class="m-4" *ngIf="!showResults">
+  
+        <div id="beforedetails" >
+            <div class="center-screen">
+            <div class="card card-body" style="background-color:  white; width: 50%;">
+              <form [formGroup]="formProduit">
+    
+                  <mat-form-field>
+                    <mat-select [formControl]="controleCategorie" placeholder="Categories" (selectionChange)="catego()" #singleSelect>
+                      <mat-option>
+                        <ngx-mat-select-search [formControl]="FiltreCategorie"
+                                               placeholderLabel ="Recherche"
+                                               noEntriesFoundLabel = "Catégorie n'existe pas"
+                                               ngxMatSelectSearchClear>                                           >
+                                              </ngx-mat-select-search>
+                      </mat-option>
+                  
+                      <mat-option *ngFor="let categorie of CategoriesFiltrer | async" [value]="categorie">
+                        {{categorie}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+     
+              </form>
+      
+            </div>
+            </div>
+      
+            <div class="center-screen mt-4 mb-4">
+
+            <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor === 'GEG' " >
+            <app-searchgeg  (annulerEvent)="annulerCatego($event)" (sendtheSearch)="sendtheSearch($event)">  
+            </app-searchgeg>
+            </div>
+
+            <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor === 'CTA' " >
+              <app-ctasearch  (annulerEvent)="annulerCatego($event)" (sendtheSearch)="sendtheSearch($event)">  
+              </app-ctasearch>
+            </div>
+
+            <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor === 'Ventilo Convecteur' " >
+              <app-vcsearch  (annulerEvent)="annulerCatego($event)" (sendtheSearch)="sendtheSearch($event)">  
+              </app-vcsearch>
+            </div>
+
+            <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor === 'Armoire de précision' " >
+              <app-apsearch  (annulerEvent)="annulerCatego($event)" (sendtheSearch)="sendtheSearch($event)">  
+              </app-apsearch>
+            </div>
+
+            <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor === 'Groupe Frigorifique' " >
+              <app-gfsearch  (annulerEvent)="annulerCatego($event)" (sendtheSearch)="sendtheSearch($event)">  
+              </app-gfsearch>
+            </div>
+
+            <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor === 'Chaudière' " >
+              <app-chdsearch  (annulerEvent)="annulerCatego($event)" (sendtheSearch)="sendtheSearch($event)">  
+              </app-chdsearch>
+            </div>
+
+            <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor === 'Roof Top' " >
+              <app-rtsearch  (annulerEvent)="annulerCatego($event)" (sendtheSearch)="sendtheSearch($event)">  
+              </app-rtsearch>
+            </div>
+
+            <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor === 'Pompe' " >
+              <app-pompesearch  (annulerEvent)="annulerCatego($event)" (sendtheSearch)="sendtheSearch($event)">  
+              </app-pompesearch>
+            </div>
+
+            <div class="card card-body" style="background-color:  white; width: 80%; display:inline-block;"  *ngIf="categor === 'Evaporateur' " >
+              <app-evapsearch  (annulerEvent)="annulerCatego($event)" (sendtheSearch)="sendtheSearch($event)">  
+              </app-evapsearch>
+            </div>
+
+          </div>
+        </div>
+    <br>
+    </div>
+      <button id="thecomeback" mat-button type="button" (click)="showagain()" *ngIf="showResults">Retour </button>
+
+     <!-- GEG -->
+      <div *ngIf="showResults && categor==='GEG'">
+        <app-gegsearchresults></app-gegsearchresults>
+      </div>
+   
+     <!-- CTA -->
+      <div *ngIf="showResults && categor==='CTA'">
+        <app-ctasearchresults></app-ctasearchresults>
+      </div>
+
+     <!-- Ventilo Convecteur -->
+      <div *ngIf="showResults && categor==='Ventilo Convecteur'">
+        <app-vcsearchresults></app-vcsearchresults>
+      </div>
+
+     <!-- Armoire de Précision -->
+      <div *ngIf="showResults && categor==='Armoire de précision'">
+        <app-apsearchresults></app-apsearchresults>
+      </div>
+
+      <!-- Groupe Frigorifque -->
+      <div *ngIf="showResults && categor==='Groupe Frigorifique'">
+        <app-gfsearchresults></app-gfsearchresults>
+      </div>
+
+      <!-- Chaudière -->
+      <div *ngIf="showResults && categor==='Chaudière'">
+        <app-chdsearchresults></app-chdsearchresults>
+      </div>
+
+       <!-- Roof Top -->
+       <div *ngIf="showResults && categor==='Roof Top'">
+        <app-rtsearchresults></app-rtsearchresults>
+      </div>
+
+       <!-- Pompe -->
+       <div *ngIf="showResults && categor==='Pompe'">
+        <app-pompesearchresults></app-pompesearchresults>
+      </div>
+
+       <!-- Evaporateur -->
+       <div *ngIf="showResults && categor==='Evaporateur'">
+        <app-evapsearchresults></app-evapsearchresults>
+      </div>
+
+    </app-estimation-nav>

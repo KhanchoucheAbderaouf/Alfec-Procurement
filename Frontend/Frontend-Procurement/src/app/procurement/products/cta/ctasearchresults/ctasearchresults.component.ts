@@ -15,8 +15,11 @@ export class CtasearchresultsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  EstimationUser : any = JSON.parse(localStorage.getItem("currentUser") || "{}").role;
 
-  displayedColumns: string[] = ['CodeCTA', 'FournisseurCTA', 'MarqueCTA', 'MontageCTA','PrixCTA','DetailsCTA'];
+  displayedColumns: string[]  = this.EstimationUser === "estimation" ? 
+  ['CodeCTA', 'FournisseurCTA', 'MarqueCTA', 'MontageCTA','PrixCTA','DetailsCTA',"Add"]:
+  ['CodeCTA', 'FournisseurCTA', 'MarqueCTA', 'MontageCTA','PrixCTA','DetailsCTA'];
   datasource = this.vars.searchResults;
 
   openDialog(data:any) {
@@ -45,6 +48,18 @@ export class CtasearchresultsComponent implements OnInit {
          }, 5000)
         }      
     });
+  }
+
+  Message : any = ""
+  AddToProducts(row : any){
+    if(!this.vars.EstimationProducts.includes(row.codep)){
+      this.vars.EstimationProducts.push(row.codep)
+    }else{
+      this.Message = "Le produit est déja ajouter"
+      setTimeout(() => {
+        this.Message = ""
+         }, 5000)
+      }  
   }
 
 }

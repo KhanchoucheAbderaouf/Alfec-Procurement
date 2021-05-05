@@ -11,12 +11,16 @@ import { DialogueComponent } from '../dialogue/dialogue.component';
 export class GegsearchresultsComponent implements OnInit { 
   Modif : string;
   Supp : string;
+  EstimationUser : any = JSON.parse(localStorage.getItem("currentUser") || "{}").role;
   constructor(public dialog: MatDialog,private vars : GlobalsService) { }
 
   ngOnInit(): void {
+   
   }
-
-  displayedColumns = ['CodeGEG', 'FournisseurGEG', 'MarqueGEG','TypeGEG', 'PuissanceFGEG','PuissanceCGEG','PrixGEG','DetailsGEG']
+  displayedColumns = this.EstimationUser === "estimation" ?
+  ['CodeGEG', 'FournisseurGEG', 'MarqueGEG','TypeGEG', 'PuissanceFGEG','PuissanceCGEG','PrixGEG','DetailsGEG','Add'] :
+  ['CodeGEG', 'FournisseurGEG', 'MarqueGEG','TypeGEG', 'PuissanceFGEG','PuissanceCGEG','PrixGEG','DetailsGEG'] 
+ 
   datasource = this.vars.searchResults;
 
   openDialog(data:any) {
@@ -47,4 +51,16 @@ export class GegsearchresultsComponent implements OnInit {
     });
   }
 
+  
+  Message : any = ""
+  AddToProducts(row : any){
+    if(!this.vars.EstimationProducts.includes(row.codep)){
+      this.vars.EstimationProducts.push(row.codep)
+    }else{
+      this.Message = "Le produit est déja ajouter"
+      setTimeout(() => {
+        this.Message = ""
+         }, 5000)
+      }  
+  }
 }

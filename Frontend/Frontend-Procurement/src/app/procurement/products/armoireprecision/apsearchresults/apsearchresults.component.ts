@@ -15,9 +15,12 @@ export class ApsearchresultsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  displayedColumns = ['CodeAP', 'FournisseurAP', 'MarqueAP','TypeAP','PrixAP','DetailsAP']
+  
   datasource = this.vars.searchResults;
-
+  EstimationUser : any = JSON.parse(localStorage.getItem("currentUser") || "{}").role;
+  displayedColumns = this.EstimationUser === "estimation" ?
+  ['CodeAP', 'FournisseurAP', 'MarqueAP','TypeAP','PrixAP','DetailsAP','Add'] :
+  ['CodeAP', 'FournisseurAP', 'MarqueAP','TypeAP','PrixAP','DetailsAP']
   openDialog(data:any) {
   
     const dialogRef = this.dialog.open(ApdialogComponent,{
@@ -46,4 +49,16 @@ export class ApsearchresultsComponent implements OnInit {
     });
   }
 
+  Message : any = ""
+  AddToProducts(row : any){
+    if(!this.vars.EstimationProducts.includes(row.codep)){
+      this.vars.EstimationProducts.push(row.codep)
+    }else{
+      this.Message = "Le produit est déja ajouter"
+      setTimeout(() => {
+        this.Message = ""
+         }, 5000)
+      }  
+  }
+  
 }

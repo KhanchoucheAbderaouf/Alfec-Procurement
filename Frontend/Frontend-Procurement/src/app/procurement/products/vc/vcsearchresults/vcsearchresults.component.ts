@@ -16,8 +16,11 @@ export class VcsearchresultsComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  EstimationUser : any = JSON.parse(localStorage.getItem("currentUser") || "{}").role;
 
-  displayedColumns: string[] = ['CodeVC', 'FournisseurVC', 'MarqueVC','TypeVC','PuissanceFVC','PuissanceCVC','PrixVC','DetailsVC'];
+  displayedColumns: string[] = this.EstimationUser === "estimation" ? 
+  ['CodeVC', 'FournisseurVC', 'MarqueVC','TypeVC','PuissanceFVC','PuissanceCVC','PrixVC','DetailsVC','Add'] :
+  ['CodeVC', 'FournisseurVC', 'MarqueVC','TypeVC','PuissanceFVC','PuissanceCVC','PrixVC','DetailsVC'];
   datasource = this.vars.searchResults;
  
   openDialog(data:any) {
@@ -47,4 +50,17 @@ export class VcsearchresultsComponent implements OnInit {
         }      
     });
   }
+
+  Message : any = ""
+  AddToProducts(row : any){
+    if(!this.vars.EstimationProducts.includes(row.codep)){
+      this.vars.EstimationProducts.push(row.codep)
+    }else{
+      this.Message = "Le produit est déja ajouter"
+      setTimeout(() => {
+        this.Message = ""
+         }, 5000)
+      }  
+  }
+
 }

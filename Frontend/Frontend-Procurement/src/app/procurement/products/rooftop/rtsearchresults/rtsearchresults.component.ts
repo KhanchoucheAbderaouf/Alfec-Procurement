@@ -15,7 +15,11 @@ export class RtsearchresultsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  displayedColumns = ['CodeRT', 'FournisseurRT', 'MarqueRT','TypeRT','PuissanceFRT','PuissanceCRT','PrixRT','DetailsRT']
+  EstimationUser : any = JSON.parse(localStorage.getItem("currentUser") || "{}").role;
+
+  displayedColumns = this.EstimationUser === "estimation" ? 
+  ['CodeRT', 'FournisseurRT', 'MarqueRT','TypeRT','PuissanceFRT','PuissanceCRT','PrixRT','DetailsRT',"Add"] :
+  ['CodeRT', 'FournisseurRT', 'MarqueRT','TypeRT','PuissanceFRT','PuissanceCRT','PrixRT','DetailsRT']
   datasource = this.vars.searchResults;
 
   openDialog(data:any) {
@@ -45,4 +49,19 @@ export class RtsearchresultsComponent implements OnInit {
         }      
     });
   }
+
+
+  Message : any = ""
+  AddToProducts(row : any){
+    if(!this.vars.EstimationProducts.includes(row.codep)){
+      this.vars.EstimationProducts.push(row.codep)
+    }else{
+      this.Message = "Le produit est déja ajouter"
+      setTimeout(() => {
+        this.Message = ""
+         }, 5000)
+      }  
+  }
+
+
 }

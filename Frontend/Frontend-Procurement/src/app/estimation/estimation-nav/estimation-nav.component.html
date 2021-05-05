@@ -27,11 +27,11 @@
            >
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <a class="nav-horizontale" routerLinkActive="active" mat-list-item routerLink="/estimation/prix/index">Prix</a>
+        <a *ngIf="spantext.toLocaleLowerCase().includes('prix')" class="nav-horizontale" routerLinkActive="active" mat-list-item routerLink="/estimation/prix/index">Prix</a>
          
        
         <span *ngIf="spantext.toLocaleLowerCase().includes('recherche')"> Recherche Avancée </span>
-        <a id="search" routerLinkActive="active" matTooltip="Recherche Avancée" mat-list-item class="example-icon" aria-label="Example icon-button with menu icon" routerLink="/procurement/produits/search" type="button" >
+        <a id="search" routerLinkActive="active" matTooltip="Recherche Avancée" mat-list-item class="example-icon" aria-label="Example icon-button with menu icon" routerLink="/estimation/search" type="button" >
            <mat-icon class="mt-2 font-weight-bold">search</mat-icon>
         </a>
       </mat-toolbar>
