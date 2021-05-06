@@ -30,7 +30,7 @@ import com.project.products.repositories.ProductRepository;
 @RestController
 @CrossOrigin
 @Validated
-@RequestMapping("/procurement/fournisseurs")
+@RequestMapping("/fournisseurs")
 public class FournisseurController {
 	@Autowired
 	FournisseurRepository fournisseurRepository;

@@ -42,7 +42,7 @@ export class ChddialogComponent implements OnInit {
   supprimer(){
     const headers = new HttpHeaders().set("Authorization", this.token);
     
-    this.http.delete(this.url.urlAddress + ":8082/procurement/products/delete/" + this.data.result.idp, { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.delete(this.url.urlAddress + ":8082/products/delete/" + this.data.result.idp, { headers, responseType: 'json' as 'json' }).subscribe(result => {
     
       this.dialogRef.close(this.sendsupprimer);
       
@@ -57,7 +57,7 @@ export class ChddialogComponent implements OnInit {
     const headers = new HttpHeaders().set("Authorization", this.token);
     if (this.formGroup.valid) {
       
-    this.http.put(this.url.urlAddress + ":8082/procurement/products/update/" + this.data.result.idp, this.formGroup.value, { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.put(this.url.urlAddress + ":8082/products/update/" + this.data.result.idp, this.formGroup.value, { headers, responseType: 'json' as 'json' }).subscribe(result => {
     }, (error) => {
       console.log(error.error.message)
     }
@@ -67,7 +67,7 @@ export class ChddialogComponent implements OnInit {
 
   public allfournisseurs(){
     const headers = new HttpHeaders().set("Authorization", this.token);
-    this.http.get(this.url.urlAddress + ":8082/procurement/fournisseurs/index", { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.get(this.url.urlAddress + ":8082/fournisseurs/index", { headers, responseType: 'json' as 'json' }).subscribe(result => {
         this.fournisseurs = result;
 
       }, (error) => {
@@ -84,7 +84,7 @@ export class ChddialogComponent implements OnInit {
 
   marquefournisseur(){
     const headers = new HttpHeaders().set("Authorization", this.token);
-    this.http.get(this.url.urlAddress + ":8082/procurement/fournisseurs/marques/"+this.formGroup.value.fournisseur.id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.get(this.url.urlAddress + ":8082/fournisseurs/marques/"+this.formGroup.value.fournisseur.id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
       this.marques = result;
     }, (error) => {
       console.log(error.error.message)
@@ -94,7 +94,7 @@ export class ChddialogComponent implements OnInit {
 
   fournisseurchoisis() {
     const headers = new HttpHeaders().set("Authorization", this.token);
-    this.http.get(this.url.urlAddress + ":8082/procurement/fournisseurs/marques/" + this.formGroup.value.fournisseur.id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.get(this.url.urlAddress + ":8082/fournisseurs/marques/" + this.formGroup.value.fournisseur.id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
       this.marques = result;
     }, (error) => {
       console.log(error.error.message)

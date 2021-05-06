@@ -51,7 +51,7 @@ export class CtacreateComponent implements OnInit {
           }
         })
       }
-    this.http.post(this.url.urlAddress + ":8082/procurement/products/create", this.formGroup.value, { headers, responseType: 'json' as 'json' }).
+    this.http.post(this.url.urlAddress + ":8082/products/create", this.formGroup.value, { headers, responseType: 'json' as 'json' }).
       subscribe(result => {
         window.location.reload();
       }, (error) => {
@@ -65,7 +65,7 @@ export class CtacreateComponent implements OnInit {
 
   public allfournisseurs(){
     const headers = new HttpHeaders().set("Authorization", this.token);
-    this.http.get(this.url.urlAddress + ":8082/procurement/fournisseurs/index", { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.get(this.url.urlAddress + ":8082/fournisseurs/index", { headers, responseType: 'json' as 'json' }).subscribe(result => {
         this.fournisseurs = result;
       }, (error) => {
         console.log(error.error.message)
@@ -82,7 +82,7 @@ export class CtacreateComponent implements OnInit {
 
   fournisseurchoisis() {
       const headers = new HttpHeaders().set("Authorization", this.token);
-      this.http.get(this.url.urlAddress + ":8082/procurement/fournisseurs/marques/" + this.formGroup.value.fournisseur.id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
+      this.http.get(this.url.urlAddress + ":8082/fournisseurs/marques/" + this.formGroup.value.fournisseur.id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
         this.marques = result;
       }, (error) => {
         console.log(error.error.message)

@@ -31,7 +31,7 @@ export class DialogPricesComponent implements OnInit {
 
   public ProductFunction(){
     const headers = new HttpHeaders().set("Authorization", this.token);
-    this.http.get(this.url.urlAddress + ":8082/procurement/products/show/" + this.data.result.idp, { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.get(this.url.urlAddress + ":8082/products/show/" + this.data.result.idp, { headers, responseType: 'json' as 'json' }).subscribe(result => {
         this.produit = result;
       }, (error) => {
         console.log(error.error.message)
@@ -44,7 +44,7 @@ export class DialogPricesComponent implements OnInit {
     const headers = new HttpHeaders().set("Authorization", this.token);
     if (this.formGroup.valid) {
      
-    this.http.put(this.url.urlAddress + ":8082/procurement/products/price/" + this.data.result.idp, this.formGroup.value, { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.put(this.url.urlAddress + ":8082/products/price/" + this.data.result.idp, this.formGroup.value, { headers, responseType: 'json' as 'json' }).subscribe(result => {
     }, (error) => {
       console.log(error.error.message)
     }

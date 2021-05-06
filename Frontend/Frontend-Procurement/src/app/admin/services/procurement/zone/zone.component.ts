@@ -157,7 +157,7 @@ export class ZoneComponent implements OnInit {
 
    AllZones(){
     const headers = new HttpHeaders().set("Authorization" , this.token);
-    return this.http.get(this.url.urlAddress + ":8082/admin/zone/index",{headers,responseType:'json' as 'json'})
+    return this.http.get(this.url.urlAddress + ":8082/zone/index",{headers,responseType:'json' as 'json'})
     .subscribe((data : any)=>{
       this.response = data;
       this.dataSource = new MatTableDataSource<any>(this.response);
@@ -189,7 +189,7 @@ export class ZoneComponent implements OnInit {
 
    AllBenefices(){
     const headers = new HttpHeaders().set("Authorization" , this.token);
-    return this.http.get(this.url.urlAddress + ":8082/admin/zonemarche/index",{headers,responseType:'json' as 'json'})
+    return this.http.get(this.url.urlAddress + ":8082/zonemarche/index",{headers,responseType:'json' as 'json'})
     .subscribe((data : any)=>{
       this.response2 = data;
       this.dataSource2 = new MatTableDataSource<any>(this.response2);
@@ -229,7 +229,7 @@ export class ZoneComponent implements OnInit {
    W : any
    AllWilayas(){
     const headers = new HttpHeaders().set("Authorization" , this.token);
-    return this.http.get(this.url.urlAddress + ":8082/admin/wilaya/index",{headers,responseType:'json' as 'json'})
+    return this.http.get(this.url.urlAddress + ":8082/wilaya/index",{headers,responseType:'json' as 'json'})
     .subscribe((data : any)=>{
       this.W = data
     })
@@ -238,7 +238,7 @@ export class ZoneComponent implements OnInit {
    M : any
    AllMarches(){
     const headers = new HttpHeaders().set("Authorization" , this.token);
-    return this.http.get(this.url.urlAddress + ":8082/admin/marche/index",{headers,responseType:'json' as 'json'})
+    return this.http.get(this.url.urlAddress + ":8082/marche/index",{headers,responseType:'json' as 'json'})
     .subscribe((data : any)=>{
       this.M = data
     })
@@ -273,7 +273,7 @@ export class ZoneComponent implements OnInit {
    createBenefice(){
     const headers = new HttpHeaders().set("Authorization", this.token);
     if (this.formBenefice.valid && !this.ModifierModeBenefice) {
-    this.http.post(this.url.urlAddress + ":8082/admin/zonemarche/create/"+this.formBenefice.value.idzone 
+    this.http.post(this.url.urlAddress + ":8082/zonemarche/create/"+this.formBenefice.value.idzone 
     + "/" + this.formBenefice.value.idmarche , this.formBenefice.value, { headers, responseType: 'json' as 'json' }).
       subscribe(result => {
         window.location.reload();
@@ -291,7 +291,7 @@ export class ZoneComponent implements OnInit {
    createZone(){
     const headers = new HttpHeaders().set("Authorization", this.token);
     if (this.formZone.valid && !this.ModifierMode) {
-    this.http.post(this.url.urlAddress + ":8082/admin/zone/create", this.formZone.value, { headers, responseType: 'json' as 'json' }).
+    this.http.post(this.url.urlAddress + ":8082/zone/create", this.formZone.value, { headers, responseType: 'json' as 'json' }).
       subscribe(result => {
         window.location.reload();
       }, (error) => {
@@ -316,7 +316,7 @@ export class ZoneComponent implements OnInit {
    supprimer(id : any){
     const headers = new HttpHeaders().set("Authorization", this.token);
     
-    this.http.delete(this.url.urlAddress + ":8082/admin/zone/delete/" + id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.delete(this.url.urlAddress + ":8082/zone/delete/" + id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
       window.location.reload()  
     }, (error) => {
       console.log(error.error.message)
@@ -362,7 +362,7 @@ export class ZoneComponent implements OnInit {
   ModifierBenefice(){
     const headers = new HttpHeaders().set("Authorization", this.token);
     if (this.formBenefice.valid) {
-    this.http.put(this.url.urlAddress + ":8082/admin/zonemarche/update/" + this.formBenefice.value.idzone + "/" 
+    this.http.put(this.url.urlAddress + ":8082/zonemarche/update/" + this.formBenefice.value.idzone + "/" 
                   + this.formBenefice.value.idmarche, this.formBenefice.value, { headers, responseType: 'json' as 'json' }).
       subscribe(result => {
         window.location.reload();
@@ -378,7 +378,7 @@ export class ZoneComponent implements OnInit {
   ModifierZoneRemise(){
     const headers = new HttpHeaders().set("Authorization", this.token);
     if (this.formZone.valid) {
-    this.http.put(this.url.urlAddress + ":8082/admin/zone/update/" + this.idzone, this.formZone.value, { headers, responseType: 'json' as 'json' }).
+    this.http.put(this.url.urlAddress + ":8082/zone/update/" + this.idzone, this.formZone.value, { headers, responseType: 'json' as 'json' }).
       subscribe(result => {
         window.location.reload();
       }, (error) => {
@@ -394,7 +394,7 @@ export class ZoneComponent implements OnInit {
     const headers = new HttpHeaders().set("Authorization", this.token);
     if (this.formWilayaZone.valid) {
       
-    this.http.put(this.url.urlAddress + ":8082/admin/wilaya/update/"+this.formWilayaZone.value.idwilaya
+    this.http.put(this.url.urlAddress + ":8082/wilaya/update/"+this.formWilayaZone.value.idwilaya
      + "/" + this.formWilayaZone.value.idzone, this.formWilayaZone.value, { headers, responseType: 'json' as 'json' }).
       subscribe(result => {
         window.location.reload();
@@ -415,7 +415,7 @@ export class ZoneComponent implements OnInit {
   addMarches(){
     const headers = new HttpHeaders().set("Authorization", this.token);
     if (this.formMarche.valid) {
-    this.http.post(this.url.urlAddress + ":8082/admin/marche/create", this.formMarche.value, { headers, responseType: 'json' as 'json' }).
+    this.http.post(this.url.urlAddress + ":8082/marche/create", this.formMarche.value, { headers, responseType: 'json' as 'json' }).
       subscribe(result => {
         window.location.reload();
       }, (error) => {
@@ -431,7 +431,7 @@ export class ZoneComponent implements OnInit {
   supprimerMarche(id : number){
     const headers = new HttpHeaders().set("Authorization", this.token);
     
-    this.http.delete(this.url.urlAddress + ":8082/admin/marche/delete/" + id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.delete(this.url.urlAddress + ":8082/marche/delete/" + id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
       window.location.reload()  
     }, (error) => {
       console.log(error.error.message)
@@ -485,7 +485,7 @@ export class ZoneComponent implements OnInit {
   supprimerBenefice(id : number,id2 : number){
     const headers = new HttpHeaders().set("Authorization", this.token);
     
-    this.http.delete(this.url.urlAddress + ":8082/admin/zonemarche/delete/" + id + "/" + id2, { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.delete(this.url.urlAddress + ":8082/zonemarche/delete/" + id + "/" + id2, { headers, responseType: 'json' as 'json' }).subscribe(result => {
       window.location.reload()  
     }, (error) => {
       console.log(error.error.message)

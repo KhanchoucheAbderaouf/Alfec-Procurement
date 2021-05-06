@@ -18,7 +18,7 @@ import com.project.products.repositories.MarcheRepository;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/admin/marche")
+@RequestMapping("/marche")
 public class marcheController {
 	
 	

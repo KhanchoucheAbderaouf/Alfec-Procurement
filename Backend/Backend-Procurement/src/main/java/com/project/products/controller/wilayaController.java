@@ -22,7 +22,7 @@ import com.project.products.repositories.ZoneRepository;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/admin/wilaya")
+@RequestMapping("/wilaya")
 public class wilayaController {
 
 	

@@ -47,7 +47,7 @@ export class FournisseurTrashComponent implements OnInit {
   
   public allfournisseurs(){
     const headers = new HttpHeaders().set("Authorization" , this.token);
-    return this.http.get(this.url.urlAddress + ":8082/procurement/fournisseurs/trash/index",{headers,responseType:'json' as 'json'})
+    return this.http.get(this.url.urlAddress + ":8082/fournisseurs/trash/index",{headers,responseType:'json' as 'json'})
     .subscribe((data : any)=>{
       
       this.response = data;
@@ -122,7 +122,7 @@ export class FournisseurTrashComponent implements OnInit {
     supprimer(id : any){
       const headers = new HttpHeaders().set("Authorization", this.token);
       
-      this.http.delete(this.url.urlAddress + ":8082/procurement/fournisseurs/trash/delete/" + id, { headers, responseType: 'json' as 'json' }).subscribe(result => {  
+      this.http.delete(this.url.urlAddress + ":8082/fournisseurs/trash/delete/" + id, { headers, responseType: 'json' as 'json' }).subscribe(result => {  
         window.location.reload() 
       }, (error) => {
         console.log(error.error.message)
@@ -133,7 +133,7 @@ export class FournisseurTrashComponent implements OnInit {
     recover(id : any){
       const headers = new HttpHeaders().set("Authorization", this.token);
       
-      this.http.get(this.url.urlAddress + ":8082/procurement/fournisseurs/trash/recover/" + id, { headers, responseType: 'json' as 'json' }).subscribe(result => {  
+      this.http.get(this.url.urlAddress + ":8082/fournisseurs/trash/recover/" + id, { headers, responseType: 'json' as 'json' }).subscribe(result => {  
         window.location.reload() 
       }, (error) => {
         console.log(error.error.message)

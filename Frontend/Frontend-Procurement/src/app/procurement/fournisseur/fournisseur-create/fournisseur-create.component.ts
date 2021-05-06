@@ -114,7 +114,7 @@ export class FournisseurCreateComponent implements OnInit {
       if(this.specialZinou.numfax === this.countrycodeNumFax){
         this.specialZinou.numfax = ""
       }
-    this.http.post(this.vars.urlAddress + ":8082/procurement/fournisseurs/create", this.specialZinou, { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.post(this.vars.urlAddress + ":8082/fournisseurs/create", this.specialZinou, { headers, responseType: 'json' as 'json' }).subscribe(result => {
       window.location.reload();
     }, (error) => {
       console.log(error.error.message)

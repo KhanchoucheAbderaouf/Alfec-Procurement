@@ -1,5 +1,64 @@
 <app-estimation-nav>
     <div class="m-4">
-        hello
+        <form [formGroup]="formGroup" (ngSubmit)="create()">
+
+            <div class="m-4"> 
+                <h5> La Zone </h5>
+                <div class="row mt-2">
+                    <mat-form-field class="full-width-input col-6">
+                        <mat-label>Zone</mat-label>
+                        <mat-select formControlName="zone"  required>
+                          <mat-option>--</mat-option>
+                          <mat-option *ngFor="let zone of zones" [value]="zone.idzone">
+                            {{zone.nomz}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error >Veuillez choisir la Zone</mat-error>
+                    </mat-form-field>
+                  </div>
+            </div>
+
+            <div class="m-4"> 
+            <h5> le Marché </h5>
+            <div class="row mt-2">
+                <mat-form-field class="full-width-input col-6">
+                    <mat-label>Marché</mat-label>
+                    <mat-select formControlName="marche"  required>
+                      <mat-option>--</mat-option>
+                      <mat-option *ngFor="let marche of marches" [value]="marche.idmarche">
+                        {{marche.nomm}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error >Veuillez choisir le marché</mat-error>
+                </mat-form-field>                
+            </div>
+            </div>
+
+            <div class="m-4"> 
+                <h5> les Produits </h5>
+                <div class="row m-2">
+                    <mat-form-field class="example-chip-list">
+                        <mat-label>Produits</mat-label>
+                        <mat-chip-list #chipList aria-label="Produits selectionnés">
+                          <mat-chip *ngFor="let produit of produits" [selectable]="selectable"
+                                   [removable]="removable" (removed)="remove(produit)">
+                            {{produit}}
+                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                          </mat-chip>
+                          <input placeholder="Nouveau produit"
+                                 [matChipInputFor]="chipList"
+                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                 [matChipInputAddOnBlur]="addOnBlur"
+                                 (matChipInputTokenEnd)="add($event)">
+                        </mat-chip-list>
+                      </mat-form-field>                
+                </div>
+            </div>
+
+            <div class="m-4" id="buttonsdiv">
+                <button mat-raised-button type="submit"  id="valider"> Ajouter</button>
+                <button mat-raised-button type="button" id="annuler" (click)="reset()"> annuler</button>
+            </div>
+        </form>
     </div>
 </app-estimation-nav>

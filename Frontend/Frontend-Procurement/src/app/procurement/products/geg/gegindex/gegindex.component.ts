@@ -64,7 +64,7 @@ export class GegindexComponent implements OnInit {
   
   public allproducts(){
     const headers = new HttpHeaders().set("Authorization" , this.token);
-    return this.http.get(this.url.urlAddress + ":8082/procurement/products/index/GEG",{headers,responseType:'json' as 'json'})
+    return this.http.get(this.url.urlAddress + ":8082/products/index/GEG",{headers,responseType:'json' as 'json'})
     .subscribe((data : any)=>{
       
       this.response = data;

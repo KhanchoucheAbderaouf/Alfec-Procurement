@@ -106,7 +106,7 @@ export class FournisseuralldialogComponent implements OnInit {
     const headers = new HttpHeaders().set("Authorization", this.token);
     this.dialogRef.close(this.sendsupprimer);
     
-    this.http.delete(this.url.urlAddress + ":8082/procurement/fournisseurs/delete/" + this.data.result.id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.delete(this.url.urlAddress + ":8082/fournisseurs/delete/" + this.data.result.id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
     
       this.dialogRef.close(this.sendsupprimer);
       
@@ -228,7 +228,7 @@ export class FournisseuralldialogComponent implements OnInit {
     if(this.specialZinou.numfax === this.countrycodeNumFax){
       this.specialZinou.numfax = ""
     }
-    this.http.put(this.url.urlAddress + ":8082/procurement/fournisseurs/update/"+this.data.result.id, this.specialZinou, { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.put(this.url.urlAddress + ":8082/fournisseurs/update/"+this.data.result.id, this.specialZinou, { headers, responseType: 'json' as 'json' }).subscribe(result => {
     }, (error) => {
       console.log(error.error.message)
     }
@@ -238,7 +238,7 @@ export class FournisseuralldialogComponent implements OnInit {
 
   public allfournisseurs(){
     const headers = new HttpHeaders().set("Authorization", this.token);
-    this.http.get(this.url.urlAddress + ":8082/procurement/fournisseurs/index", { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.get(this.url.urlAddress + ":8082/fournisseurs/index", { headers, responseType: 'json' as 'json' }).subscribe(result => {
         this.fournisseurs = result;
 
       }, (error) => {

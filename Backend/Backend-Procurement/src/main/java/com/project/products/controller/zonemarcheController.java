@@ -22,7 +22,7 @@ import com.project.products.repositories.ZoneRepository;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/admin/zonemarche")
+@RequestMapping("/zonemarche")
 public class zonemarcheController {
 	
 	@Autowired

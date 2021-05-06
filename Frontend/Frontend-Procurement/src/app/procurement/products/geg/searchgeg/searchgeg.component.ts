@@ -554,7 +554,7 @@ export class SearchgegComponent implements OnInit {
 
   public allproducts(){
     const headers = new HttpHeaders().set("Authorization" , this.token);
-    return this.http.get(this.vars.urlAddress + ":8082/procurement/products/index/GEG",{headers,responseType:'json' as 'json'})
+    return this.http.get(this.vars.urlAddress + ":8082/products/index/GEG",{headers,responseType:'json' as 'json'})
     .subscribe((data : any)=>{
       for(let result of data){
             this.response.push(result);

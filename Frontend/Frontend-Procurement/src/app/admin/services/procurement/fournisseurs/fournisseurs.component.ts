@@ -58,7 +58,7 @@ export class FournisseursComponent implements OnInit {
   
   public allfournisseurs(){
     const headers = new HttpHeaders().set("Authorization" , this.token);
-    return this.http.get(this.vars.urlAddress + ":8082/procurement/fournisseurs/index",{headers,responseType:'json' as 'json'})
+    return this.http.get(this.vars.urlAddress + ":8082/fournisseurs/index",{headers,responseType:'json' as 'json'})
     .subscribe((data : any)=>{
       this.response=data;
       this.dataSource = new MatTableDataSource<any>(this.response);

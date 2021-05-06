@@ -25,7 +25,7 @@ export class FournisseurdetailsdialogComponent implements OnInit {
 
   public FournisseurFunction(){
     const headers = new HttpHeaders().set("Authorization", this.token);
-    this.http.get(this.url.urlAddress + ":8082/procurement/fournisseurs/show/" + this.data.id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.get(this.url.urlAddress + ":8082/fournisseurs/show/" + this.data.id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
         this.fournisseur = result;
       }, (error) => {
         console.log(error.error.message)

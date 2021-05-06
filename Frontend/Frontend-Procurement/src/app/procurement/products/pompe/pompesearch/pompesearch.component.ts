@@ -29,7 +29,7 @@ export class PompesearchComponent implements OnInit {
 
   public allproducts() {
     const headers = new HttpHeaders().set("Authorization" , this.token);
-    return this.http.get(this.url.urlAddress + ":8082/procurement/products/index/POMPE",{headers,responseType:'json' as 'json'})
+    return this.http.get(this.url.urlAddress + ":8082/products/index/POMPE",{headers,responseType:'json' as 'json'})
     .subscribe((data : any)=>{
       for(let result of data){
             this.response.push(result);
@@ -39,7 +39,7 @@ export class PompesearchComponent implements OnInit {
 
   public allfournisseurs(){
     const headers = new HttpHeaders().set("Authorization", this.token);
-    this.http.get(this.url.urlAddress + ":8082/procurement/fournisseurs/index", { headers, responseType: 'json' as 'json' }).subscribe(result => {
+    this.http.get(this.url.urlAddress + ":8082/fournisseurs/index", { headers, responseType: 'json' as 'json' }).subscribe(result => {
         this.fournisseurs = result;
       }, (error) => {
         console.log(error.error.message)
@@ -56,7 +56,7 @@ export class PompesearchComponent implements OnInit {
 
   fournisseurchoisis() {
       const headers = new HttpHeaders().set("Authorization", this.token);
-      this.http.get(this.url.urlAddress + ":8082/procurement/fournisseurs/marques/" + this.formGroup.value.fournisseur.id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
+      this.http.get(this.url.urlAddress + ":8082/fournisseurs/marques/" + this.formGroup.value.fournisseur.id, { headers, responseType: 'json' as 'json' }).subscribe(result => {
         this.marques = result;
       }, (error) => {
         console.log(error.error.message)

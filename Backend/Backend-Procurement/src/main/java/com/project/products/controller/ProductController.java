@@ -30,7 +30,7 @@ import com.project.products.repositories.ProductRepository;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/procurement/products")
+@RequestMapping("/products")
 public class ProductController {
 	
 	@Autowired

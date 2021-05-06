@@ -27,7 +27,7 @@ import com.project.products.repositories.ZoneRepository;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/admin/zmproduct")
+@RequestMapping("/zmproduct")
 public class zmprodController {
 
 	@Autowired
