@@ -6,6 +6,7 @@ import { EstimationComponent } from './admin/services/estimation/estimation.comp
 import { FournisseursComponent } from './admin/services/procurement/fournisseurs/fournisseurs.component';
 import { ProcurementComponent } from './admin/services/procurement/procurement.component';
 import { ZoneComponent } from './admin/services/procurement/zone/zone.component';
+import { UsersTrashComponent } from './admin/trash/users-trash/users-trash.component';
 import { CreateUserComponent } from './admin/utilisateurs/create-user/create-user.component';
 import { UtilisateursComponent } from './admin/utilisateurs/utilisateurs.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -43,6 +44,12 @@ const routes: Routes = [
   {
     path: 'admin/procurement/produits',
     component: ProcurementComponent,
+    canActivate: [AuthGuardService],
+    data: { roles: ["admin"] }
+  },
+  {
+    path: 'admin/users/trash',
+    component: UsersTrashComponent,
     canActivate: [AuthGuardService],
     data: { roles: ["admin"] }
   },

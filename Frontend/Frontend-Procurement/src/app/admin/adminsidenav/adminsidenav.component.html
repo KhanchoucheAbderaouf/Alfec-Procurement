@@ -19,6 +19,9 @@
         <div id="low-part">
           <a mat-list-item matTooltip="Taux de Change du Dollar" matTooltipPosition="right" matTooltipShowDelay="1000"  (click)="openDialogDollar()" color="primary" id="echange"> 1$ ->  {{TauxChangeDollar}} DA</a>
           <a mat-list-item matTooltip="Taux de Change de l'Euro" matTooltipPosition="right" matTooltipShowDelay="1000" (click)="openDialog()" color="primary" id="echange"> 1€ ->  {{TauxChange}} DA</a> 
+          <a mat-list-item id="trash" class="example-icon" routerLink="/admin/users/trash">
+            Corbeille  &nbsp; <mat-icon>delete_outline</mat-icon>
+           </a>
           <a mat-list-item id="disconnect" class="example-icon" aria-label="Example icon-button with menu icon" (click)="logout()" type="submit" >
             Déconnexion  &nbsp; <mat-icon>power_settings_new</mat-icon>
            </a>

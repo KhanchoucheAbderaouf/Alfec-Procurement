@@ -122,6 +122,7 @@ import { FournisseurTrashComponent } from './procurement/trash/fournisseur-trash
 import { EstimationNavComponent } from './estimation/estimation-nav/estimation-nav.component';
 import { EstimationPricesComponent } from './estimation/prices/estimation-prices/estimation-prices.component';
 import { EstimationsearchComponent } from './estimation/search/estimationsearch/estimationsearch.component';
+import { UsersTrashComponent } from './admin/trash/users-trash/users-trash.component';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -211,6 +212,7 @@ registerLocaleData(localeFr, 'fr');
     EstimationNavComponent,
     EstimationPricesComponent,
     EstimationsearchComponent,
+    UsersTrashComponent,
   ],
   imports: [
     BrowserModule,

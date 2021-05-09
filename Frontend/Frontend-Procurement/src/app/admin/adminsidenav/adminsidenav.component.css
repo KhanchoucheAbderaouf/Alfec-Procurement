@@ -81,3 +81,9 @@ a:active {
 #contenu{
   margin : 15px 15px;
 }
+#trash{
+}
+#trash:hover{
+  color:white;
+  background-color :red
+}

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.products.models.Product;
 import com.project.products.models.Roles;
 import com.project.products.models.Users;
 import com.project.products.repositories.RoleRepository;
@@ -50,6 +51,11 @@ public class UsersController {
         	if (u.isActive()) liste.add(u);
         }*/
         return userRepository.findAllByActive(true);
+    }
+    @GetMapping("/trash/index")
+    public List<Users> findAllTrashUsers(){
+    	 
+        return userRepository.findAllByActive(false);
     }
     
     @GetMapping("/show/{iduser}")
@@ -92,7 +98,25 @@ public class UsersController {
                    userRepository.save(user);
                 }
             }
+    
+    @DeleteMapping("/trash/delete/{iduser}")
+    public void deleteTrashUser(@PathVariable("iduser") Long iduser) throws Exception {
 
+            if(!(userRepository.findById(iduser).isPresent())) {
+                throw new Exception(
+                        "This user doesn't exists"
+                );}
+            else{   
+                   userRepository.delete(userRepository.findById(iduser).get());
+                }
+            }
+    
+    @GetMapping("/trash/recover/{id}")
+    public Users recover(@PathVariable("id") long id){
+		Users user = userRepository.findById(id).get();
+		user.setActive(true);
+    	return userRepository.save(user);
+    }
 
     @PutMapping("/update/{iduser}/{idrole}")
     public Users updateUserInfos(@RequestBody Users user,@PathVariable("iduser") Long iduser,@PathVariable("idrole") long idrole) throws  Exception {
