@@ -77,10 +77,10 @@ public class zmprodController {
 	public List<ZoneMarcheProduct> show(@RequestBody Search  search){
 		List<Product> liste = new ArrayList<Product>();// productRepository.findAll();
 		for(String produit : search.getListproduits()) {
-			liste.add(productRepository.findByNomp(produit).get());
+			liste.add(productRepository.findByCodepIgnoreCase(produit).get());
 		}
-		Zone zone = zoneRepository.findByNomz(search.getZone()).get();
-		Marche marche = marcheRepository.findByNomm(search.getMarche()).get();
+		Zone zone = zoneRepository.findById(search.getZone().getIdzone()).get();
+		Marche marche = marcheRepository.findById(search.getMarche().getIdmarche()).get();
 		ZoneMarche zm = zonemarcheRepository.findByZone_idzoneAndMarche_idmarche(zone.getIdzone(),marche.getIdmarche()).get();
 		List<ZoneMarcheProduct> zmp = new ArrayList<ZoneMarcheProduct>();
 		for(Product produit : liste) {
@@ -89,6 +89,7 @@ public class zmprodController {
 			a.setZoneMarche(zm);
 			a.setPrix((int) (produit.getTotalprice() + (produit.getTotalprice() * zm.getBenefice() / 100)));
 			if(zm.getZone().getRemise() >0) {
+				a.setRemise(zm.getZone().getRemise());
 				a.setPrixRemise((int)((produit.getTotalprice() + (produit.getTotalprice() * zm.getBenefice() / 100) ) - 
 			( (produit.getTotalprice() + (produit.getTotalprice() * zm.getBenefice() / 100))  * ( (zm.getZone().getRemise() / 100)))  ));
 			}
@@ -108,8 +109,8 @@ public class zmprodController {
 			liste.add(productRepository.findByNomp(produit).get());
 		}
 		
-		Wilayas wilaya = wilayaRepository.findByNomw(search.getWilaya()).get();
-		Marche marche = marcheRepository.findByNomm(search.getMarche()).get();
+		Wilayas wilaya = wilayaRepository.findById(search.getWilaya().getIdwilaya()).get();
+		Marche marche = marcheRepository.findById(search.getMarche().getIdmarche()).get();
 		ZoneMarche zm = zonemarcheRepository.findByZone_idzoneAndMarche_idmarche(wilaya.getZone().getIdzone(),marche.getIdmarche()).get();
 		List<ZoneMarcheProduct> zmp = new ArrayList<ZoneMarcheProduct>();
 		for(Product produit : liste) {

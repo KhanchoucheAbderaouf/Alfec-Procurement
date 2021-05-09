@@ -4,37 +4,34 @@ import java.util.List;
 
 public class Search {
 	private List<String> listproduits ;
-	private String zone;
-	private String marche;
-	private String wilaya;
+	private Zone zone;
+	private Marche marche;
+	private Wilayas wilaya;
 	
-	public String getWilaya() {
-		return wilaya;
-	}
-	public void setWilaya(String wilaya) {
-		this.wilaya = wilaya;
-	}
 	public List<String> getListproduits() {
 		return listproduits;
 	}
 	public void setListproduits(List<String> listproduits) {
 		this.listproduits = listproduits;
 	}
-	public String getZone() {
+	public Zone getZone() {
 		return zone;
 	}
-	public void setZone(String zone) {
+	public void setZone(Zone zone) {
 		this.zone = zone;
 	}
-	public String getMarche() {
+	public Marche getMarche() {
 		return marche;
 	}
-	public void setMarche(String marche) {
+	public void setMarche(Marche marche) {
 		this.marche = marche;
 	}
-	
-	
-	
-	
+	public Wilayas getWilaya() {
+		return wilaya;
+	}
+	public void setWilaya(Wilayas wilaya) {
+		this.wilaya = wilaya;
+	}
+
 	
 }

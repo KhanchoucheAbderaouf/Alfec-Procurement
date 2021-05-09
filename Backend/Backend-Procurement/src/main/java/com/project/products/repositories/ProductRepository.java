@@ -23,6 +23,10 @@ public interface ProductRepository  extends JpaRepository<Product,Long>{
 
 	List<Product> findByFournisseur(Fournisseur fournisseur);
 
+	Optional<Product> findByCodep(String produit);
+
+	Optional<Product> findByCodepIgnoreCase(String produit);
+
 
 
 

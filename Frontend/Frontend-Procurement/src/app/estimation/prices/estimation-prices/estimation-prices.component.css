@@ -25,3 +25,18 @@
 .example-chip-list {
     width: 100%;
   }
+  table {
+    width: 100%;
+  }
+  
+  tr.mat-footer-row {
+    font-weight: bold;
+  }
+  #thecomeback{
+    color : #eb3b5a;
+    font-size : 24px;
+    margin-left : 10px;
+    margin-bottom : 20px;
+    margin-top : 10px;
+  
+  }

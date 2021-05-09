@@ -1,7 +1,6 @@
 <app-estimation-nav>
     <div class="m-4">
-        <form [formGroup]="formGroup" (ngSubmit)="create()">
-
+        <form [formGroup]="formGroup" (ngSubmit)="confirmer()" *ngIf="!showResult">
             <div class="m-4"> 
                 <h5> La Zone </h5>
                 <div class="row mt-2">
@@ -9,7 +8,7 @@
                         <mat-label>Zone</mat-label>
                         <mat-select formControlName="zone"  required>
                           <mat-option>--</mat-option>
-                          <mat-option *ngFor="let zone of zones" [value]="zone.idzone">
+                          <mat-option *ngFor="let zone of zones" [value]="zone">
                             {{zone.nomz}}
                           </mat-option>
                         </mat-select>
@@ -25,7 +24,7 @@
                     <mat-label>Marché</mat-label>
                     <mat-select formControlName="marche"  required>
                       <mat-option>--</mat-option>
-                      <mat-option *ngFor="let marche of marches" [value]="marche.idmarche">
+                      <mat-option *ngFor="let marche of marches" [value]="marche">
                         {{marche.nomm}}
                       </mat-option>
                     </mat-select>
@@ -56,9 +55,64 @@
             </div>
 
             <div class="m-4" id="buttonsdiv">
-                <button mat-raised-button type="submit"  id="valider"> Ajouter</button>
+                <button mat-raised-button type="submit"  id="valider"> Valider</button>
                 <button mat-raised-button type="button" id="annuler" (click)="reset()"> annuler</button>
             </div>
         </form>
+
+        <button *ngIf="showResult" id="thecomeback" mat-button type="button" (click)="showagain()" >Retour </button>
+
+        <div *ngIf="showResult">
+          <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
+            <!-- Item Column -->
+            <ng-container matColumnDef="produit">
+              <th mat-header-cell *matHeaderCellDef> Produit </th>
+              <td mat-cell *matCellDef="let productprice"> {{productprice.produit.codep}} </td>
+              <td mat-footer-cell *matFooterCellDef> Total </td>
+            </ng-container>
+
+            <!-- Item Column -->
+            <ng-container matColumnDef="zone">
+              <th mat-header-cell *matHeaderCellDef> Zone </th>
+              <td mat-cell *matCellDef="let productprice"> {{productprice.zoneMarche.zone.nomz}} </td>
+              <td mat-footer-cell *matFooterCellDef> </td>
+
+            </ng-container>
+
+            <!-- Item Column -->
+            <ng-container matColumnDef="marche">
+              <th mat-header-cell *matHeaderCellDef> Marché </th>
+              <td mat-cell *matCellDef="let productprice"> {{productprice.zoneMarche.marche.nomm}} </td>
+              <td mat-footer-cell *matFooterCellDef>  </td>
+
+            </ng-container>
+          
+            <!-- Cost Column -->
+            <ng-container matColumnDef="prix">
+              <th mat-header-cell *matHeaderCellDef> Prix </th>
+              <td mat-cell *matCellDef="let productprice"> {{productprice.prix | currency:'DA'}} </td>
+              <td mat-footer-cell *matFooterCellDef> {{getTotalPrix() | currency:'DA'}} </td>
+            </ng-container>
+
+             <!-- Item Column -->
+             <ng-container matColumnDef="remise">
+              <th mat-header-cell *matHeaderCellDef> Remise </th>
+              <td mat-cell *matCellDef="let productprice"> {{productprice.remise}}% </td>
+              <td mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <!-- Cost Column -->
+            <ng-container matColumnDef="prixremise">
+              <th mat-header-cell *matHeaderCellDef> Prix avec Remise </th>
+              <td mat-cell *matCellDef="let productprice"> {{productprice.prixRemise | currency:'DA'}} </td>
+              <td mat-footer-cell *matFooterCellDef> {{getTotalPrixRemise() | currency:'DA'}} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+          </table>
+        </div>
+
     </div>
 </app-estimation-nav>
