@@ -17,7 +17,7 @@ export class AuthGuardService implements CanActivate {
           // check if route is restricted by role
           if (route.data.roles && route.data.roles.indexOf(currentUser.role) === -1) {
               if(currentUser.role === "admin"){
-                this.router.navigate(['/admin/dashboard']);
+                this.router.navigate(['/admin/procurement/produits']);
                 return false; 
               } else if (currentUser.role === "procurement"){
                 this.router.navigate(['/procurement/produits/index']);

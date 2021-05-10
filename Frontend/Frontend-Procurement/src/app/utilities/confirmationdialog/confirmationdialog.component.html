@@ -1,11 +1,16 @@
 <h2 mat-dialog-title *ngIf="data.result.codep && !data.recovery">Suppression du Produit {{ data.result.codep }}</h2>
+<h2 mat-dialog-title *ngIf="data.result.nom && data.result.prenom && !data.recovery">Suppression de l'Utilisateur {{ data.result.nom }} {{ data.result.prenom }}</h2>
 <h2 mat-dialog-title *ngIf="data.result.numfournisseur && !data.recovery">Suppression du Frounisseur {{ data.result.numfournisseur }}</h2>
 <h2 mat-dialog-title *ngIf="data.recovery === 'product'">Restauration du Produit {{ data.result.codep }}</h2>
 <h2 mat-dialog-title *ngIf="data.recovery === 'fournisseur'">Restauration du Frounisseur {{ data.result.numfournisseur }}</h2>
+<h2 mat-dialog-title *ngIf="data.recovery === 'user'">Restauration de l'Utilisateur {{ data.result.nom }}  {{ data.result.prenom }}</h2>
+
 <mat-dialog-content class="mat-typography">
 <h3 *ngIf="data.result.codep && !data.recovery" > Voulez vous vraiment supprimer ce produit ?</h3>
 <h3 *ngIf="data.result.numfournisseur && !data.recovery" > Voulez vous vraiment supprimer ce Fournisseur ?</h3>
+<h3 *ngIf="data.result.nom && data.result.prenom && !data.recovery" > Voulez vous vraiment supprimer cet Utilisateur ?</h3>
 <h3 *ngIf="data.recovery === 'product'" > Voulez vous vraiment restaurer ce produit ?</h3>
+<h3 *ngIf="data.recovery === 'user'" > Voulez vous vraiment restaurer cet utilisateur ?</h3>
 <h3 *ngIf="data.recovery === 'fournisseur'" > Voulez vous vraiment restaurer ce Fournisseur ?</h3>
 <h3 class="text-danger font-weight-bolder" *ngIf="data.supprimer" >(Attention : Vous allez supprimer un fournisseur, du coup tout ces produits seront supprimer !!)</h3>
 

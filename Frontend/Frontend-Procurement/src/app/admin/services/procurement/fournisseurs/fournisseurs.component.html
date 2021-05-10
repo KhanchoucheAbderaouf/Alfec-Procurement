@@ -29,12 +29,6 @@
                 </ng-container>
     
                 <!-- Color Column -->
-                <ng-container matColumnDef="Adresse">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Adresse </th>
-                <td class="valval" mat-cell *matCellDef="let row"> {{row.adresse}}</td>
-                </ng-container>
-    
-                <!-- Color Column -->
                 <ng-container matColumnDef="Marques">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Marques</th>
                 <td class="valval" mat-cell *matCellDef="let row"> <div id="HiMarks" *ngFor="let mark of row.marques"> {{mark}}   </div></td>

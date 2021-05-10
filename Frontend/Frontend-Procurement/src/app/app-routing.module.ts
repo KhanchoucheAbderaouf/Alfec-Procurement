@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminParametresComponent } from './admin/admin-parametres/admin-parametres.component';
-import { AdmindashboardComponent } from './admin/services/admindashboard/admindashboard.component';
-import { EstimationComponent } from './admin/services/estimation/estimation.component';
 import { FournisseursComponent } from './admin/services/procurement/fournisseurs/fournisseurs.component';
 import { ProcurementComponent } from './admin/services/procurement/procurement.component';
 import { ZoneComponent } from './admin/services/procurement/zone/zone.component';
@@ -22,25 +19,23 @@ import { FournisseurTrashComponent } from './procurement/trash/fournisseur-trash
 import { ProductTrashComponent } from './procurement/trash/product-trash/product-trash.component';
 import { AuthGuardService } from './security/guard/auth-guard.service';
  
-import { DashboardComponent } from './utilities/dashboard/dashboard.component';
-import { SpinnerComponent } from './utilities/spinner/spinner.component';
  
 
 const routes: Routes = [ 
   {
     path: '',
-    component: SpinnerComponent,
+    component: LoginComponent,
   },
   {
     path: 'login',
     component: LoginComponent
   },
-  {
+  /*{
     path: 'admin/dashboard',
     component: AdmindashboardComponent,
     canActivate: [AuthGuardService],
     data: { roles: ["admin"] }
-  },
+  },*/
   {
     path: 'admin/procurement/produits',
     component: ProcurementComponent,
@@ -68,12 +63,6 @@ const routes: Routes = [
   {
     path: 'admin/users/create',
     component: CreateUserComponent,
-    canActivate: [AuthGuardService],
-    data: { roles: ["admin"] }
-  },
-  {
-    path: 'admin/settings',
-    component: AdminParametresComponent,
     canActivate: [AuthGuardService],
     data: { roles: ["admin"] }
   },

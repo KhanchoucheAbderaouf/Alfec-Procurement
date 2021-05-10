@@ -33,7 +33,7 @@ export class FournisseursComponent implements OnInit {
     this.titleService.setTitle("Fournisseurs");
   }
  
-  displayedColumns: string[] = ['Code', 'Nom', 'Activite','Adresse', 'Marques' ,'Details'];
+  displayedColumns: string[] = ['Code', 'Nom', 'Activite', 'Marques' ,'Details'];
   dataSource:  MatTableDataSource<[any]>;
   response : any;
   testing : boolean = false;
@@ -70,8 +70,7 @@ export class FournisseursComponent implements OnInit {
       this.dataSource.filterPredicate = (data: any, filter: string) => {
         return data.numfournisseur.toLocaleLowerCase().includes(filter)||
         data.nomf.toString().toLocaleLowerCase().includes(filter) ||
-        data.activite.toString().toLocaleLowerCase().includes(filter) ||
-        data.adresse.toLocaleLowerCase().includes(filter);
+        data.activite.toString().toLocaleLowerCase().includes(filter) 
       }*/
 
       this.dataSource.sortingDataAccessor = (data: any, sortHeaderId: any) => {
@@ -86,10 +85,7 @@ export class FournisseursComponent implements OnInit {
         }
       case 'Activite': {
         return data.activite;
-        }
-      case 'Adresse': {
-        return data.adresse;
-        }  
+        } 
       case 'Marques': {
         return data.marques;
         }

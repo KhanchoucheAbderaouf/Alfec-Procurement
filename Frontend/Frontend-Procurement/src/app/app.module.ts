@@ -7,8 +7,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { IndexComponent } from './procurement/products/index/index.component';
 import { CreateComponent } from './procurement/products/create/create.component';
 import { ProcurementComponent } from './admin/services/procurement/procurement.component';
-import { FooterComponent } from './utilities/footer/footer.component';
-import { EstimationComponent } from './admin/services/estimation/estimation.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSliderModule } from '@angular/material/slider';
@@ -31,12 +29,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTreeModule } from '@angular/material/tree';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NavComponent } from './utilities/nav/nav.component';
-import { DashboardComponent } from './utilities/dashboard/dashboard.component';
-import { FormComponent } from './utilities/form/form.component';
-import { TableComponent } from './utilities/table/table.component';
-import { TreeComponent } from './utilities/tree/tree.component';
-import { DragdropComponent } from './utilities/dragdrop/dragdrop.component';
-import { HeaderComponent } from './utilities/header/header.component';
+
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ConfirmationdialogComponent } from './utilities/confirmationdialog/confirmationdialog.component';
@@ -47,7 +40,6 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { SearchComponent } from './procurement/products/search/search.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { SpinnerComponent } from './utilities/spinner/spinner.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { FournisseurCreateComponent } from './procurement/fournisseur/fournisseur-create/fournisseur-create.component';
 import { FournisseurIndexComponent } from './procurement/fournisseur/fournisseur-index/fournisseur-index.component';
@@ -64,7 +56,6 @@ import { FournisseursComponent } from './admin/services/procurement/fournisseurs
 import { ZoneComponent } from './admin/services/procurement/zone/zone.component';
 import { DialogPricesComponent } from './admin/services/procurement/dialog-prices/dialog-prices.component';
 import { UtilisateursComponent } from './admin/utilisateurs/utilisateurs.component';
-import { AdminParametresComponent } from './admin/admin-parametres/admin-parametres.component';
 import { DialogtauxchangeComponent } from './admin/dialogtauxchange/dialogtauxchange.component';
 import { CreateUserComponent } from './admin/utilisateurs/create-user/create-user.component';
 import { DialogconfirmsuppuserComponent } from './admin/dialogconfirmsuppuser/dialogconfirmsuppuser.component';
@@ -115,7 +106,6 @@ import { EvapsearchresultsComponent } from './procurement/products/evaporateur/e
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import { PhonePipe } from './utilities/pipes/phone.pipe';
 import {Ng2TelInputModule} from 'ng2-tel-input';
 import { ProductTrashComponent } from './procurement/trash/product-trash/product-trash.component';
 import { FournisseurTrashComponent } from './procurement/trash/fournisseur-trash/fournisseur-trash.component';
@@ -131,16 +121,8 @@ registerLocaleData(localeFr, 'fr');
     LoginComponent,
     IndexComponent,
     CreateComponent,
-    DashboardComponent,
     ProcurementComponent,
-    FooterComponent,
-    EstimationComponent,
-    FormComponent,
-    TableComponent,
-    TreeComponent,
-    DragdropComponent,
     NavComponent,
-    HeaderComponent,
     GegComponent,
     DialogueComponent,
     GegindexComponent,
@@ -150,7 +132,6 @@ registerLocaleData(localeFr, 'fr');
     FournisseurdetailsdialogComponent,
     FournisseuralldialogComponent,
     SearchComponent,
-    SpinnerComponent,
     SearchgegComponent,
     AdminsidenavComponent,
     AdmindashboardComponent,
@@ -159,7 +140,6 @@ registerLocaleData(localeFr, 'fr');
     ZoneComponent,
     DialogPricesComponent,
     UtilisateursComponent,
-    AdminParametresComponent,
     DialogtauxchangeComponent,
     CreateUserComponent,
     DialogconfirmsuppuserComponent,
@@ -206,7 +186,6 @@ registerLocaleData(localeFr, 'fr');
     EvapdialogComponent,
     EvapsearchComponent,
     EvapsearchresultsComponent,
-    PhonePipe,
     ProductTrashComponent,
     FournisseurTrashComponent,
     EstimationNavComponent,

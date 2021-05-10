@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if(this.service.currentUser) {
       if(JSON.parse(localStorage.getItem("currentUser") || "{}").role === "admin") {
-        this.route.navigate(['/admin/dashboard']);
+        this.route.navigate(['/admin/procurement/produits']);
       } else if (JSON.parse(localStorage.getItem("currentUser") || "{}").role === "procurement"){
         this.route.navigate(['/procurement/produits/index']);
       } else if(JSON.parse(localStorage.getItem("currentUser") || "{}").role === "estimation"){
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
     if (this.formGroup.valid) { 
         this.service.login(this.formGroup.value.username,this.formGroup.value.password).subscribe(result => {
           if(result.role == "admin"){
-            this.route.navigate(['/admin/dashboard']);
+            this.route.navigate(['/admin/procurement/produits']);
           }else if(result.role == "procurement"){
             this.route.navigate(['/procurement/produits/index']);
           } else if (result.role == "estimation"){
