@@ -37,8 +37,6 @@ export class EstimationPricesComponent implements OnInit {
     this.AllMarches()
     this.initForm()
     this.initialValues = this.formGroup.value;
-    console.log(this.vars.EstimationProducts)
-
   }
 
   showagain(){

@@ -27,16 +27,6 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  /*{
-    path: 'admin/dashboard',
-    component: AdmindashboardComponent,
-    canActivate: [AuthGuardService],
-    data: { roles: ["admin"] }
-  },*/
-  {
     path: 'admin/procurement/produits',
     component: ProcurementComponent,
     canActivate: [AuthGuardService],
@@ -48,12 +38,6 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     data: { roles: ["admin"] }
   },
-  /*{
-    path: 'admin/procurement/zones',
-    component: ZoneComponent,
-    canActivate: [AuthGuardService],
-    data: { roles: ["admin"] }
-  },*/
   {
     path: 'admin/users/index',
     component: UtilisateursComponent,

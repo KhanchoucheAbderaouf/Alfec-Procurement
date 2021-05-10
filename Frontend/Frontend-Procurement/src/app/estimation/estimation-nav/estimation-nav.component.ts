@@ -29,7 +29,8 @@ export class EstimationNavComponent implements OnInit  {
 
   logout(){
     this.service.logout();
-    this.route.navigate(['/login']);
+    window.location.href = "/"
+
   }
   spantext : string;
   doSomething(){

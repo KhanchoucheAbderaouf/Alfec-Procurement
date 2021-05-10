@@ -27,14 +27,14 @@ export class AuthGuardService implements CanActivate {
                 return false;
               } else {
                 // role not authorised so redirect to home page
-                this.router.navigate(['/login']);
+                this.router.navigate(['/']);
                 return false;
               }
           } 
           // authorised so return true
           return true;
       } else {
-        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+        this.router.navigate(['/'], { queryParams: { returnUrl: state.url } });
         return false;
       }
    

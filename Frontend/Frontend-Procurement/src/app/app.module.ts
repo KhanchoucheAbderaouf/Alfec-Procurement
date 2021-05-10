@@ -113,6 +113,10 @@ import { EstimationNavComponent } from './estimation/estimation-nav/estimation-n
 import { EstimationPricesComponent } from './estimation/prices/estimation-prices/estimation-prices.component';
 import { EstimationsearchComponent } from './estimation/search/estimationsearch/estimationsearch.component';
 import { UsersTrashComponent } from './admin/trash/users-trash/users-trash.component';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { AuthService } from './security/auth.service';
+import { AuthGuardService } from './security/guard/auth-guard.service';
+
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -249,7 +253,10 @@ registerLocaleData(localeFr, 'fr');
     },
     {
       provide: LOCALE_ID, useValue: 'fr'
-    }
+    },
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    AuthGuardService,
+    AuthService 
 ],
   bootstrap: [AppComponent]
 })
