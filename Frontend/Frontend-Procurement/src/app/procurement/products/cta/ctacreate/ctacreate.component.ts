@@ -112,7 +112,7 @@ export class CtacreateComponent implements OnInit {
 
       nomp: new FormControl("CTA"),
       codep: new FormControl("", [Validators.required]),
-      type: new FormControl("", [Validators.required]),
+      type: new FormControl(""),
       marque: new FormControl("", [Validators.required]),
       fournisseur: new FormGroup({
         id: new FormControl("", [Validators.required]),
@@ -126,8 +126,8 @@ export class CtacreateComponent implements OnInit {
         //section ventilation
         ventilation: new FormControl(""),
         nombreventilateur : new FormControl(""),
-        debitair: new FormControl("", [Validators.required]),
-        pressiondisponiblegaine: new FormControl("",[Validators.required]),
+        debitair: new FormControl(""),
+        pressiondisponiblegaine: new FormControl(""),
         rendementventilateur : new FormControl(""),
         puissanceelectriqueabsorbe : new FormControl(""),
         intensitenominale: new FormControl(""),
@@ -139,21 +139,21 @@ export class CtacreateComponent implements OnInit {
         sensairventilation: new FormControl(""),
 
         //section filtration
-        prefiltration: new FormControl("", [Validators.required]),
-        nombreprefiltration: new FormControl("", [Validators.required,Validators.min(0)]),
-        filtration: new FormControl("", [Validators.required]),
-        nombrefiltration: new FormControl("", [Validators.required,Validators.min(0)]),    
-        pertechargefiltration: new FormControl("", [Validators.required]),
+        prefiltration: new FormControl(""),
+        nombreprefiltration: new FormControl(""),
+        filtration: new FormControl(""),
+        nombrefiltration: new FormControl(""),    
+        pertechargefiltration: new FormControl(""),
         prisepression: new FormControl(""),
         sensairfiltration: new FormControl(""),
         pasdesaillettes: new FormControl(""),
          
         //section batterie
-        batterie: new FormControl("", [Validators.required]),
-        typebatterie: new FormControl("", [Validators.required]),
-        batterieelectriquechaude: new FormControl("", [Validators.required]),
-        puissancefrigorifiquebatterie: new FormControl(0, [Validators.required,Validators.min(0)]),
-        puissancecalorifiquebatterie: new FormControl(0, [Validators.required,Validators.min(0)]),
+        batterie: new FormControl(""),
+        typebatterie: new FormControl(""),
+        batterieelectriquechaude: new FormControl(""),
+        puissancefrigorifiquebatterie: new FormControl(0),
+        puissancecalorifiquebatterie: new FormControl(0),
         regimeeautempentree: new FormControl(""),
         regimeeautempsortie: new FormControl(""),
         temperatureentreeair: new FormControl(""),
@@ -164,24 +164,22 @@ export class CtacreateComponent implements OnInit {
         pertechargebatterie: new FormControl(""),
         
         //section melange
-        typeregistremelange: new FormControl("", [Validators.required]),
-        typemelange: new FormControl("", [Validators.required]),
-        airregistremelange: new FormControl("", [Validators.required]),
+        typeregistremelange: new FormControl(""),
+        typemelange: new FormControl(""),
+        airregistremelange: new FormControl(""),
         temperaturemelange: new FormControl(""),
         carrosseriemelange: new FormControl(""),
         epaisseurcarrosseriemelange: new FormControl(""),
         peintemelange: new FormControl(""),
         
         //autres
-        regulation: new FormControl("", [Validators.required]),
+        regulation: new FormControl(""),
         montageexterieur: new FormControl(""),
         classenergitique: new FormControl(""),
-        certification: new FormControl("", [Validators.required]),
+        certification: new FormControl(""),
 
       }),
-
-      // douane : new FormControl("",[Validators.required,Validators.max(100),Validators.min(0)]),
-      //fraisdivers : new FormControl("",[Validators.required]),
+ 
     })
 
   }

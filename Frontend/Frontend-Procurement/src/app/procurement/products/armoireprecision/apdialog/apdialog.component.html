@@ -254,10 +254,8 @@
     <mat-list-item>
       <div class="row mt-2">
         <mat-form-field class="full-width-input m-2">
-        <input matInput type="text" placeholder="Type Produit : " formControlName="type" required>
-        <mat-error>
-          Veuillez choisir un type produit valide
-        </mat-error>
+        <input matInput type="text" placeholder="Type Produit : " formControlName="type" >
+
         </mat-form-field>
        </div>
     </mat-list-item>
@@ -283,6 +281,7 @@
               {{mark}}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="!formGroup.value.marque">Veuillez choisir une marque</mat-error>
       </mat-form-field>
       </div>
     </mat-list-item>
@@ -295,113 +294,97 @@
     <mat-list-item>
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Type AP : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="typeap" required>
+              <mat-radio-group formControlName="typeap" >
                 <mat-radio-button value="Horizontale">Horizontale</mat-radio-button>&nbsp;
                 <mat-radio-button value="Verticale">Verticale</mat-radio-button> 
               </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-            <mat-error *ngIf="!formGroup.value.parametres.typeap">Ce champ est obligatoire</mat-error>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Soufflage : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="soufflage" required>
+              <mat-radio-group formControlName="soufflage" >
                 <mat-radio-button value="a distance">à Distance</mat-radio-button>&nbsp;
                 <mat-radio-button value="en vrac">en Vrac</mat-radio-button>&nbsp;  
               </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-            <mat-error *ngIf="!formGroup.value.parametres.soufflage">Ce champ est obligatoire</mat-error>
           </div>
     </mat-list-item>
     <mat-list-item  *ngIf="formGroup.value.parametres.soufflage === 'a distance'">
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Type de Soufflage : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="typesoufflage" required>
+              <mat-radio-group formControlName="typesoufflage" >
                 <mat-radio-button value="par le haut">Par le haut</mat-radio-button>&nbsp;
                 <mat-radio-button value="par le bas">Par le bas</mat-radio-button>&nbsp;  
               </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-            <mat-error *ngIf="!formGroup.value.parametres.typesoufflage">Ce champ est obligatoire</mat-error>
         </div>
     </mat-list-item>
     <mat-list-item  *ngIf="formGroup.value.parametres.soufflage === 'en vrac'">
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Type de Soufflage : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="typesoufflage" required>
+              <mat-radio-group formControlName="typesoufflage" >
                 <mat-radio-button value="Plenum frontal">Plénum frontal</mat-radio-button>&nbsp;
                 <mat-radio-button value="Plenum en bas">Plénum en bas </mat-radio-button>&nbsp;  
               </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-            <mat-error *ngIf="!formGroup.value.parametres.typesoufflage">Ce champ est obligatoire</mat-error>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Reprise : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="reprise" required>
+              <mat-radio-group formControlName="reprise" >
                 <mat-radio-button value="a distance">à Distance</mat-radio-button>&nbsp;
                 <mat-radio-button value="en vrac">en Vrac</mat-radio-button>&nbsp;  
               </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-            <mat-error *ngIf="!formGroup.value.parametres.reprise">Ce champ est obligatoire</mat-error>
         </div>
     </mat-list-item>
     <mat-list-item  *ngIf="formGroup.value.parametres.reprise === 'a distance'">
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Type de Reprise : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="typereprise" required>
+              <mat-radio-group formControlName="typereprise" >
                 <mat-radio-button value="par le haut">Par le haut</mat-radio-button>&nbsp;
                 <mat-radio-button value="par le bas">Par le bas</mat-radio-button>&nbsp;  
               </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-            <mat-error *ngIf="!formGroup.value.parametres.typereprise">Ce champ est obligatoire</mat-error>
         </div>
     </mat-list-item>
     <mat-list-item  *ngIf="formGroup.value.parametres.reprise === 'en vrac'">
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Type de Reprise : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="typereprise" required>
+              <mat-radio-group formControlName="typereprise" >
                 <mat-radio-button value="par le haut">Par le haut</mat-radio-button>&nbsp;
                 <mat-radio-button value="par le bas">Par le bas</mat-radio-button>&nbsp;  
                 <mat-radio-button value="en facade">en façade</mat-radio-button>&nbsp;  
               </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-            <mat-error *ngIf="!formGroup.value.parametres.typereprise">Ce champ est obligatoire</mat-error>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input col-6">
-              <input matInput type="text" oninput="this.value = this.value.toUpperCase()" placeholder="Prefiltration : " formControlName="prefiltration" required>
-              <mat-error>
-                Veuillez choisir la préfiltration
-              </mat-error>
+              <input matInput type="text" oninput="this.value = this.value.toUpperCase()" placeholder="Prefiltration : " formControlName="prefiltration" >
+          
             </mat-form-field>
             <mat-form-field class="full-width-input col-6">
               <input matInput type="number" placeholder="Nombre de Préfiltration : " formControlName="nombreprefiltration"
-                required>
-              <mat-error>
-                Veuillez choisir le nombre de préfiltration
-              </mat-error>
+                >
+              
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input col-6">
-              <input matInput type="text" oninput="this.value = this.value.toUpperCase()" placeholder="Filtration : " formControlName="filtration" required>
-              <mat-error>
-                Veuillez choisir la Filtration
-              </mat-error>
+              <input matInput type="text" oninput="this.value = this.value.toUpperCase()" placeholder="Filtration : " formControlName="filtration" >
+              
             </mat-form-field>
             <mat-form-field class="full-width-input col-6">
               <input matInput type="number" placeholder="Nombre de Filtration : " formControlName="nombrefiltration"
-                required>
-              <mat-error>
-                Veuillez choisir le nombre de filtration
-              </mat-error>
+                >
+             
             </mat-form-field>
         </div>
       </mat-list-item>
       <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Perte de Charge [Pa] : " formControlName="pertecharge" required>
-              <mat-error> Veuillez choisir la perte de charge </mat-error>
+              <input matInput type="number" placeholder="Perte de Charge [Pa] : " formControlName="pertecharge" >
             </mat-form-field>
         </div>
       </mat-list-item>
@@ -421,40 +404,35 @@
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="text" placeholder="Type Compresseur : " formControlName="typecompresseur" required>
-              <mat-error> Veuillez choisir le Type du Compresseur </mat-error>
+              <input matInput type="text" placeholder="Type Compresseur : " formControlName="typecompresseur" >
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Nombre Compresseur : " formControlName="nombrecompresseur" required>
-              <mat-error> Veuillez choisir le Nombre de Compresseur </mat-error>
+              <input matInput type="number" placeholder="Nombre Compresseur : " formControlName="nombrecompresseur" >
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Fluide Frigorifique : " formControlName="fluidefrigorifique" required>
-              <mat-error> Veuillez choisir le Fluide Frigorifique </mat-error>
+              <input matInput type="number" placeholder="Fluide Frigorifique : " formControlName="fluidefrigorifique" >
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Puissance Frigorifique [KW] : " formControlName="puissancefrigorifique" required>
-              <mat-error> Veuillez choisir la Puissance Frigorifique </mat-error>
+              <input matInput type="number" placeholder="Puissance Frigorifique [KW] : " formControlName="puissancefrigorifique" >
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Température Entrée d'Air [C°] : " formControlName="temperatureentreeair" required>
-              <mat-error> Veuillez choisir la Température d'Entrée d'Air  </mat-error>
+              <input matInput type="number" placeholder="Température Entrée d'Air [C°] : " formControlName="temperatureentreeair" >
             </mat-form-field>
         </div>
     </mat-list-item>
@@ -489,16 +467,14 @@
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Débit d'Air  [m3/h] : " formControlName="debitair" required>
-              <mat-error> Veuillez choisir le Débit d'Air </mat-error>
+              <input matInput type="number" placeholder="Débit d'Air  [m3/h] : " formControlName="debitair" >
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Pression Disponible [Pa] : " formControlName="pressiondisponible" required>
-              <mat-error> Veuillez choisir la Pression Disponible </mat-error>
+              <input matInput type="number" placeholder="Pression Disponible [Pa] : " formControlName="pressiondisponible" >
             </mat-form-field>
         </div>
     </mat-list-item>
@@ -600,8 +576,7 @@
                 <mat-radio-button value="avec"> Avec </mat-radio-button>&nbsp;
                 <mat-radio-button value="sans"> Sans </mat-radio-button>
               </mat-radio-group>&nbsp;&nbsp;&nbsp;
-              <mat-error *ngIf="!formGroup.value.parametres.dialoguegtc">Ce champ est obligatoire
-              </mat-error>
+             
         </div>
     </mat-list-item>
     <mat-list-item>
@@ -626,24 +601,21 @@
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Température extérieure [C°]: " formControlName="temperatureexterieure" required>
-              <mat-error> Veuillez choisir la Température extérieure </mat-error>
+              <input matInput type="number" placeholder="Température extérieure [C°]: " formControlName="temperatureexterieure" >
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Raccordement frigorifique Entrée [mm]  : " formControlName="raccordementfrigoentree" required>
-              <mat-error> Veuillez choisir le Raccordement frigorifique d'Entrée </mat-error>
+              <input matInput type="number" placeholder="Raccordement frigorifique Entrée [mm]  : " formControlName="raccordementfrigoentree" >
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Raccordement frigorifique Sortie [mm] : " formControlName="raccordementfrigosortie" required>
-              <mat-error> Veuillez choisir le Raccordement frigorifique de Sortie </mat-error>
+              <input matInput type="number" placeholder="Raccordement frigorifique Sortie [mm] : " formControlName="raccordementfrigosortie" >
             </mat-form-field>
         </div>
     </mat-list-item>
@@ -666,7 +638,6 @@
                 <mat-radio-button value="Inclus">Inclus</mat-radio-button>&nbsp;
                 <mat-radio-button value="Non Inclus"> Non Inclus </mat-radio-button>
               </mat-radio-group>
-              <mat-error *ngIf="!formGroup.value.parametres.plotantivibration">Ce champ est obligatoire</mat-error>
             </div>
         </div>
       </mat-list-item>
@@ -678,10 +649,8 @@
             <mat-radio-button  [checked]="certifautreradio" (change)="radiocertifautre()">Autre</mat-radio-button> 
           </mat-radio-group>
           <mat-form-field *ngIf="certifautreradio" class="full-width-input m-2 col w-auto">
-            <input matInput type="text" placeholder="Certification : " formControlName="certification" required>
-            <mat-error>
-              Veuillez préciser la certification
-            </mat-error>
+            <input matInput type="text" placeholder="Certification : " formControlName="certification">
+           
           </mat-form-field>
         </div>
       </mat-list-item>

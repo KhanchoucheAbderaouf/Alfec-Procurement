@@ -84,7 +84,7 @@ export class ChdcreateComponent implements OnInit {
 
       nomp: new FormControl("CHD"),
       codep: new FormControl("", [Validators.required]),
-      type: new FormControl("", [Validators.required]),
+      type: new FormControl(""),
       marque: new FormControl("", [Validators.required]),
       fournisseur: new FormGroup({
         id: new FormControl("", [Validators.required]),
@@ -94,31 +94,31 @@ export class ChdcreateComponent implements OnInit {
       parametres: new FormGroup({
 
         //Infos Essentielles
-        typechd : new FormControl("", [Validators.required]),
-        fonctionnementchd: new FormControl("", [Validators.required]),
-        puissancecalorifiquechd: new FormControl("", [Validators.required,Validators.min(0)]),
+        typechd : new FormControl(""),
+        fonctionnementchd: new FormControl(""),
+        puissancecalorifiquechd: new FormControl(""),
         temperature: new FormControl(""),
-        pressionfonctionnementchd: new FormControl("",[Validators.required]),
-        regimefonctionement: new FormControl("", [Validators.required]),
-        pressionmax: new FormControl("", [Validators.required]),
-        volumeeau: new FormControl("", [Validators.required]),
+        pressionfonctionnementchd: new FormControl(""),
+        regimefonctionement: new FormControl(""),
+        pressionmax: new FormControl(""),
+        volumeeau: new FormControl(""),
 
         //Bruleur 
-        puissancecalorifiquebruleur: new FormControl("", [Validators.required,Validators.min(0)]),
-        pressionfonctionnementbruleur: new FormControl("", [Validators.required]),
+        puissancecalorifiquebruleur: new FormControl(""),
+        pressionfonctionnementbruleur: new FormControl(""),
 
         //electrique
         tensionnominalevoltage: new FormControl(""),
         tensionnominalephases: new FormControl(""),
         tensionnominalehertz: new FormControl(""),
         puissanceelectriqueabsorbee: new FormControl(""),
-        courantnominal: new FormControl("", [Validators.required,Validators.min(0)]),
-        dialoguegtc: new FormControl("", [Validators.required]),
+        courantnominal: new FormControl(""),
+        dialoguegtc: new FormControl(""),
         puissanceacoustique: new FormControl(""),
 
         //Autres
         classenergitique: new FormControl(""),
-        certification: new FormControl("", [Validators.required]),
+        certification: new FormControl(""),
 
       }),
 

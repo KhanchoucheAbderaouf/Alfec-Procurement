@@ -84,7 +84,7 @@ export class ApcreateComponent implements OnInit {
 
       nomp: new FormControl("AP"),
       codep: new FormControl("", [Validators.required]),
-      type: new FormControl("", [Validators.required]),
+      type: new FormControl(""),
       marque: new FormControl("", [Validators.required]),
       fournisseur: new FormGroup({
         id: new FormControl("", [Validators.required]),
@@ -94,32 +94,32 @@ export class ApcreateComponent implements OnInit {
       parametres: new FormGroup({
 
         //Infos Essentielles
-        typeap : new FormControl("", [Validators.required]),
-        soufflage: new FormControl("", [Validators.required]),
-        typesoufflage: new FormControl("", [Validators.required]),
-        reprise: new FormControl("", [Validators.required]),
-        typereprise : new FormControl("",[Validators.required]),
-        prefiltration: new FormControl("", [Validators.required]),
-        nombreprefiltration: new FormControl("",[Validators.required,Validators.min(0)]),
-        filtration : new FormControl("",[Validators.required]),
-        nombrefiltration : new FormControl("",[Validators.required,Validators.min(0)]),
-        pertecharge : new FormControl("", [Validators.required]),
+        typeap : new FormControl(""),
+        soufflage: new FormControl(""),
+        typesoufflage: new FormControl(""),
+        reprise: new FormControl(""),
+        typereprise : new FormControl(""),
+        prefiltration: new FormControl(""),
+        nombreprefiltration: new FormControl(""),
+        filtration : new FormControl(""),
+        nombrefiltration : new FormControl(""),
+        pertecharge : new FormControl(""),
         dimension : new FormControl(""),
 
         //Circuit Frigorifique
-        typecompresseur: new FormControl("", [Validators.required]),
-        nombrecompresseur: new FormControl("", [Validators.required,Validators.min(0)]),
-        fluidefrigorifique: new FormControl("", [Validators.required]),
-        puissancefrigorifique: new FormControl("", [Validators.required,Validators.min(0)]),
+        typecompresseur: new FormControl(""),
+        nombrecompresseur: new FormControl(""),
+        fluidefrigorifique: new FormControl(""),
+        puissancefrigorifique: new FormControl(""),
         temperatureentreeair: new FormControl(""),
         temperaturesortieair: new FormControl(""),
         temperaturecondensation: new FormControl(""),
 
         //ventilateur
         nombreventilateur: new FormControl(""),
-        debitair: new FormControl("", [Validators.required,Validators.min(0)]),    
-        pressiondisponible: new FormControl("", [Validators.required,Validators.min(0)]),
-        vitesserotation: new FormControl("", [Validators.required]),
+        debitair: new FormControl(""),    
+        pressiondisponible: new FormControl(""),
+        vitesserotation: new FormControl(""),
         niveausonore: new FormControl(""),
         distanceniveausonore: new FormControl(""),
         niveaupuissancesonore: new FormControl(""),
@@ -135,17 +135,17 @@ export class ApcreateComponent implements OnInit {
         tensionnominalehertz: new FormControl(""),
         puissanceelectriqueabsorbee: new FormControl(""),
         courantnominal: new FormControl(""),
-        dialoguegtc: new FormControl("", [Validators.required]),
+        dialoguegtc: new FormControl(""),
         puissanceacoustique: new FormControl(""),
 
         //Autres
         puissanceabsorbeebatterie: new FormControl(""),
-        temperatureexterieure: new FormControl("", [Validators.required]),
-        raccordementfrigoentree: new FormControl("", [Validators.required]),
-        raccordementfrigosortie: new FormControl("", [Validators.required]),
+        temperatureexterieure: new FormControl(""),
+        raccordementfrigoentree: new FormControl(""),
+        raccordementfrigosortie: new FormControl(""),
         classenergitique: new FormControl(""),
-        plotantivibration: new FormControl("", [Validators.required]),
-        certification: new FormControl("", [Validators.required]),
+        plotantivibration: new FormControl(""),
+        certification: new FormControl(""),
 
       }),
 

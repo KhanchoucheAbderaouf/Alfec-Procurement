@@ -84,7 +84,7 @@ export class PompecreateComponent implements OnInit {
 
       nomp: new FormControl("POMPE"),
       codep: new FormControl("", [Validators.required]),
-      type: new FormControl("", [Validators.required]),
+      type: new FormControl(""),
       marque: new FormControl("", [Validators.required]),
       fournisseur: new FormGroup({
         id: new FormControl("", [Validators.required]),
@@ -94,13 +94,13 @@ export class PompecreateComponent implements OnInit {
       parametres: new FormGroup({
 
         //Infos Essentielles
-        caracteristiquepompe: new FormControl("", [Validators.required]),
-        typepompe : new FormControl("", [Validators.required]),
-        debiteau: new FormControl("", [Validators.required,Validators.min(0)]),
-        hauteurtotale: new FormControl("", [Validators.required]),
+        caracteristiquepompe: new FormControl(""),
+        typepompe : new FormControl(""),
+        debiteau: new FormControl(""),
+        hauteurtotale: new FormControl(""),
         rendementhydraulique  : new FormControl(""),
-        tmin: new FormControl("", [Validators.required]),
-        tmax: new FormControl("", [Validators.required]),
+        tmin: new FormControl(""),
+        tmax: new FormControl(""),
       
         
         //electrique
@@ -108,12 +108,12 @@ export class PompecreateComponent implements OnInit {
         tensionnominalephases: new FormControl(""),
         tensionnominalehertz: new FormControl(""),
         puissanceelectriqueabsorbee: new FormControl(""),
-        courantnominal: new FormControl("", [Validators.required,Validators.min(0)]),
+        courantnominal: new FormControl(""),
         puissanceacoustique: new FormControl(""),
 
         //Autres
         classenergitique: new FormControl(""),
-        certification: new FormControl("", [Validators.required]),
+        certification: new FormControl(""),
 
       }),
 

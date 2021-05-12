@@ -13,10 +13,7 @@
           </mat-error>
           
           <mat-form-field class="full-width-input">
-            <input matInput type="text" placeholder="Type Produit : " formControlName="type" required>
-            <mat-error>
-              Veuillez choisir un type valide
-            </mat-error>
+            <input matInput type="text" placeholder="Type Produit : " formControlName="type" >
           </mat-form-field>
  
 
@@ -71,39 +68,31 @@
 
                 <div class="row mt-2">
                     <mat-label style="color: #182628;" class="h6"> Caractéristiques Pompe : *</mat-label>&nbsp;&nbsp;&nbsp;
-                      <mat-radio-group formControlName="caracteristiquepompe" required>
+                      <mat-radio-group formControlName="caracteristiquepompe" >
                         <mat-radio-button value="Verticale">Verticale</mat-radio-button>&nbsp;
                         <mat-radio-button value="Horizontale">Horizontale</mat-radio-button>&nbsp;  
                       </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-                    <mat-error *ngIf="submitted && !formGroup.value.parametres.caracteristiquepompe">Ce champ est obligatoire</mat-error>
                   </div>
 
                   <div class="row mt-2">
                     <mat-label style="color: #182628;" class="h6"> Type Pompe : *</mat-label>&nbsp;&nbsp;&nbsp;
-                      <mat-radio-group formControlName="typepompe" required>
+                      <mat-radio-group formControlName="typepompe" >
                         <mat-radio-button value="Simple">Simple</mat-radio-button>&nbsp;
                         <mat-radio-button value="Jumelee">Jumelée</mat-radio-button>&nbsp;  
                       </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-                    <mat-error *ngIf="submitted && !formGroup.value.parametres.typepompe">Ce champ est obligatoire</mat-error>
                   </div>
 
                
 
                 <div class="row mt-2">
                 <mat-form-field class="full-width-input m-2">
-                    <input matInput type="number" placeholder="Débit d'Eau [m3/h]: " formControlName="debiteau" required>
-                    <mat-error>
-                      Veuillez choisir le Débit d'Eau
-                    </mat-error>
+                    <input matInput type="number" placeholder="Débit d'Eau [m3/h]: " formControlName="debiteau" >
                 </mat-form-field>
                 </div>
 
                 <div class="row mt-2">
                 <mat-form-field class="full-width-input m-2">
-                    <input matInput type="number" placeholder="Hauteur Manométrique Totale [Hmt] : " formControlName="hauteurtotale" required>
-                    <mat-error>
-                      Veuillez choisir la Hauteur Manométrique Totale
-                    </mat-error>
+                    <input matInput type="number" placeholder="Hauteur Manométrique Totale [Hmt] : " formControlName="hauteurtotale" >
                 </mat-form-field>
                 </div>
 
@@ -115,17 +104,11 @@
 
                 <div class="row mt-2">
                     <mat-form-field class="full-width-input col-6">
-                      <input matInput type="number" placeholder="Température MIN de fluide [C°] : " formControlName="tmin" required>
-                      <mat-error>
-                        Veuillez choisir la Température MIN de fluide 
-                      </mat-error>
+                      <input matInput type="number" placeholder="Température MIN de fluide [C°] : " formControlName="tmin" >
                     </mat-form-field>
                     <mat-form-field class="full-width-input col-6">
                       <input matInput type="number" placeholder="Température MAX de fluide [C°] : " formControlName="tmax"
-                        required>
-                      <mat-error>
-                        Veuillez choisir la Température MAX de fluide 
-                      </mat-error>
+                        >
                     </mat-form-field>
                 </div>
 
@@ -172,8 +155,7 @@
 
                     <div class="row mt-2">
                         <mat-form-field class="full-width-input m-2">
-                          <input matInput type="number" placeholder="Courant Nominal [A] : " formControlName="courantnominal" required>
-                          <mat-error> Veuillez choisir le Courant Nominal </mat-error>
+                          <input matInput type="number" placeholder="Courant Nominal [A] : " formControlName="courantnominal" >
                         </mat-form-field>
                     </div>
                     
@@ -221,14 +203,9 @@
                         <mat-radio-button [checked]="certifautreradio" (change)="radiocertifautre()">Autre
                         </mat-radio-button>
                       </mat-radio-group>
-                      <mat-error *ngIf="submitted && !formGroup.value.parametres.certification && !certifautreradio ">Ce champ est
-                        obligatoire</mat-error>
     
                       <mat-form-field *ngIf="certifautreradio" class="full-width-input m-2 col w-auto">
-                        <input matInput type="text" placeholder="Certification : " formControlName="certification" required>
-                        <mat-error>
-                          Veuillez préciser la certification
-                        </mat-error>
+                        <input matInput type="text" placeholder="Certification : " formControlName="certification" >
                       </mat-form-field>
                   </div>
 

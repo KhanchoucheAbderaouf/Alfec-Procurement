@@ -292,8 +292,6 @@ export class DialogueComponent implements OnInit {
 
       }),
 
-      // douane : new FormControl("",[Validators.required,Validators.max(100),Validators.min(0)]),
-      //fraisdivers : new FormControl("",[Validators.required]),
     })
   }
 

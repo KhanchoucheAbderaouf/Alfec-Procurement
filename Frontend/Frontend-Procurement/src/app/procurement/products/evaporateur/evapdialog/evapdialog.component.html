@@ -155,10 +155,8 @@
     <mat-list-item>
       <div class="row mt-2">
         <mat-form-field class="full-width-input m-2">
-        <input matInput type="text" placeholder="Type Produit : " formControlName="type" required>
-        <mat-error>
-          Veuillez choisir un type produit valide
-        </mat-error>
+        <input matInput type="text" placeholder="Type Produit : " formControlName="type" >
+     
         </mat-form-field>
        </div>
     </mat-list-item>
@@ -184,6 +182,7 @@
               {{mark}}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="!formGroup.value.marque">Veuillez choisir une marque</mat-error>
       </mat-form-field>
       </div>
     </mat-list-item>
@@ -196,58 +195,48 @@
     <mat-list-item>
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Utilisation Pour Chambre : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="utilisationchambre" required>
+              <mat-radio-group formControlName="utilisationchambre" >
                 <mat-radio-button value="positive">Positive</mat-radio-button>&nbsp;
                 <mat-radio-button value="negative">Négative</mat-radio-button>&nbsp;  
               </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-            <mat-error *ngIf="!formGroup.value.parametres.utilisationchambre">Ce champ est obligatoire</mat-error>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="temperature Chambre [C°] : " formControlName="temperaturech" required>
-              <mat-error> Veuillez choisir la Température de la Chambre </mat-error>
+              <input matInput type="number" placeholder="temperature Chambre [C°] : " formControlName="temperaturech" >
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-                <input matInput type="text" placeholder="Type Evaporateur : " formControlName="typeevap" required>
-                <mat-error>
-                  Veuillez choisir le Type de l'Evaporateur
-                </mat-error>
+                <input matInput type="text" placeholder="Type Evaporateur : " formControlName="typeevap" >
+              
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-                <input matInput type="number" placeholder="Puissance Frigorifique [KW] : " formControlName="puissancef" required>
-                <mat-error>
-                  Veuillez choisir la Puissance Frigorifique
-                </mat-error>
+                <input matInput type="number" placeholder="Puissance Frigorifique [KW] : " formControlName="puissancef" >
+               
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-                <input matInput type="number" placeholder="Temperature d'Evaporation[C°] : " formControlName="temperatureevaporation" required>
-                <mat-error>
-                  Veuillez choisir la Temperature d'Evaporation
-                </mat-error>
+                <input matInput type="number" placeholder="Temperature d'Evaporation[C°] : " formControlName="temperatureevaporation" >
+                
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-                <input matInput type="number" placeholder="Temperature Extérieure [C°] : " formControlName="temperatureexterieure" required>
-                <mat-error>
-                  Veuillez choisir la Temperature Extérieure
-                </mat-error>
+                <input matInput type="number" placeholder="Temperature Extérieure [C°] : " formControlName="temperatureexterieure" >
+                
             </mat-form-field>
         </div>
     </mat-list-item>
@@ -274,8 +263,7 @@
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Courant Nominal [A] : " formControlName="courantnominal" required>
-              <mat-error> Veuillez choisir le Courant Nominal </mat-error>
+              <input matInput type="number" placeholder="Courant Nominal [A] : " formControlName="courantnominal" >
             </mat-form-field>
         </div>
     </mat-list-item>
@@ -286,8 +274,6 @@
                 <mat-radio-button value="avec"> Avec </mat-radio-button>&nbsp;
                 <mat-radio-button value="sans"> Sans </mat-radio-button>
               </mat-radio-group>&nbsp;&nbsp;&nbsp;
-              <mat-error *ngIf="!formGroup.value.parametres.dialoguegtc">Ce champ est obligatoire
-              </mat-error>
         </div>
     </mat-list-item>
     <mat-list-item>
@@ -321,10 +307,8 @@
             <mat-radio-button  [checked]="certifautreradio" (change)="radiocertifautre()">Autre</mat-radio-button> 
           </mat-radio-group>
           <mat-form-field *ngIf="certifautreradio" class="full-width-input m-2 col w-auto">
-            <input matInput type="text" placeholder="Certification : " formControlName="certification" required>
-            <mat-error>
-              Veuillez préciser la certification
-            </mat-error>
+            <input matInput type="text" placeholder="Certification : " formControlName="certification" >
+            
           </mat-form-field>
         </div>
       </mat-list-item>

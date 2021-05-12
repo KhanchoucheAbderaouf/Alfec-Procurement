@@ -170,16 +170,14 @@
         <mat-error>
           Veuillez choisir un code produit valide
         </mat-error>
+    
         </mat-form-field>
        </div>
     </mat-list-item>
     <mat-list-item>
       <div class="row mt-2">
         <mat-form-field class="full-width-input m-2">
-        <input matInput type="text" placeholder="Type Produit : " formControlName="type" required>
-        <mat-error>
-          Veuillez choisir un type produit valide
-        </mat-error>
+        <input matInput type="text" placeholder="Type Produit : " formControlName="type" >
         </mat-form-field>
        </div>
     </mat-list-item>
@@ -205,6 +203,7 @@
               {{mark}}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="!formGroup.value.marque">Veuillez choisir une marque</mat-error>
       </mat-form-field>
       </div>
     </mat-list-item>
@@ -217,75 +216,55 @@
     <mat-list-item>
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Type VC : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="typevc" required>
+              <mat-radio-group formControlName="typevc" >
                 <mat-radio-button value="Cassette">Cassette</mat-radio-button>&nbsp;
                 <mat-radio-button value="Horizontale non carrosse">Horizontale non carrossé</mat-radio-button>&nbsp;
                 <mat-radio-button value="Horizontal carrosse">Horizontal carrossé</mat-radio-button>&nbsp;
                 <mat-radio-button value="Allége carrose">Allége carrosé</mat-radio-button>
               </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-            <mat-error *ngIf="!formGroup.value.parametres.typevc">Ce champ est obligatoire</mat-error>
       </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Caractéristiques VC : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="caracteristiquevc" required>
+              <mat-radio-group formControlName="caracteristiquevc" >
                 <mat-radio-button value="2 Tubes">2 Tubes</mat-radio-button>&nbsp;
                 <mat-radio-button value="4 Tubes">4Tubes</mat-radio-button>&nbsp;
                 <mat-radio-button value="Elect">Elect</mat-radio-button>&nbsp;
                 <mat-radio-button value="Elect + 2 tubes">Elect + 2 tubes</mat-radio-button>
               </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-            <mat-error *ngIf="!formGroup.value.parametres.caracteristiquevc">Ce champ est obligatoire</mat-error>
           </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input col-6">
-              <input matInput type="number" placeholder="Puissance Frigorifique [KW] : " formControlName="pfvc" required>
-              <mat-error>
-                Veuillez choisir la Puissance Frigorifique
-              </mat-error>
+              <input matInput type="number" placeholder="Puissance Frigorifique [KW] : " formControlName="pfvc" >
             </mat-form-field>
             <mat-form-field class="full-width-input col-6">
               <input matInput type="number" placeholder="Puissance Calorifique [KW] : " formControlName="pcvc"
-                required>
-              <mat-error>
-                Veuillez choisir la Puissance Calorifique
-              </mat-error>
+                >
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input col-6">
-              <input matInput type="number" placeholder="Régime Eau Glacée (Entrée) [C°] : " formControlName="regimeeauglaceeentree" required>
-              <mat-error>
-                Veuillez choisir le Régime d'Eau Glacée de l'Entrée
-              </mat-error>
+              <input matInput type="number" placeholder="Régime Eau Glacée (Entrée) [C°] : " formControlName="regimeeauglaceeentree" >
             </mat-form-field>
             <mat-form-field class="full-width-input col-6">
               <input matInput type="number" placeholder="Régime Eau Glacée (Sortie) [C°] : " formControlName="regimeeauglaceesortie"
-                required>
-              <mat-error>
-                Veuillez choisir le Régime d'Eau Glacée de la Sortie
-              </mat-error>
+                >
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input col-6">
-              <input matInput type="number" placeholder="Régime Eau Chaude (Entrée) [C°] : " formControlName="regimeeauchaudeentree" required>
-              <mat-error>
-                Veuillez choisir le Régime d'Eau Chaude de l'Entrée
-              </mat-error>
+              <input matInput type="number" placeholder="Régime Eau Chaude (Entrée) [C°] : " formControlName="regimeeauchaudeentree" >
             </mat-form-field>
             <mat-form-field class="full-width-input col-6">
               <input matInput type="number" placeholder="Régime Eau Chaude (Sortie) [C°] : " formControlName="regimeeauchaudesortie"
-                required>
-              <mat-error>
-                Veuillez choisir le Régime d'Eau Chaude de la Sortie
-              </mat-error>
+                >
             </mat-form-field>
         </div>
     </mat-list-item>
@@ -365,52 +344,47 @@
     <mat-list-item>
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Vanne : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="vanne" required>
+              <mat-radio-group formControlName="vanne" >
                 <mat-radio-button value="V2V">V2V</mat-radio-button>&nbsp;
                 <mat-radio-button value="V4V">V4V</mat-radio-button>&nbsp;
               </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-              <mat-error *ngIf="!formGroup.value.parametres.vanne">Ce champ est obligatoire</mat-error>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Servomoteurs  : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="servomoteurs" required>
+              <mat-radio-group formControlName="servomoteurs" >
                 <mat-radio-button value="Avec">Avec</mat-radio-button>&nbsp;
                 <mat-radio-button value="Sans">Sans</mat-radio-button>&nbsp;
               </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-              <mat-error *ngIf="!formGroup.value.parametres.servomoteurs">Ce champ est obligatoire</mat-error>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Commande : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="commande" required>
+              <mat-radio-group formControlName="commande" >
                 <mat-radio-button value="Panel filaire">Panel filaire</mat-radio-button>&nbsp;
                 <mat-radio-button value="Telecommande infrarouge">Télécommande infrarouge</mat-radio-button>&nbsp;
                 <mat-radio-button value="Sans commande">Sans commande</mat-radio-button>
               </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-            <mat-error *ngIf="!formGroup.value.parametres.commande">Ce champ est obligatoire</mat-error>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Pompe de relavage : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="pomperelavage" required>
+              <mat-radio-group formControlName="pomperelavage" >
                 <mat-radio-button value="Avec">Avec</mat-radio-button>&nbsp;
                 <mat-radio-button value="Sans">Sans</mat-radio-button>
               </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-            <mat-error *ngIf="!formGroup.value.parametres.pomperelavage">Ce champ est obligatoire</mat-error>
         </div>
     </mat-list-item>
     <mat-list-item>
       <div class="row mt-2">
         <mat-label style="color: #182628;" class="h6"> Régulation : *</mat-label>&nbsp;&nbsp;&nbsp;
-          <mat-radio-group formControlName="regulation" required>
+          <mat-radio-group formControlName="regulation" >
             <mat-radio-button value="Avec">Avec</mat-radio-button>&nbsp;
             <mat-radio-button value="Sans">Sans</mat-radio-button>
           </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-          <mat-error *ngIf="!formGroup.value.parametres.regulation">Ce champ est obligatoire</mat-error>
       </div>
     </mat-list-item>
   </mat-list>

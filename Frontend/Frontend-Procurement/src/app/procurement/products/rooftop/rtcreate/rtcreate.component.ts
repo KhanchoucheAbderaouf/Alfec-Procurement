@@ -91,7 +91,7 @@ export class RtcreateComponent implements OnInit {
 
       nomp: new FormControl("RT"),
       codep: new FormControl("", [Validators.required]),
-      type: new FormControl("", [Validators.required]),
+      type: new FormControl(""),
       marque: new FormControl("", [Validators.required]),
       fournisseur: new FormGroup({
         id: new FormControl("", [Validators.required]),
@@ -101,47 +101,47 @@ export class RtcreateComponent implements OnInit {
       parametres: new FormGroup({
 
         //Infos Essentielles
-        typert : new FormControl("", [Validators.required]),
-        puissancef: new FormControl("", [Validators.required,Validators.min(0)]),
+        typert : new FormControl(""),
+        puissancef: new FormControl(""),
         puissancec: new FormControl(""),
         rendement: new FormControl(""),
-        texterieure: new FormControl("",[Validators.required]),
+        texterieure: new FormControl(""),
       
         //Compresseur
         nombrecircuitfrigo: new FormControl(""),
-        nombrecompresseur: new FormControl("", [Validators.required,Validators.min(0)]),
-        refregerant: new FormControl("", [Validators.required]),
+        nombrecompresseur: new FormControl(""),
+        refregerant: new FormControl(""),
         temperatureentreeair: new FormControl(""),
         humiditeentreeair: new FormControl(""),
         temperaturesortieair: new FormControl(""),
         humiditesortieair: new FormControl(""),
 
         //ventilateur
-        debitair: new FormControl("", [Validators.required,Validators.min(0)]),    
-        pressionstatique: new FormControl("", [Validators.required]),
+        debitair: new FormControl(""),    
+        pressionstatique: new FormControl(""),
         vitesserotation: new FormControl(""),
         pressionmaximale: new FormControl(""),
         pressionminimale: new FormControl(""),
-        pressiongaine: new FormControl("", [Validators.required]),
+        pressiongaine: new FormControl(""),
 
         //filtration 
-        prefiltration: new FormControl("", [Validators.required]),
-        nombreprefiltration: new FormControl("", [Validators.required,Validators.min(0)]),
-        filtration: new FormControl("", [Validators.required]),
-        nombrefiltration: new FormControl("", [Validators.required,Validators.min(0)]),
+        prefiltration: new FormControl(""),
+        nombreprefiltration: new FormControl(""),
+        filtration: new FormControl(""),
+        nombrefiltration: new FormControl(""),
 
         //electrique
         tensionnominalevoltage: new FormControl(""),
         tensionnominalephases: new FormControl(""),
         tensionnominalehertz: new FormControl(""),
         puissanceelectriqueabsorbee: new FormControl(""),
-        courantnominal: new FormControl("", [Validators.required,Validators.min(0)]),
-        dialoguegtc: new FormControl("", [Validators.required]),
+        courantnominal: new FormControl(""),
+        dialoguegtc: new FormControl(""),
         puissanceacoustique: new FormControl(""),
 
         //Autres
         classenergitique: new FormControl(""),
-        certification: new FormControl("", [Validators.required]),
+        certification: new FormControl(""),
 
       }),
 

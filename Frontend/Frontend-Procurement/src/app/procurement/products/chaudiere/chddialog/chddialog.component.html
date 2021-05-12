@@ -173,10 +173,8 @@
     <mat-list-item>
       <div class="row mt-2">
         <mat-form-field class="full-width-input m-2">
-        <input matInput type="text" placeholder="Type Produit : " formControlName="type" required>
-        <mat-error>
-          Veuillez choisir un type produit valide
-        </mat-error>
+        <input matInput type="text" placeholder="Type Produit : " formControlName="type" >
+
         </mat-form-field>
        </div>
     </mat-list-item>
@@ -202,6 +200,7 @@
               {{mark}}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="!formGroup.value.marque">Veuillez choisir une marque</mat-error>
       </mat-form-field>
       </div>
     </mat-list-item>
@@ -214,31 +213,27 @@
     <mat-list-item>
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Type Chaudière : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="typechd" required>
+              <mat-radio-group formControlName="typechd" >
                 <mat-radio-button value="Acier">Acier</mat-radio-button>&nbsp;
                 <mat-radio-button value="Fonte">Fonte</mat-radio-button>&nbsp;  
               </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-            <mat-error *ngIf="!formGroup.value.parametres.typechd">Ce champ est obligatoire</mat-error>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-label style="color: #182628;" class="h6"> Fonctionnement Chaudière à : *</mat-label>&nbsp;&nbsp;&nbsp;
-              <mat-radio-group formControlName="fonctionnementchd" required>
+              <mat-radio-group formControlName="fonctionnementchd" >
                 <mat-radio-button value="Fioul">Fioul</mat-radio-button>&nbsp;
                 <mat-radio-button value="Gaz">Gaz</mat-radio-button>&nbsp;  
                 <mat-radio-button value="Electricite">Electricité</mat-radio-button>&nbsp;                         
             </mat-radio-group>&nbsp;&nbsp;&nbsp;  
-            <mat-error *ngIf="!formGroup.value.parametres.fonctionnementchd">Ce champ est obligatoire</mat-error>
         </div> 
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-                <input matInput type="number" placeholder="Puissance Calorifique [KW]  : " formControlName="puissancecalorifiquechd" required>
-                <mat-error>
-                  Veuillez choisir la Puissance Calorifique
-                </mat-error>
+                <input matInput type="number" placeholder="Puissance Calorifique [KW]  : " formControlName="puissancecalorifiquechd" >
+     
             </mat-form-field>
         </div>
     </mat-list-item>
@@ -253,36 +248,30 @@
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-                <input matInput type="number" placeholder="Pression de Fonctionnement [Pa] : " formControlName="pressionfonctionnementchd" required>
-                <mat-error>
-                  Veuillez choisir la Pression de Fonctionnement
-                </mat-error>
+                <input matInput type="number" placeholder="Pression de Fonctionnement [Pa] : " formControlName="pressionfonctionnementchd" >
+                
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-                <input matInput type="number" placeholder="Regime de Fonctionement [C°/C°] : " formControlName="regimefonctionement" required>
-                <mat-error>
-                  Veuillez choisir le Regime de Fonctionement
-                </mat-error>
+                <input matInput type="number" placeholder="Regime de Fonctionement [C°/C°] : " formControlName="regimefonctionement" >
+                
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Pression Max [Pa] : " formControlName="pressionmax" required>
-              <mat-error> Veuillez choisir la Pression Max </mat-error>
+              <input matInput type="number" placeholder="Pression Max [Pa] : " formControlName="pressionmax" >
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Volume d'Eau [L] : " formControlName="volumeeau" required>
-              <mat-error> Veuillez choisir le Volume d'Eau </mat-error>
+              <input matInput type="number" placeholder="Volume d'Eau [L] : " formControlName="volumeeau" >
             </mat-form-field>
         </div>
     </mat-list-item>
@@ -295,16 +284,14 @@
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="text" placeholder="Puissance Calorifique [KW] : " formControlName="puissancecalorifiquebruleur" required>
-              <mat-error> Veuillez choisir la Puissance Calorifique </mat-error>
+              <input matInput type="text" placeholder="Puissance Calorifique [KW] : " formControlName="puissancecalorifiquebruleur" >
             </mat-form-field>
         </div>
     </mat-list-item>
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Pression de Fonctionnement [Pa] : " formControlName="pressionfonctionnementbruleur" required>
-              <mat-error> Veuillez choisir la Pression de Fonctionnement </mat-error>
+              <input matInput type="number" placeholder="Pression de Fonctionnement [Pa] : " formControlName="pressionfonctionnementbruleur" >
             </mat-form-field>
         </div>
     </mat-list-item>
@@ -341,8 +328,7 @@
     <mat-list-item>
         <div class="row mt-2">
             <mat-form-field class="full-width-input m-2">
-              <input matInput type="number" placeholder="Courant Nominal [A] : " formControlName="courantnominal" required>
-              <mat-error> Veuillez choisir le Courant Nominal </mat-error>
+              <input matInput type="number" placeholder="Courant Nominal [A] : " formControlName="courantnominal" >
             </mat-form-field>
         </div>
     </mat-list-item>
@@ -353,8 +339,7 @@
                 <mat-radio-button value="avec"> Avec </mat-radio-button>&nbsp;
                 <mat-radio-button value="sans"> Sans </mat-radio-button>
               </mat-radio-group>&nbsp;&nbsp;&nbsp;
-              <mat-error *ngIf="!formGroup.value.parametres.dialoguegtc">Ce champ est obligatoire
-              </mat-error>
+
         </div>
     </mat-list-item>
     <mat-list-item>
@@ -388,10 +373,8 @@
             <mat-radio-button  [checked]="certifautreradio" (change)="radiocertifautre()">Autre</mat-radio-button> 
           </mat-radio-group>
           <mat-form-field *ngIf="certifautreradio" class="full-width-input m-2 col w-auto">
-            <input matInput type="text" placeholder="Certification : " formControlName="certification" required>
-            <mat-error>
-              Veuillez préciser la certification
-            </mat-error>
+            <input matInput type="text" placeholder="Certification : " formControlName="certification" >
+
           </mat-form-field>
         </div>
       </mat-list-item>

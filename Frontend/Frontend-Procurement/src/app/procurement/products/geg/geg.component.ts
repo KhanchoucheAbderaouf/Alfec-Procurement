@@ -183,7 +183,7 @@ export class GegComponent implements OnInit {
 
       nomp: new FormControl("GEG"),
       codep: new FormControl("", [Validators.required]),
-      type: new FormControl("", [Validators.required]),
+      type: new FormControl(""),
       marque: new FormControl("", [Validators.required]),
       fournisseur: new FormGroup({
         id: new FormControl("", [Validators.required]),
@@ -191,46 +191,46 @@ export class GegComponent implements OnInit {
 
 
       parametres: new FormGroup({
-        pf: new FormControl("", [Validators.required]),
+        pf: new FormControl(""),
         eer: new FormControl(""),
         cop: new FormControl(""),
         pc : new FormControl(""),
-        tempexterieure : new FormControl("",[Validators.required]),
-        typegeg: new FormControl("", [Validators.required]),
+        tempexterieure : new FormControl(""),
+        typegeg: new FormControl(""),
         classenergitique: new FormControl(""),
-        plotantivibration: new FormControl("", [Validators.required]),
-        certification: new FormControl("", [Validators.required]),
-        condensation: new FormControl("", [Validators.required]),
+        plotantivibration: new FormControl(""),
+        certification: new FormControl(""),
+        condensation: new FormControl(""),
 
-        typecompresseur: new FormControl("", [Validators.required]),
-        nbrecircuitfrigo: new FormControl("", [Validators.required,Validators.min(0)]),
-        nbrecompresseur: new FormControl("", [Validators.required,Validators.min(0)]),
-        refregerant: new FormControl("", [Validators.required]),
+        typecompresseur: new FormControl(""),
+        nbrecircuitfrigo: new FormControl(""),
+        nbrecompresseur: new FormControl(""),
+        refregerant: new FormControl(""),
 
 
        
-        ventilateur: new FormControl("", [Validators.required]),
+        ventilateur: new FormControl(""),
         debitcondenseur: new FormControl(""),
         pressioncondenseur: new FormControl(""),
         epoxycondenseur: new FormControl(""),
          
 
         echangeurfrigo: new FormControl(""),
-        typefluide: new FormControl("", [Validators.required]),
-        pertecharge: new FormControl("",Validators.required),
-        debitfluide: new FormControl("", [Validators.required,Validators.min(0)]),
-        tempfluidesortie: new FormControl("", [Validators.required]),
-        tempfluideentree: new FormControl("", [Validators.required]),
+        typefluide: new FormControl(""),
+        pertecharge: new FormControl(""),
+        debitfluide: new FormControl(""),
+        tempfluidesortie: new FormControl(""),
+        tempfluideentree: new FormControl(""),
         glycol: new FormControl(""),
-        //temperatureevaporateur: new FormControl("", [Validators.required]),
+        //temperatureevaporateur: new FormControl(""),
 
         pressostatHPBP: new FormControl(""),
         manoHPBP: new FormControl(""),
         insonorisationcompresseur: new FormControl(""),
-        tropicalisationequipement: new FormControl("", [Validators.required]),
+        tropicalisationequipement: new FormControl(""),
 
         modulehydraulique: new FormGroup({
-          avecmodulehydraulique: new FormControl("", [Validators.required]),
+          avecmodulehydraulique: new FormControl(""),
           pompe: new FormGroup({
             avecpompe: new FormControl(""),
             formepompe: new FormControl(""),
@@ -259,17 +259,17 @@ export class GegComponent implements OnInit {
           intensitenominale: new FormControl(""),
           intensitemaximale: new FormControl(""),
           intensitedemmarage: new FormControl(""),
-          armoireelectrique: new FormControl("", [Validators.required]),
+          armoireelectrique: new FormControl(""),
           sondefonctionnement: new FormControl(""),
-          dialoguegtc: new FormControl("", [Validators.required]),
+          dialoguegtc: new FormControl(""),
           puissanceacoustique: new FormControl(""),
           pressionacoustique: new FormControl(""),
 
 
       }),
 
-      // douane : new FormControl("",[Validators.required,Validators.max(100),Validators.min(0)]),
-      //fraisdivers : new FormControl("",[Validators.required]),
+      // douane : new FormControl(""),
+      //fraisdivers : new FormControl(""),
     })
 
   }

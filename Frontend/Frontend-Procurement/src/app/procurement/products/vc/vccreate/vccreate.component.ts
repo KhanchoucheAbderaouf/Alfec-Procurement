@@ -83,7 +83,7 @@ export class VccreateComponent implements OnInit {
 
       nomp: new FormControl("VC"),
       codep: new FormControl("", [Validators.required]),
-      type: new FormControl("", [Validators.required]),
+      type: new FormControl(""),
       marque: new FormControl("", [Validators.required]),
       fournisseur: new FormGroup({
         id: new FormControl("", [Validators.required]),
@@ -93,14 +93,14 @@ export class VccreateComponent implements OnInit {
       parametres: new FormGroup({
 
         //Infos Essentielles
-        typevc : new FormControl("", [Validators.required]),
-        pfvc: new FormControl("", [Validators.required,Validators.min(0)]),
-        pcvc: new FormControl("", [Validators.required,Validators.min(0)]),
-        caracteristiquevc: new FormControl("", [Validators.required]),
-        regimeeauglaceeentree : new FormControl("",[Validators.required]),
-        regimeeauglaceesortie: new FormControl("", [Validators.required]),
-        regimeeauchaudeentree: new FormControl("",[Validators.required]),
-        regimeeauchaudesortie : new FormControl("",[Validators.required]),
+        typevc : new FormControl(""),
+        pfvc: new FormControl(""),
+        pcvc: new FormControl(""),
+        caracteristiquevc: new FormControl(""),
+        regimeeauglaceeentree : new FormControl(""),
+        regimeeauglaceesortie: new FormControl(""),
+        regimeeauchaudeentree: new FormControl(""),
+        regimeeauchaudesortie : new FormControl(""),
         treprisehiver : new FormControl(""),
         trepriseete: new FormControl(""),
         tsoufflagehiver: new FormControl(""),
@@ -111,11 +111,11 @@ export class VccreateComponent implements OnInit {
         pressiondisponible: new FormControl(""),
 
         //Accessoires
-        vanne: new FormControl("", [Validators.required]),
-        servomoteurs: new FormControl("", [Validators.required]),    
-        commande: new FormControl("", [Validators.required]),
-        pomperelavage: new FormControl("", [Validators.required]),
-        regulation: new FormControl("", [Validators.required]),
+        vanne: new FormControl(""),
+        servomoteurs: new FormControl(""),    
+        commande: new FormControl(""),
+        pomperelavage: new FormControl(""),
+        regulation: new FormControl(""),
 
         //Autres
         classenergitique: new FormControl(""),
